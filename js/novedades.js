@@ -6,9 +6,7 @@
 //    LinkedIn (medido a 504px de ancho) sobra hueco en blanco cuando la
 //    columna es más estrecha. Un incrustado se compone de una parte fija
 //    —cabecera, texto plegado y barra de acciones— y de la imagen o el vídeo,
-//    que escala con el ancho. Los marcos van a 504px, que es el ancho para el
-//    que LinkedIn da sus alturas, de modo que ahí el alto es el suyo tal cual.
-//    Solo cuando la pantalla obliga a estrecharlos hay que recalcularlo:
+//    que escala con el ancho. De ahí sale el alto a cualquier ancho:
 //        alto = CROMO + (alto a 504 - CROMO) * ancho / 504
 //    data-h504 lleva el valor de LinkedIn de cada publicación.
 //
@@ -18,10 +16,10 @@
   var CROMO = 212;            // parte del incrustado que no escala, en px
   var ANCHO_BASE = 504;       // ancho al que LinkedIn mide sus alturas
 
-  // Holgura sobre el alto que declara LinkedIn. Sus cifras se quedan cortas y
-  // el incrustado saca barra de desplazamiento propia; con esto el contenido
-  // entra entero. Es el único número que hay que mover si alguna publicación
-  // vuelve a salir con barra (subirlo) o con demasiado hueco (bajarlo).
+  // Holgura sobre el alto calculado. Las cifras de LinkedIn se quedan cortas y
+  // el incrustado acaba sacando su propia barra de desplazamiento; con esto el
+  // contenido entra entero. Es el unico numero que hay que mover si alguna
+  // publicacion vuelve a salir con barra (subirlo) o con hueco (bajarlo).
   var MARGEN = 72;
   var instancias = [];
 
@@ -31,15 +29,6 @@
     if (!h504) return;
     var ancho = iframe.getBoundingClientRect().width;
     if (!ancho) return;                       // aún sin layout (página oculta)
-
-    // A 504 o más el marco ya está a su tamaño nativo: se deja el alto tal
-    // cual lo da LinkedIn. Solo se recalcula cuando la pantalla obliga a
-    // estrecharlo, porque entonces la imagen encoge y sobraría hueco.
-    if (ancho >= ANCHO_BASE) {
-      iframe.style.height = (h504 + MARGEN) + 'px';
-      return;
-    }
-
     var alto = Math.round(CROMO + (h504 - CROMO) * ancho / ANCHO_BASE) + MARGEN;
     iframe.style.height = alto + 'px';
   }

@@ -69,6 +69,24 @@
     page.querySelectorAll('iframe[data-h504]').forEach(ajustarAlto);
   }
 
+  // ---------- Retirar el esqueleto ----------
+  // El marco enseña un esqueleto hasta que LinkedIn termina de cargar. El
+  // temporizador es el seguro: si el evento load no llega —bloqueador,
+  // publicación retirada— el marco se descubre igual y no se queda en gris
+  // para siempre.
+  function marcarCargado(marco) {
+    if (marco) marco.classList.add('is-ready');
+  }
+
+  function vigilarCarga(page) {
+    page.querySelectorAll('iframe[data-h504]').forEach(function (iframe) {
+      var marco = iframe.parentNode;
+      if (!marco || !marco.classList || marco.classList.contains('is-ready')) return;
+      iframe.addEventListener('load', function () { marcarCargado(marco); });
+      setTimeout(function () { marcarCargado(marco); }, 9000);
+    });
+  }
+
   // ---------- 2. Filtro ----------
   function initFiltro(page) {
     var tabs = Array.prototype.slice.call(page.querySelectorAll('.novedades-tab'));
@@ -129,6 +147,7 @@
 
     initFiltro(page);          // devuelve sin hacer nada si no hay pestañas
     ajustarTodos(page);
+    vigilarCarga(page);
 
     var pendiente = null;
     function alRedimensionar() {

@@ -17,6 +17,7 @@
     'js/products-data.js',
     'js/modal.js',
     'js/tooltip.js',
+    'js/gallery.js',
     'js/boot.js'
   ];
 

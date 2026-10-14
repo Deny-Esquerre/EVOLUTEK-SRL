@@ -1,0 +1,215 @@
+/* ============================================
+   PASARELA DE SERVICIOS
+   ============================================
+   Carrusel de imagen + texto. La pista es un scroll horizontal con anclaje
+   (scroll-snap), de modo que sin JavaScript sigue siendo una galería que se
+   arrastra con el dedo o con la rueda. Los botones, los puntos y el avance
+   automático los añade js/gallery.js, y solo aparecen si ese script corre:
+   así no quedan controles muertos. */
+
+.gallery {
+  position: relative;
+}
+
+.gallery__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* La barra estorba en un carrusel; el arrastre y los controles la sustituyen */
+  scrollbar-width: none;
+}
+
+.gallery__track::-webkit-scrollbar { display: none; }
+
+.gallery__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  align-items: stretch;
+  gap: 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* ---- La imagen ---- */
+.gallery__media {
+  position: relative;
+  margin: 0;
+  min-height: 340px;
+  background: var(--gray-bg);
+}
+
+.gallery__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Panel de marca: ocupa el lugar de la fotografía mientras no la haya. Lleva
+   la retícula tenue de los encabezados de producto y el icono del servicio.
+   Para pasar a foto basta con cambiar este div por un <img> en el parcial. */
+.gallery__panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.92);
+  background-color: var(--navy);
+  background-image:
+    radial-gradient(circle at 78% 18%, rgba(108, 112, 232, 0.55), transparent 58%),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: auto, 46px 46px, 46px 46px;
+}
+
+.gallery__panel svg {
+  width: 38%;
+  max-width: 150px;
+  height: auto;
+}
+
+/* ---- El texto ---- */
+.gallery__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 44px 44px 46px;
+}
+
+.gallery__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 22px;
+  border-radius: 10px;
+  background: rgba(25, 26, 85, 0.05);
+  border: 1px solid rgba(25, 26, 85, 0.1);
+  color: var(--navy);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.gallery__text h3 {
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  letter-spacing: -0.3px;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.gallery__text p {
+  color: var(--gray);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ============================================
+   CONTROLES (los crea el script)
+   ============================================ */
+.gallery__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--navy);
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.gallery__nav:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.gallery__nav[disabled] {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+.gallery__nav[disabled]:hover {
+  background: var(--white);
+  border-color: var(--line-strong);
+  color: var(--navy);
+}
+
+.gallery__nav--prev { left: -23px; }
+.gallery__nav--next { right: -23px; }
+
+/* La punta de flecha, dibujada con dos lados de un cuadrado girado */
+.gallery__nav::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+.gallery__nav--prev::before { transform: rotate(-135deg); margin-left: 3px; }
+.gallery__nav--next::before { transform: rotate(45deg); margin-right: 3px; }
+
+.gallery__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.gallery__dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--line-strong);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.gallery__dot:hover { background: var(--gray); }
+
+.gallery__dot[aria-current="true"] {
+  width: 28px;
+  border-radius: 5px;
+  background: var(--navy);
+}
+
+/* ============================================
+   PANTALLAS ESTRECHAS
+   ============================================ */
+@media (max-width: 900px) {
+  .gallery__slide { grid-template-columns: 1fr; }
+  .gallery__media { min-height: 0; aspect-ratio: 16 / 9; }
+  .gallery__media img { position: static; }
+  .gallery__text { padding: 30px 26px 34px; }
+
+  /* Sin sitio a los lados: las flechas se apoyan dentro de la imagen */
+  .gallery__nav--prev { left: 10px; }
+  .gallery__nav--next { right: 10px; }
+  .gallery__nav { top: 28%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery__track { scroll-behavior: auto; }
+}

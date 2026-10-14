@@ -1,0 +1,456 @@
+/* ============================================
+   CONTACTO
+   ============================================
+   Encabezado navy con el correo a la vista, formulario en una tarjeta que se
+   monta sobre el encabezado y, al lado, como empezamos, LinkedIn y las marcas.
+   El formulario no envia nada por si solo: js/contacto.js abre el programa de
+   correo del visitante con la consulta ya escrita. */
+
+/* ---- Encabezado ---- */
+.contacto-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--navy);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 46px 46px;
+  color: var(--white);
+}
+
+.contacto-hero__slash {
+  position: absolute;
+  right: -60px;
+  top: -40px;
+  width: 340px;
+  height: 560px;
+  background: var(--accent);
+  opacity: 0.16;
+  transform: skewX(-12deg);
+  border-radius: 40px;
+}
+
+.contacto-hero__inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  padding-top: 88px;
+  padding-bottom: 168px;
+}
+
+.contacto-hero__texto { flex: 1 1 560px; min-width: 0; max-width: 760px; }
+
+.contacto-hero__directo-label {
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.contacto-hero__titulo {
+  font-family: 'TT Supermolot Neue Demi Bold', 'Saira', 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2.4rem, 4.6vw, 3.9rem);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  color: var(--white);
+  margin: 0 0 20px;
+}
+
+.contacto-hero__intro {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 600px;
+}
+
+.contacto-hero__directo {
+  flex: 0 1 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contacto-hero__directo-label { font-size: 12px; color: rgba(255, 255, 255, 0.7); }
+
+.contacto-hero__correo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  transition: var(--transition);
+}
+
+.contacto-hero__correo:hover { border-color: var(--accent-light); color: var(--white); }
+
+/* ---- Cuerpo: tarjeta del formulario + lateral ---- */
+.contacto-cuerpo { padding-bottom: 96px; }
+
+.contacto-cuerpo__inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 32px;
+  margin-top: -112px;
+}
+
+.contacto-tarjeta {
+  flex: 999 1 560px;
+  min-width: 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 44px 44px 40px;
+}
+
+.contacto-form { display: flex; flex-direction: column; gap: 26px; }
+
+.contacto-form__cabecera h2,
+.contacto-enviado h2 {
+  font-size: 1.75rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.contacto-form__cabecera p { color: #5E5F69; }
+
+.contacto-form__rejilla {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+}
+
+.contacto-campo { display: flex; flex-direction: column; gap: 7px; }
+
+.contacto-campo label { font-weight: 600; font-size: 14px; color: var(--navy); }
+
+.contacto-campo input,
+.contacto-campo textarea {
+  font: inherit;
+  font-size: 16px;
+  color: var(--navy);
+  background: var(--white-off);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  padding: 13px 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.contacto-campo textarea { resize: vertical; min-height: 130px; }
+
+.contacto-campo input::placeholder,
+.contacto-campo textarea::placeholder { color: #8A8C96; }
+
+.contacto-campo input:focus,
+.contacto-campo textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(74, 79, 212, 0.18);
+  background: var(--white);
+}
+
+/* Solo se marca en rojo tras el primer intento de envio, no mientras se
+   escribe por primera vez. */
+.contacto-form.is-intentado input:invalid,
+.contacto-form.is-intentado textarea:invalid {
+  border-color: #B42318;
+  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.12);
+}
+
+.contacto-form__pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.contacto-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 440px;
+  font-size: 14px;
+  color: #5E5F69;
+  cursor: pointer;
+}
+
+.contacto-check input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--navy);
+}
+
+.contacto-check .link-btn { color: var(--navy); font-weight: 600; }
+
+.contacto-form.is-intentado .contacto-check input:invalid { outline: 2px solid #B42318; outline-offset: 2px; }
+
+.contacto-boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 15px 30px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--navy);
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.contacto-boton:hover { background: var(--navy-light); }
+
+.contacto-boton:focus-visible,
+.contacto-enviado__otro:focus-visible,
+.contacto-hero__correo:focus-visible,
+.contacto-linkedin:focus-visible {
+  outline: 3px solid var(--accent-light);
+  outline-offset: 2px;
+}
+
+.contacto-form__error { color: #B42318; font-size: 14px; font-weight: 600; margin-top: -10px; }
+
+/* ---- Confirmacion ---- */
+.contacto-enviado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 40px 0;
+  outline: none;
+}
+
+.contacto-enviado[hidden] { display: none; }
+
+.contacto-enviado__icono {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacto-enviado p { color: #5E5F69; font-size: 1.05rem; max-width: 480px; }
+
+.contacto-enviado p a { color: var(--navy); font-weight: 600; }
+
+.contacto-enviado__otro {
+  margin-top: 8px;
+  min-height: 44px;
+  padding: 10px 18px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--navy);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+/* ---- Lateral ---- */
+.contacto-lateral {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 140px;
+}
+
+.contacto-pasos,
+.contacto-linkedin {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.contacto-pasos { padding: 28px; }
+
+.contacto-pasos h2 { font-size: 1.15rem; color: var(--navy); margin-bottom: 18px; }
+
+.contacto-pasos ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contacto-pasos li { display: flex; gap: 14px; }
+
+.contacto-pasos li > span:last-child { color: #5E5F69; font-size: 15px; line-height: 1.5; }
+
+.contacto-pasos strong,
+.contacto-linkedin__texto strong {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--navy);
+}
+
+.contacto-pasos__num {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Saira', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacto-linkedin {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  color: var(--navy);
+  transition: var(--transition);
+}
+
+.contacto-linkedin:hover { border-color: var(--accent); box-shadow: var(--shadow-md); color: var(--navy); }
+
+.contacto-linkedin__icono {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--navy);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacto-linkedin__texto { flex: 1; min-width: 0; color: #5E5F69; font-size: 15px; line-height: 1.5; }
+
+.contacto-linkedin__flecha { flex: none; }
+
+/* Marquesina de logotipos. La pista lleva la serie dos veces y avanza
+   exactamente -50%: al acabar, la copia esta donde empezo el original y el
+   bucle no se nota. El hueco va en el margin-right de cada logo (no en un gap)
+   para que cada serie mida justo la mitad. Los bordes se desvanecen. */
+.contacto-marcas {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.contacto-marcas__pista {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: contactoMarquesina 26s linear infinite;
+}
+
+.contacto-marcas__copia { display: contents; }
+
+.contacto-marcas:hover .contacto-marcas__pista,
+.contacto-marcas:focus-within .contacto-marcas__pista { animation-play-state: paused; }
+
+.contacto-marca {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 124px;
+  height: 40px;
+  margin-right: 40px;
+  border-radius: 4px;
+}
+
+.contacto-marca img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.55);
+  transition: filter 0.35s ease;
+}
+
+.contacto-marca:hover img,
+.contacto-marca:focus-visible img { filter: grayscale(0%) opacity(1); }
+
+.contacto-marca:focus-visible { outline: 2px solid var(--navy); outline-offset: 6px; }
+
+/* Flow se entrega en negativo: placa oscura dentro de la misma caja */
+.contacto-marca--oscura { background: var(--logo-plate); padding: 6px 14px; border-radius: 8px; }
+.contacto-marca--oscura img { filter: grayscale(100%) opacity(0.8); }
+
+@keyframes contactoMarquesina {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Menos movimiento: los logos quedan quietos en varias filas y sin copia */
+@media (prefers-reduced-motion: reduce) {
+  .contacto-marcas { -webkit-mask-image: none; mask-image: none; }
+  .contacto-marcas__pista { animation: none; width: auto; flex-wrap: wrap; row-gap: 18px; }
+  .contacto-marcas__copia { display: none; }
+}
+
+/* ---- Tablet: el lateral baja bajo la tarjeta ---- */
+@media (max-width: 900px) {
+  .contacto-lateral { padding-top: 0; }
+}
+
+/* ---- Telefono ---- */
+@media (max-width: 760px) {
+  .contacto-hero__slash { right: -90px; top: -30px; width: 200px; height: 380px; border-radius: 30px; }
+  .contacto-hero__inner { gap: 24px; padding-top: 44px; padding-bottom: 112px; }
+  .contacto-hero__texto { flex-basis: 100%; }
+  .contacto-hero__titulo { margin: 0 0 14px; }
+  .contacto-hero__intro { font-size: 1.05rem; }
+  .contacto-hero__directo { flex-basis: 100%; }
+  .contacto-hero__directo-label { display: none; }
+  .contacto-hero__correo {
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    min-height: 48px;
+  }
+
+  .contacto-cuerpo { padding-bottom: 56px; }
+  .contacto-cuerpo__inner { margin-top: -76px; gap: 24px; }
+  .contacto-tarjeta { padding: 28px 20px; }
+  .contacto-form { gap: 20px; }
+  .contacto-form__cabecera h2, .contacto-enviado h2 { font-size: 1.4rem; }
+  .contacto-form__rejilla { grid-template-columns: 1fr; gap: 18px; }
+  .contacto-boton { width: 100%; }
+  .contacto-check { max-width: none; }
+  .contacto-check input { width: 20px; height: 20px; }
+  .contacto-enviado { padding: 24px 0; }
+  .contacto-pasos { padding: 24px 20px; }
+  .contacto-linkedin { padding: 18px 20px; gap: 14px; }
+  .contacto-linkedin__icono { width: 44px; height: 44px; }
+}
+
+@media (max-width: 480px) {
+  .contacto-hero__titulo { font-size: 2.35rem; }
+  .contacto-cuerpo { padding-bottom: 44px; }
+  .contacto-cuerpo__inner { padding: 0 16px; }
+}

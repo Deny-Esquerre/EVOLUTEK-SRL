@@ -22,7 +22,7 @@ const DIST = path.join(ROOT, 'dist');
 const CSS_ORDER = [
   'base.css', 'navbar.css', 'hero.css', 'page-hero.css', 'sections.css',
   'estrategia.css', 'about.css', 'partners.css', 'logos.css', 'modal.css',
-  'servicios.css', 'gallery.css', 'novedades.css',
+  'servicios.css', 'gallery.css', 'novedades.css', 'contacto.css',
   'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
   'product-snake.css', 'product-stair.css',
   'cta.css', 'error.css', 'footer.css', 'animations.css', 'responsive.css'
@@ -33,7 +33,7 @@ const CSS_ORDER = [
 // includes.js NO va al bundle de producción.
 const JS_ORDER = [
   'ready.js', 'nav.js', 'reveal.js', 'strategy-rail.js', 'hero.js',
-  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'gallery.js', 'novedades.js', 'boot.js'
+  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'gallery.js', 'novedades.js', 'contacto.js', 'boot.js'
 ];
 
 // Presentes en todas las rutas. Las páginas (partials/page-*.html) NO van en el

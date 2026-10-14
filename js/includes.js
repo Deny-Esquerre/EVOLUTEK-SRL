@@ -19,6 +19,7 @@
     'js/tooltip.js',
     'js/gallery.js',
     'js/novedades.js',
+    'js/contacto.js',
     'js/boot.js'
   ];
 

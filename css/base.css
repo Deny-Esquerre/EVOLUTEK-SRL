@@ -29,6 +29,8 @@
   --gray-bg: #F4F5F7;
   --white: #FFFFFF;
   --white-off: #FAFBFD;
+  /* Fondo para logotipos entregados en negativo (Flow) */
+  --logo-plate: #0D0D12;
   --line: rgba(25, 26, 85, 0.12);
   --line-strong: rgba(25, 26, 85, 0.22);
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);

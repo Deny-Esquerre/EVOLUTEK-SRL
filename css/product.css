@@ -42,6 +42,19 @@
   max-width: 480px;
 }
 
+/* Flow entrega su logotipo en negativo: las letras son blancas y sobre el
+   encabezado claro no se leen. Se le pone debajo la misma placa oscura que ya
+   lleva en la fila de logos del inicio.
+   box-sizing content-box a propósito: el reajuste global es border-box y, con
+   él, el relleno de la placa se comería el alto del logotipo en vez de crecer
+   a su alrededor. */
+.product-hero__logo--plate {
+  box-sizing: content-box;
+  background: var(--logo-plate);
+  border-radius: 12px;
+  padding: 18px 28px;
+}
+
 .product-hero__cat {
   font-family: 'Barlow', sans-serif;
   font-size: 0.8rem;

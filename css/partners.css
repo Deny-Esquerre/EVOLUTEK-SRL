@@ -53,3 +53,15 @@
 .partner-card:hover img {
   filter: grayscale(0%) opacity(1);
 }
+
+/* Logotipo en negativo (Flow): sobre la tarjeta blanca desaparece, así que se
+   apoya en una placa oscura. Aquí la placa sí ocupa el alto del logotipo
+   (border-box, el del reajuste global) para no sobresalir de la fila. */
+.partner-card img.is-negative {
+  background: var(--logo-plate);
+  border-radius: 8px;
+  padding: 9px 16px;
+  filter: grayscale(100%) opacity(0.85);
+}
+
+.partner-card:hover img.is-negative { filter: none; }

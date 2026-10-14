@@ -78,7 +78,7 @@
 /* Flow necesita fondo oscuro, pero mantiene la caja común: el recuadro crece
    hacia dentro con el padding, no hacia fuera. */
 .logo-item--dark {
-  background: #0d0d12;
+  background: var(--logo-plate);
   border-radius: 8px;
   padding: 7px 16px;
 }

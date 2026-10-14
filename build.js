@@ -206,6 +206,13 @@ for (const name of SHARED_PARTIALS) {
   shell = shell.replace(marker, read(repo(`partials/${name}.html`)).replace(/\s+$/, ''));
 }
 
+// El año del aviso de copyright lo pone la compilación, no la mano: así deja de
+// quedarse atrasado en cuanto cambia el año. El valor que hay en el parcial es
+// el que se ve en desarrollo, donde no pasa por aquí.
+const HUECO_ANIO = /(<span data-year>)\d{4}(<\/span>)/;
+if (!HUECO_ANIO.test(shell)) throw new Error('No se encontró el hueco del año (<span data-year>).');
+shell = shell.replace(HUECO_ANIO, (m, a, b) => a + new Date().getFullYear() + b);
+
 // Los marcadores de página se colapsan en un único hueco que se rellena por ruta.
 let slotDone = false;
 shell = shell.replace(/[ \t]*<div data-include="partials\/page-[a-z0-9-]+\.html"><\/div>\r?\n?/g, () => {

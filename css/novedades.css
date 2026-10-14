@@ -22,6 +22,15 @@
   padding: 120px 0;
 }
 
+/* Tres marcos de 504 piden 1568px y el contenedor del sitio deja 1152, así
+   que esta página ensancha el suyo y recorta el margen lateral. Solo afecta a
+   estas secciones: el hero, la caja de contacto y el pie siguen con el ancho
+   de siempre. */
+.novedades-seccion .container {
+  max-width: 1640px;
+  padding: 0 16px;
+}
+
 .novedades-seccion--publicaciones {
   background: #F6F7FA;
   border-top: 1px solid #E9EBF2;
@@ -68,10 +77,14 @@
   max-width: 44ch;
 }
 
-/* ---- Sección 1: introducción + dos vídeos ---- */
+/* ---- Sección 1: introducción y dos vídeos ----
+   Los marcos van a 504px, el ancho para el que LinkedIn da sus alturas: a ese
+   tamaño el contenido encaja exacto, sin hueco sobrante ni recorte. La
+   introducción ocupa la primera columna y los vídeos las otras dos. */
 .novedades-video-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(0, 1fr) 504px 504px;
+  justify-content: center;
   gap: 32px;
   align-items: start;
 }
@@ -143,15 +156,21 @@
    Columnas CSS y no rejilla: cada publicación mide lo que mide, y con
    columnas se coloca donde cabe en lugar de estirar toda la fila hasta la
    más alta, que es lo que dejaba huecos. */
+/* Dos valores a la vez: hasta tres columnas, pero ninguna por debajo de los
+   504px que piden los marcos. El navegador pone tres si caben y dos si no,
+   sin llegar a estrecharlos nunca. */
 .novedades-mosaico {
-  columns: 3;
-  column-gap: 28px;
+  columns: 504px 3;
+  column-gap: 32px;
 }
 
 /* ---- El marco de cada inserción ---- */
 .embed-card {
   break-inside: avoid;
-  margin: 0 0 28px;
+  /* auto a los lados: si la columna sale más ancha que 504, el marco se
+     queda centrado en ella en lugar de pegado a la izquierda */
+  margin: 0 auto 32px;
+  max-width: 504px;
   background: #FFFFFF;
   border: 1px solid var(--nv-borde);
   border-radius: 14px;
@@ -209,23 +228,24 @@
 /* ============================================
    PANTALLAS INTERMEDIAS Y ESTRECHAS
    ============================================ */
-@media (max-width: 1040px) {
+/* Con menos de ~1130px no caben la introducción y dos marcos en una fila:
+   la introducción pasa a ocupar el ancho entero, encima de los vídeos. */
+@media (max-width: 1130px) {
   .novedades-seccion { padding: 88px 0; }
 
-  .novedades-video-grid { grid-template-columns: repeat(2, 1fr); }
+  .novedades-video-grid { grid-template-columns: repeat(auto-fit, 504px); }
 
-  /* La introducción pasa a ocupar el ancho entero, encima de los vídeos */
   .novedades-intro {
     grid-column: 1 / -1;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
     min-height: 0;
+    gap: 24px 40px;
   }
 
   .novedades-texto { max-width: 52ch; }
-
-  .novedades-mosaico { columns: 2; }
 }
 
 @media (max-width: 640px) {
@@ -233,13 +253,18 @@
 
   .novedades-h2 { font-size: 32px; }
 
-  .novedades-video-grid { grid-template-columns: 1fr; gap: 24px; }
+  .novedades-video-grid { grid-template-columns: minmax(0, 504px); gap: 24px; }
 
   .novedades-intro {
     flex-direction: column;
     align-items: flex-start;
     gap: 22px;
+    margin-bottom: 32px;
   }
+
+  /* Por debajo de 504 el marco se estrecha; js/novedades.js baja el alto en
+     la misma proporción para que no aparezca hueco en blanco. */
+  .embed-card { width: 100%; }
 
   .novedades-cabecera { gap: 22px; margin-bottom: 32px; }
 

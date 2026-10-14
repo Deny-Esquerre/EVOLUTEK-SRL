@@ -130,7 +130,16 @@
   box-shadow: none;
 }
 
-.product-figure--mockup.is-glow img { animation: none; }
+/* En un recorte con alfa, el brillo tiene que seguir la silueta del objeto,
+   no un rectángulo: drop-shadow en vez de box-shadow. */
+.product-figure--mockup.is-glow img {
+  animation: productGlowMockup 1.6s ease-in-out infinite;
+}
+
+@keyframes productGlowMockup {
+  0%, 100% { filter: drop-shadow(0 0 16px rgba(25, 26, 85, 0.45)); }
+  50%      { filter: drop-shadow(0 0 32px rgba(74, 79, 212, 0.7)); }
+}
 
 .product-figure figcaption {
   margin-top: 14px;

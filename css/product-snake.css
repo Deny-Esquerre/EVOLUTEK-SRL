@@ -1,0 +1,84 @@
+/* ============================================
+   FICHA DE PRODUCTO — MAQUETACIÓN "SERPIENTE"
+   ============================================
+   HighByte. Los pasos no bajan en columna ni alternan lados: recorren la
+   rejilla en bustrófedon, la primera fila de izquierda a derecha y la
+   segunda de derecha a izquierda, con el giro marcado en la columna de la
+   derecha. El recorrido se lee como una serpiente. */
+
+.product--snake .product-info-section { padding: 34px 0 26px; }
+
+.product--snake .product-info {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* El primer párrafo entra como entradilla */
+.product--snake .product-info p:first-child {
+  font-size: 1.18rem;
+  line-height: 1.7;
+  color: var(--navy);
+}
+
+/* ---- El recorrido ---- */
+.product--snake .exp-grid--steps {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 44px;
+}
+
+/* La segunda fila se recorre en sentido contrario: el paso 4 cae bajo el 3,
+   y de ahí el recorrido vuelve hacia la izquierda. */
+.product--snake .exp-grid--steps .exp-card:nth-child(4) { grid-column: 3; grid-row: 2; }
+.product--snake .exp-grid--steps .exp-card:nth-child(5) { grid-column: 2; grid-row: 2; }
+.product--snake .exp-grid--steps .exp-card:nth-child(6) { grid-column: 1; grid-row: 2; }
+
+.product--snake .exp-grid--steps .exp-card { overflow: visible; }
+
+/* ---- Los enlaces del recorrido ---- */
+.product--snake .exp-grid--steps .exp-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 2px;
+  background: var(--line-strong);
+  transition: var(--transition);
+}
+
+/* Fila de arriba, avanzando hacia la derecha: el enlace entra por la izquierda */
+.product--snake .exp-grid--steps .exp-card:nth-child(2)::before,
+.product--snake .exp-grid--steps .exp-card:nth-child(3)::before { left: -44px; }
+
+/* Fila de abajo, de vuelta hacia la izquierda: el enlace entra por la derecha */
+.product--snake .exp-grid--steps .exp-card:nth-child(5)::before,
+.product--snake .exp-grid--steps .exp-card:nth-child(6)::before { right: -44px; }
+
+/* El giro: del paso 3 baja al 4, los dos en la columna de la derecha */
+.product--snake .exp-grid--steps .exp-card:nth-child(4)::before {
+  top: -30px;
+  right: 34px;
+  width: 2px;
+  height: 30px;
+}
+
+/* El enlace se enciende cuando el paso ya se ha alcanzado */
+.product--snake .exp-grid--steps .exp-card.is-active::before {
+  background: var(--navy);
+}
+
+/* ---- Pantallas estrechas: la serpiente se deshace en una sola columna ---- */
+@media (max-width: 900px) {
+  .product--snake .exp-grid--steps {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .product--snake .exp-grid--steps .exp-card:nth-child(4),
+  .product--snake .exp-grid--steps .exp-card:nth-child(5),
+  .product--snake .exp-grid--steps .exp-card:nth-child(6) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .product--snake .exp-grid--steps .exp-card::before { display: none; }
+}

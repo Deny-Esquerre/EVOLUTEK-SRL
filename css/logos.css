@@ -2,20 +2,9 @@
    LOGO GRID (estático)
    ============================================ */
 .logo-strip {
-  padding: 54px 0 60px;
+  padding: 30px 0 48px;
   background: var(--white);
   border-bottom: 1px solid var(--line);
-}
-
-.logo-strip-title {
-  text-align: center;
-  font-family: 'Barlow', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 38px;
 }
 
 .logo-grid {
@@ -82,6 +71,46 @@
   filter: grayscale(0%) opacity(1);
 }
 
+/* ============================================
+   MÓVIL: carrusel deslizable
+   ============================================
+   Las dos filas se funden en una sola pista horizontal: .logo-row pasa a
+   display:contents, así los 7 logos quedan como hijos directos de la pista y
+   se deslizan con el dedo, con anclaje por logo. Sin JavaScript. */
 @media (max-width: 640px) {
-  .logo-row { gap: 24px 48px; }
+  .logo-grid {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* Con .logo-row en display:contents, los logos son hijos de flex de la
+       pista: el gap los separa a todos por igual, sin casos especiales. */
+    gap: 48px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* La pista sangra hasta los bordes de la pantalla */
+    margin-inline: -24px;
+    padding-inline: 24px;
+  }
+
+  .logo-grid::-webkit-scrollbar { display: none; }
+
+  .logo-row { display: contents; }
+
+  .logo-item {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    height: 54px;
+  }
+
+  .logo-item img { height: 42px; }
+
+  /* El foco de teclado no debe quedar recortado por el overflow */
+  .logo-item:focus-visible { outline-offset: 4px; }
+}
+
+/* Si el usuario pide menos movimiento, nada de desplazamiento suave */
+@media (prefers-reduced-motion: reduce) {
+  .logo-grid { scroll-behavior: auto; }
 }

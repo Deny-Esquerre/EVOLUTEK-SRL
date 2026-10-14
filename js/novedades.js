@@ -10,6 +10,11 @@
 //        alto = CROMO + (alto a 504 - CROMO) * ancho / 504
 //    data-h504 lleva el valor de LinkedIn de cada publicación.
 //
+//    Al iframe se le da ese alto con holgura, para que LinkedIn no saque su
+//    barra de desplazamiento. La franja en blanco del final no se quita
+//    acortándolo —es parte de su documento, y acortarlo solo provoca la
+//    barra— sino recortándola desde fuera: el marco mide RECORTE menos.
+//
 //    CROMO está medido, no supuesto: con 212px sobraba una franja blanca de
 //    92px bajo cada publicación a 432 de ancho. Despejando con esa medida da
 //    72, que además reproduce el otro dato conocido —a 504 el alto justo es
@@ -20,12 +25,18 @@
 // 2. El filtro. Oculta con el atributo hidden lo que no toca y mantiene
 //    aria-selected y los contadores al día.
 (function () {
-  var CROMO = 72;             // parte del incrustado que no escala, en px
+  var CROMO = 212;            // parte del incrustado que no escala, en px
   var ANCHO_BASE = 504;       // ancho al que LinkedIn mide sus alturas
 
-  // Pequeña holgura para que el alto calculado no quede al filo y acabe
-  // sacando barra de desplazamiento por un par de píxeles.
-  var MARGEN = 12;
+  // Holgura para que el iframe nunca se quede corto: si lo hace, LinkedIn
+  // saca su propia barra de desplazamiento.
+  var MARGEN = 72;
+
+  // Franja en blanco con la que LinkedIn termina su página. Forma parte de su
+  // documento, así que acortar el iframe no la quita: solo provoca la barra.
+  // Se recorta desde fuera, dando al marco menos alto que al iframe y dejando
+  // que su overflow:hidden se coma el sobrante.
+  var RECORTE = 92;
   var instancias = [];
 
   // ---------- 1. Alto ----------
@@ -36,6 +47,11 @@
     if (!ancho) return;                       // aún sin layout (página oculta)
     var alto = Math.round(CROMO + (h504 - CROMO) * ancho / ANCHO_BASE) + MARGEN;
     iframe.style.height = alto + 'px';
+
+    var marco = iframe.parentNode;
+    if (marco && marco.classList && marco.classList.contains('embed-card')) {
+      marco.style.height = Math.max(160, alto - RECORTE) + 'px';
+    }
   }
 
   function ajustarTodos(page) {

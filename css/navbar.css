@@ -73,33 +73,26 @@
   font-weight: 500;
   font-size: 1rem;
   color: var(--navy);
-  transition: color var(--transition);
+  border-radius: 5px;
+  transition: color var(--transition), background var(--transition);
   letter-spacing: 0.4px;
   cursor: pointer;
 }
 
-.nav-links a::before {
-  content: '';
-  position: absolute;
-  left: 15px;
-  right: 15px;
-  bottom: 3px;
-  height: 2px;
-  background: var(--navy);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* El indicador del menú es un sombreado, no un subrayado: al recorrer la
+   barra no va quedando el trazo de una línea bajo cada elemento. */
+.nav-links a:hover {
+  background: rgba(74, 79, 212, 0.07);
+  color: var(--navy);
 }
 
-.nav-links a:hover,
+/* La página abierta se sombrea algo más y es la única que va en negrita.
+   En el paso del ratón el grosor no cambia a propósito: al engordar la
+   palabra, los elementos de al lado se corrían. */
 .nav-links a.active {
+  background: rgba(74, 79, 212, 0.11);
   color: var(--navy);
   font-weight: 600;
-}
-
-.nav-links a:hover::before,
-.nav-links a.active::before {
-  transform: scaleX(1);
 }
 
 .nav-links .dropdown {
@@ -156,16 +149,9 @@
   color: var(--accent);
 }
 
-/* En el desplegable el indicador es un sombreado, no el subrayado de la barra
-   de arriba: la línea cruza la fila entera por debajo del logotipo y, al
-   quedarse fija en el producto que está abierto, ensucia el menú. Se apaga
-   también en el paso del ratón, que ya se indica con su propio sombreado.
-
-   Los dos selectores van con .nav-links delante para ganar a
-   .nav-links a.active::before y a .dropdown-menu a:hover, declarados antes y
+/* Dentro del desplegable el sombreado se acompaña del color de acento. Va con
+   .nav-links delante para ganar a .dropdown-menu a:hover, declarado antes y
    con la misma especificidad. */
-.nav-links .dropdown-menu a::before { display: none; }
-
 .nav-links .dropdown-menu a.active {
   background: rgba(74, 79, 212, 0.1);
   color: var(--accent);
@@ -186,8 +172,6 @@
   letter-spacing: 0.4px;
   box-shadow: 0 4px 16px rgba(25, 26, 85, 0.22);
 }
-
-.nav-cta::before { display: none !important; }
 
 .nav-cta:hover {
   background: var(--navy-light) !important;

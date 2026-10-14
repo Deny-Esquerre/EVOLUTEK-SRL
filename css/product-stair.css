@@ -1,0 +1,114 @@
+/* ============================================
+   FICHA DE PRODUCTO — PASOS EN "ESCALERA"
+   ============================================
+   Kepware. Comparte con N3uron el encabezado y el texto de la maquetación
+   "edge", pero no sus pasos: la línea de tiempo vertical se queda para N3uron
+   y aquí cada paso dibuja la esquina de un peldaño —un filete arriba y otro a
+   la izquierda— entrando un poco más que el anterior, de modo que la secuencia
+   baja como una escalera. Encaja con un servidor de comunicaciones, que se
+   configura por capas: primero la máquina, luego los canales, luego los tags.
+
+   Los selectores van prefijados con .page porque tienen que ganar a los de
+   .product--edge, declarados antes y con la misma especificidad. */
+
+.page.product--stair .exp-grid--steps {
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: 0;
+}
+
+/* Fuera el raíl de la línea de tiempo */
+.page.product--stair .exp-grid--steps::before { display: none; }
+
+/* Cada paso es la esquina de un peldaño, no una tarjeta */
+.page.product--stair .exp-grid--steps .exp-card {
+  background: none;
+  border: 0;
+  border-top: 2px solid var(--line-strong);
+  border-left: 2px solid var(--line-strong);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 30px 30px 38px 26px;
+  overflow: visible;
+  transition: var(--transition);
+}
+
+/* El descenso */
+.page.product--stair .exp-grid--steps .exp-card:nth-child(2) { margin-left: 40px; }
+.page.product--stair .exp-grid--steps .exp-card:nth-child(3) { margin-left: 80px; }
+.page.product--stair .exp-grid--steps .exp-card:nth-child(4) { margin-left: 120px; }
+.page.product--stair .exp-grid--steps .exp-card:nth-child(5) { margin-left: 160px; }
+.page.product--stair .exp-grid--steps .exp-card:nth-child(6) { margin-left: 200px; }
+
+/* El número se sienta a horcajadas sobre el filete superior; el fondo blanco
+   es lo que parte la línea para dejarle sitio.
+
+   Las tres primeras declaraciones deshacen el nodo circular de la línea de
+   tiempo de "edge": sin ellas el número sale dentro de un círculo con borde. */
+.page.product--stair .exp-grid--steps .exp-card::after {
+  content: counter(expcard, decimal-leading-zero);
+  display: block;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  top: -17px;
+  left: 18px;
+  right: auto;
+  padding: 0 12px;
+  background: var(--white);
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--navy);
+  opacity: 0.3;
+}
+
+.page.product--stair .exp-grid--steps .exp-card h3 {
+  padding-right: 0;
+  margin-top: 4px;
+}
+
+/* El peldaño se adelanta al pasar por encima, en lugar de levantarse */
+.page.product--stair .exp-grid--steps .exp-card:hover {
+  transform: translateX(8px);
+  box-shadow: none;
+  border-color: var(--navy);
+}
+
+.page.product--stair .exp-grid--steps .exp-card:hover::after { opacity: 0.55; }
+
+/* Paso alcanzado: se marca el peldaño entero */
+.page.product--stair .exp-grid--steps .exp-card.is-active {
+  background: none;
+  box-shadow: none;
+  border: 0;
+  border-top: 2px solid var(--navy);
+  border-left: 2px solid var(--navy);
+}
+
+.page.product--stair .exp-grid--steps .exp-card.is-active::after {
+  background: var(--white);
+  border: 0;
+  color: var(--navy);
+  opacity: 1;
+}
+
+/* ---- Pantallas estrechas: la escalera se endereza ---- */
+@media (max-width: 760px) {
+  .page.product--stair .exp-grid--steps .exp-card:nth-child(2),
+  .page.product--stair .exp-grid--steps .exp-card:nth-child(3),
+  .page.product--stair .exp-grid--steps .exp-card:nth-child(4),
+  .page.product--stair .exp-grid--steps .exp-card:nth-child(5),
+  .page.product--stair .exp-grid--steps .exp-card:nth-child(6) {
+    margin-left: 0;
+  }
+
+  .page.product--stair .exp-grid--steps .exp-card {
+    padding: 26px 0 30px 20px;
+  }
+
+  .page.product--stair .exp-grid--steps .exp-card:hover { transform: none; }
+}

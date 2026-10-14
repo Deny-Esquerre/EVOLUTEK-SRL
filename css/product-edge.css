@@ -2,35 +2,19 @@
    FICHA DE PRODUCTO — MAQUETACIÓN "EDGE"
    ============================================
    Kepware y N3uron: productos de conectividad, que se explican por su ficha
-   técnica más que por su pantalla. Encabezado alineado a la izquierda, texto
-   a dos columnas y los pasos como línea de tiempo vertical. */
+   técnica más que por su pantalla. Encabezado solo con el logotipo, texto a
+   dos columnas y los pasos como línea de tiempo vertical. */
 
-/* ---- Encabezado a la izquierda, con filete de acento ---- */
+/* ---- Encabezado ----
+   Kepware y N3uron presentan solo el logotipo, centrado (.product--hero-solo),
+   así que aquí queda el ritmo vertical y el tamaño del logotipo. El filete de
+   acento, la fila a la izquierda y la píldora de categoría se han retirado:
+   ninguna de las dos fichas los usa ya. */
 .product--edge .product-hero { padding: 104px 0 30px; }
-
-.product--edge .product-hero__inner {
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: left;
-  flex-wrap: wrap;
-  gap: 10px 30px;
-  padding-left: 26px;
-  border-left: 4px solid var(--accent);
-}
 
 .product--edge .product-hero__logo {
   max-height: 92px;
   max-width: 300px;
-}
-
-.product--edge .product-hero__cat {
-  padding: 7px 14px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  opacity: 1;
-  color: var(--gray);
-  font-size: 0.72rem;
 }
 
 /* ---- Texto a dos columnas ---- */

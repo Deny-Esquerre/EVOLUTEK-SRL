@@ -24,7 +24,7 @@ const CSS_ORDER = [
   'estrategia.css', 'about.css', 'partners.css', 'logos.css', 'modal.css',
   'servicios.css',
   'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
-  'product-snake.css',
+  'product-snake.css', 'product-stair.css',
   'cta.css', 'footer.css', 'animations.css', 'responsive.css'
 ];
 

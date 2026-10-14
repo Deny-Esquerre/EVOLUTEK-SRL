@@ -26,6 +26,12 @@
   border-top: 1px solid #E9EBF2;
 }
 
+/* Este modulo pide mas ancho que el resto: con el contenedor de 1200 las tres
+   columnas se quedaban en 365px y las publicaciones salian apretadas. A 1400
+   cada una tiene 432. Solo afecta a esta seccion; la de video y el resto del
+   sitio siguen con el ancho de siempre. */
+.novedades-seccion--publicaciones .container { max-width: 1400px; }
+
 /* ---- Encabezados: alineados a la izquierda, sin píldora centrada ---- */
 .novedades-h2 {
   margin: 0;

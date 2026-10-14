@@ -17,7 +17,6 @@
   --nv-meta: #6A6F88;
   --nv-meta-claro: #8A8FA8;
   --nv-borde: #E3E5EE;
-  --nv-linea: #C9CCDA;
   --nv-foco: #2F5BEA;
   padding: 120px 0;
 }
@@ -28,27 +27,6 @@
 }
 
 /* ---- Encabezados: alineados a la izquierda, sin píldora centrada ---- */
-.novedades-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 0 0 18px;
-  font-family: 'Barlow', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--nv-meta);
-}
-
-.novedades-eyebrow__linea {
-  width: 40px;
-  height: 1px;
-  background: var(--nv-linea);
-}
-
-.novedades-eyebrow__n { color: var(--nv-meta); }
-
 .novedades-h2 {
   margin: 0;
   font-family: 'Montserrat', sans-serif;

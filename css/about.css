@@ -23,6 +23,50 @@
   justify-content: center;
 }
 
+/* ============================================
+   FIGURA DE ALTO CONTROLADO
+   ============================================
+   Las dos secciones comparten una única proporción, así que sus imágenes
+   miden exactamente lo mismo aunque sus textos no. Atarlas al alto de su
+   propio texto las dejaba desparejas: "¿Qué ofrecemos?" tiene dos párrafos
+   y "¿Qué es IIoT?" uno.
+
+   Para cambiar el alto de ambas basta con tocar --about-figure-ratio: más
+   ancho en el primer número = imagen más baja. */
+.about-visual--fill {
+  --about-figure-ratio: 4 / 3;
+  aspect-ratio: var(--about-figure-ratio);
+}
+
+/* La figura se saca del flujo y se ancla a la caja de la columna (que ya es
+   position:relative), para que sea la proporción de arriba la que manda y no
+   el alto natural de la imagen. */
+.about-visual--fill .content-figure {
+  position: absolute;
+  inset: 0;
+}
+
+.about-visual--fill .content-figure img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+/* Apiladas en móvil no hay texto al lado que igualar: vuelve el 4:3 */
+@media (max-width: 768px) {
+  .about-visual--fill { aspect-ratio: auto; }
+
+  .about-visual--fill .content-figure {
+    position: static;
+  }
+
+  .about-visual--fill .content-figure img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+
 .about-visual .visual-circle {
   width: 340px;
   height: 340px;

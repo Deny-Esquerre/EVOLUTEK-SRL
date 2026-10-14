@@ -1,9 +1,8 @@
 /* ============================================
    FICHA DE PRODUCTO — MAQUETACIÓN "DATAOPS"
    ============================================
-   HighByte y Flow: productos que mueven datos de un sitio a otro, así que los
-   pasos se leen como un flujo en zigzag sobre un eje central, y la captura
-   cierra la página como resultado del recorrido. */
+   Flow: un producto que mueve datos de un sitio a otro, así que los pasos se
+   leen como un flujo en zigzag sobre un eje central. */
 
 /* ---- Encabezado centrado y compacto ---- */
 .product--dataops .product-hero { padding: 104px 0 24px; }
@@ -90,6 +89,3 @@
     width: 34px;
   }
 }
-
-/* ---- La captura cierra el recorrido ---- */
-.product--dataops .product-figure { max-width: 940px; }

@@ -69,7 +69,14 @@
   border-left: 0;
 }
 
-/* Logotipo de trazo ancho, que a tamaño de familia queda desproporcionado */
+/* Escala del logotipo. El tamaño que fija cada familia sirve para casi todas
+   las marcas; un logotipo de trazo muy ancho queda desproporcionado y hay que
+   bajarlo un punto (md) o dos (sm). */
+.page.product--logo-md .product-hero__logo {
+  max-height: 92px;
+  max-width: 390px;
+}
+
 .page.product--logo-sm .product-hero__logo {
   max-height: 68px;
   max-width: 230px;

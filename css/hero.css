@@ -154,37 +154,7 @@
     max-width: none;
     padding: 13px 18px;
   }
-
-  /* ---- El texto rodea al isotipo ----
-     En móvil el isotipo deja de ser una marca de agua al fondo y pasa a ser un
-     objeto que el texto esquiva: un flotante con shape-outside. El isotipo es
-     un círculo macizo con el dibujo en blanco dentro, así que su contorno real
-     es una circunferencia y circle() la describe exactamente, sin cargar
-     ninguna máscara ni depender de que el navegador sepa leer la silueta de
-     un SVG. El 43,1% es el radio que ocupa el círculo dibujado dentro del
-     cuadro, con el viewBox de 124x130 ajustado por contain.
-
-     El cuerpo del texto baja a la vez, y no es un capricho: "Automatizamos"
-     mide 223px a 30px, y el panel solo deja 284 en un teléfono de 360. Sin
-     reducirlo no cabe ningún círculo al lado. Con estos valores la línea más
-     larga entra con holgura desde 320px en adelante. */
-  .hero-panel { --hero-iso: clamp(58px, 20vw, 96px); }
-
-  .hero-phrase { font-size: clamp(1.15rem, 6.2vw, 1.75rem); }
-
-  .hero-phrase::before {
-    content: "";
-    float: right;
-    width: var(--hero-iso);
-    height: var(--hero-iso);
-    margin: 0 0 6px 10px;
-    shape-outside: circle(43.1%);
-    shape-margin: 7px;
-    background: url('../EVOLUTEK/svg/evolutek-isotipo.svg') center / contain no-repeat;
-  }
-
-  /* La marca de agua del fondo sobraría detrás del isotipo flotante */
-  .hero-panel-watermark { display: none; }
+  .hero-panel-watermark { width: 140px; }
 }
 
 .hero-buttons {

@@ -1,0 +1,95 @@
+/* ============================================
+   FICHA DE PRODUCTO — MAQUETACIÓN "DATAOPS"
+   ============================================
+   HighByte y Flow: productos que mueven datos de un sitio a otro, así que los
+   pasos se leen como un flujo en zigzag sobre un eje central, y la captura
+   cierra la página como resultado del recorrido. */
+
+/* ---- Encabezado centrado y compacto ---- */
+.product--dataops .product-hero { padding: 104px 0 24px; }
+
+.product--dataops .product-hero__logo { max-height: 104px; }
+
+.product--dataops .product-hero__inner { gap: 18px; }
+
+/* ---- Texto centrado, de medida corta ---- */
+.product--dataops .product-info-section { padding: 30px 0 20px; }
+
+.product--dataops .product-info {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.product--dataops .product-info p { font-size: 1.08rem; }
+
+/* ---- Pasos en zigzag sobre un eje central ---- */
+.product--dataops .exp-grid--steps {
+  position: relative;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+/* El eje por el que "baja" el dato */
+.product--dataops .exp-grid--steps::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(180deg, transparent, var(--line-strong) 12%, var(--line-strong) 88%, transparent);
+}
+
+.product--dataops .exp-grid--steps .exp-card {
+  width: calc(50% - 34px);
+  background: var(--white);
+}
+
+/* Impares a la izquierda, pares a la derecha */
+.product--dataops .exp-grid--steps .exp-card:nth-child(even) {
+  margin-left: auto;
+}
+
+/* El conector que engancha cada tarjeta al eje */
+.product--dataops .exp-grid--steps .exp-card::before {
+  content: "";
+  position: absolute;
+  top: 38px;
+  width: 24px;
+  height: 2px;
+  background: var(--line-strong);
+  transition: var(--transition);
+}
+
+.product--dataops .exp-grid--steps .exp-card:nth-child(odd)::before { right: -24px; }
+.product--dataops .exp-grid--steps .exp-card:nth-child(even)::before { left: -24px; }
+
+.product--dataops .exp-grid--steps .exp-card.is-active::before {
+  background: var(--navy);
+  height: 3px;
+}
+
+@media (max-width: 860px) {
+  .product--dataops .exp-grid--steps::before { left: 17px; }
+
+  .product--dataops .exp-grid--steps .exp-card,
+  .product--dataops .exp-grid--steps .exp-card:nth-child(even) {
+    width: auto;
+    margin-left: 58px;
+  }
+
+  .product--dataops .exp-grid--steps .exp-card::before,
+  .product--dataops .exp-grid--steps .exp-card:nth-child(odd)::before,
+  .product--dataops .exp-grid--steps .exp-card:nth-child(even)::before {
+    left: -34px;
+    right: auto;
+    width: 34px;
+  }
+}
+
+/* ---- La captura cierra el recorrido ---- */
+.product--dataops .product-figure { max-width: 940px; }

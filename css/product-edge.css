@@ -1,0 +1,129 @@
+/* ============================================
+   FICHA DE PRODUCTO — MAQUETACIÓN "EDGE"
+   ============================================
+   Kepware y N3uron: productos de conectividad, que se explican por su ficha
+   técnica más que por su pantalla. Encabezado alineado a la izquierda, texto
+   a dos columnas y los pasos como línea de tiempo vertical. */
+
+/* ---- Encabezado a la izquierda, con filete de acento ---- */
+.product--edge .product-hero { padding: 104px 0 30px; }
+
+.product--edge .product-hero__inner {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  flex-wrap: wrap;
+  gap: 10px 30px;
+  padding-left: 26px;
+  border-left: 4px solid var(--accent);
+}
+
+.product--edge .product-hero__logo {
+  max-height: 92px;
+  max-width: 300px;
+}
+
+.product--edge .product-hero__cat {
+  padding: 7px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  opacity: 1;
+  color: var(--gray);
+  font-size: 0.72rem;
+}
+
+/* ---- Texto a dos columnas ---- */
+.product--edge .product-info-section { padding: 46px 0 36px; }
+
+.product--edge .product-info {
+  column-count: 2;
+  column-gap: 54px;
+}
+
+.product--edge .product-info p { break-inside: avoid; }
+
+@media (max-width: 820px) {
+  .product--edge .product-info { column-count: 1; }
+}
+
+/* ---- Pasos como línea de tiempo vertical ---- */
+.product--edge .exp-grid--steps {
+  position: relative;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 820px;
+  margin: 0 auto;
+  padding-left: 58px;
+}
+
+/* El raíl que une los pasos */
+.product--edge .exp-grid--steps::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 26px;
+  bottom: 26px;
+  width: 2px;
+  background: var(--line-strong);
+}
+
+.product--edge .exp-grid--steps .exp-card {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 14px 0 30px;
+  overflow: visible;
+}
+
+.product--edge .exp-grid--steps .exp-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* El número deja de ser marca de agua y pasa a ser el nodo del raíl */
+.product--edge .exp-grid--steps .exp-card::after {
+  top: 12px;
+  left: -58px;
+  right: auto;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--line-strong);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gray);
+  opacity: 1;
+}
+
+.product--edge .exp-grid--steps .exp-card h3 { padding-right: 0; }
+
+/* Paso activo: se enciende el nodo, no la tarjeta */
+.product--edge .exp-grid--steps .exp-card.is-active {
+  background: none;
+  box-shadow: none;
+  border: 0;
+}
+
+.product--edge .exp-grid--steps .exp-card.is-active::after {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+  opacity: 1;
+}
+
+@media (max-width: 560px) {
+  .product--edge .exp-grid--steps { padding-left: 44px; }
+  .product--edge .exp-grid--steps::before { left: 13px; }
+  .product--edge .exp-grid--steps .exp-card::after {
+    left: -44px;
+    width: 28px;
+    height: 28px;
+    font-size: 0.72rem;
+  }
+}

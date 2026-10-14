@@ -22,8 +22,8 @@ const DIST = path.join(ROOT, 'dist');
 const CSS_ORDER = [
   'base.css', 'navbar.css', 'hero.css', 'page-hero.css', 'sections.css',
   'estrategia.css', 'about.css', 'partners.css', 'logos.css', 'modal.css',
-  'servicios.css', 'canary.css', 'highbyte.css', 'kepware.css', 'ignition.css',
-  'n3uron.css', 'tatsoft.css', 'flow.css', 'cygnet.css',
+  'servicios.css',
+  'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
   'cta.css', 'footer.css', 'animations.css', 'responsive.css'
 ];
 
@@ -230,7 +230,12 @@ if (shell.includes('data-include')) throw new Error('Quedaron placeholders sin r
 // renderice correctamente aunque el JavaScript no llegue a ejecutarse.
 function readPage(name) {
   const src = read(repo(`partials/page-${name}.html`)).replace(/\s+$/, '');
-  const out = src.replace(/<div class="page[^"]*"(\s+id="page-[a-z0-9]+")/, '<div class="page active visible"$1');
+  // Conserva las clases propias de la página (p. ej. product--scada) y solo
+  // añade active/visible, para que la ruta se vea sin depender del JS.
+  const out = src.replace(/<div class="page([^"]*)"(\s+id="page-[a-z0-9]+")/, function (m, extra, id) {
+    const resto = extra.replace(/(?:active|visible)/g, '').replace(/\s+/g, ' ').trim();
+    return '<div class="page' + (resto ? ' ' + resto : '') + ' active visible"' + id;
+  });
   if (out === src) throw new Error('No se pudo marcar como activa la página: ' + name);
   return out;
 }

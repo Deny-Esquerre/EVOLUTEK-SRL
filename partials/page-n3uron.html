@@ -1,22 +1,32 @@
   <!-- ========================================
        PAGE: N3URON
        ======================================== -->
-  <div class="page" id="page-n3uron">
+  <div class="page product--edge" id="page-n3uron">
 
     <!-- Encabezado: logo completo -->
-    <div class="n3uron-hero">
+    <div class="product-hero">
       <div class="container">
-        <div class="n3uron-hero__inner">
-          <h1 class="n3uron-hero__title">
-            <img class="n3uron-hero__logo" src="logos/Logotype-orange-n3uron.svg" alt="N3uron">
+        <div class="product-hero__inner">
+          <h1 class="product-hero__title">
+            <img class="product-hero__logo" src="logos/Logotype-orange-n3uron.svg" alt="N3uron">
           </h1>
-          <span class="n3uron-hero__cat">Edge &amp; MQTT</span>
+          <span class="product-hero__cat">Edge &amp; MQTT</span>
         </div>
       </div>
     </div>
 
+    <!-- Texto informativo -->
+    <section class="product-info-section">
+      <div class="container">
+        <div class="product-info reveal">
+          <p>N3uron es una plataforma Industrial Edge para IIoT y DataOps que conecta el piso de planta con aplicaciones de negocio, en sitio o en la nube. Con una huella mínima y una arquitectura modular, actúa como gateway bidireccional que adquiere datos de PLCs y servidores OPC, los normaliza, contextualiza y los distribuye a SCADA, MES, ERP o servicios cloud, funcionando como una única fuente de verdad.</p>
+          <p>Sus módulos cubren adquisición (OPC UA/DA, Modbus, Siemens, IEC 104, REST, MQTT), entrega (MQTT, OPC UA Server, REST, DNP3) y edge computing y visualización (Historian, Web Vision, alarmas y scripting). El licenciamiento por nodo es ilimitado en clientes, tags, conexiones y dispositivos, con comunicación segura por TLS y Store &amp; Forward automático entre nodos, lo que permite escalar arquitecturas sin pérdida de datos.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Video -->
-    <section class="n3uron-video-section">
+    <section class="product-video-section">
       <div class="container">
         <div class="video-embed reveal">
           <iframe src="https://www.youtube.com/embed/n11kgRB2U5Q"
@@ -28,31 +38,8 @@
       </div>
     </section>
 
-    <!-- Texto informativo de N3uron -->
-    <section class="n3uron-info-section">
-      <div class="container">
-        <div class="n3uron-info reveal">
-          <p>N3uron es una plataforma Industrial Edge para IIoT y DataOps que conecta el piso de planta con aplicaciones de negocio, en sitio o en la nube. Con una huella mínima y una arquitectura modular, actúa como gateway bidireccional que adquiere datos de PLCs y servidores OPC, los normaliza, contextualiza y los distribuye a SCADA, MES, ERP o servicios cloud, funcionando como una única fuente de verdad.</p>
-          <p>Sus módulos cubren adquisición (OPC UA/DA, Modbus, Siemens, IEC 104, REST, MQTT), entrega (MQTT, OPC UA Server, REST, DNP3) y edge computing y visualización (Historian, Web Vision, alarmas y scripting). El licenciamiento por nodo es ilimitado en clientes, tags, conexiones y dispositivos, con comunicación segura por TLS y Store &amp; Forward automático entre nodos, lo que permite escalar arquitecturas sin pérdida de datos.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Solicitudes de Demo o POC -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-box reveal">
-          <div class="cta-box__text">
-            <h3>Solicitudes de Demo o POC</h3>
-            <p>Los clientes pueden solicitar la instalación y configuración de una POC de N3uron sin costo. El cliente solo debe proporcionar la infraestructura física necesaria.</p>
-          </div>
-          <a href="/contacto" data-page="contacto" class="btn btn-primary">Solicitar una Demo</a>
-        </div>
-      </div>
-    </section>
-
     <!-- Pasos de instalación -->
-    <section class="section n3uron-steps-section">
+    <section class="section product-steps-section">
       <div class="container">
         <div class="exp-grid exp-grid--steps stagger" data-steps>
           <div class="exp-card">
@@ -110,12 +97,24 @@
             </ul>
           </div>
         </div>
-        <figure class="n3uron-figure" data-steps-result>
-          <img src="img/products/n3uron.webp" alt="N3uron Edge & MQTT" loading="lazy">
-          <figcaption>Vista general de N3uron — Edge e IIoT.</figcaption>
+        <figure class="product-figure" data-steps-result>
+          <img src="img/products/n3uron-webui.jpg" alt="WebUI de N3uron mostrando tendencias históricas de varios tags" loading="lazy">
+          <figcaption>WebUI de N3uron: tendencias históricas multi-tag con su tabla de escalado y rangos.</figcaption>
         </figure>
       </div>
     </section>
 
-  </div>
+    <!-- Solicitudes de Demo o POC -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div class="cta-box__text">
+            <h3>Solicitudes de Demo o POC</h3>
+            <p>Los clientes pueden solicitar la instalación y configuración de una POC de N3uron sin costo. El cliente solo debe proporcionar la infraestructura física necesaria.</p>
+          </div>
+          <a href="/contacto" data-page="contacto" class="btn btn-primary">Solicitar una Demo</a>
+        </div>
+      </div>
+    </section>
 
+  </div>

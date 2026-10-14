@@ -1,22 +1,44 @@
   <!-- ========================================
        PAGE: IGNITION
        ======================================== -->
-  <div class="page" id="page-ignition">
+  <div class="page product--scada" id="page-ignition">
 
     <!-- Encabezado: logo completo -->
-    <div class="ignition-hero">
+    <div class="product-hero">
       <div class="container">
-        <div class="ignition-hero__inner">
-          <h1 class="ignition-hero__title">
-            <img class="ignition-hero__logo" src="logos/IgnitionLogo.png" alt="Ignition">
+        <div class="product-hero__inner">
+          <h1 class="product-hero__title">
+            <img class="product-hero__logo" src="logos/IgnitionLogo.png" alt="Ignition">
           </h1>
-          <span class="ignition-hero__cat">SCADA &amp; HMI</span>
+          <span class="product-hero__cat">SCADA &amp; HMI</span>
         </div>
       </div>
     </div>
 
+    <!-- La captura abre la ficha -->
+    <section class="product-showcase">
+      <div class="container">
+        <div class="reveal">
+        <figure class="product-figure">
+          <img src="img/products/ignition.jpg" alt="Ignition Designer: proyecto SCADA con tanques, ventiladores y explorador de tags" loading="lazy">
+          <figcaption>Ignition Designer: diseño de una pantalla de proceso, con el explorador de tags y la paleta de componentes.</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Texto informativo -->
+    <section class="product-info-section">
+      <div class="container">
+        <div class="product-info reveal">
+          <p>Ignition de Inductive Automation es una plataforma SCADA, HMI y MES moderna con licenciamiento ilimitado: sin costo por número de tags, clientes, dispositivos ni diseñadores. Al ser 100% web y multiplataforma, permite desarrollar la aplicación una vez y desplegarla a cualquier navegador, en sitio o en la nube, con actualizaciones centralizadas y una arquitectura basada en IT.</p>
+          <p>Su diseño modular combina el módulo Platform con drivers OPC UA/DA y la Visualización con Vision (pantallas de planta) o Perspective (HMI/SCADA web responsivo), sumando Tag Historian, Alarm Notification, Reporting y módulos de terceros. Ignition integra OT e IT de forma natural, conectando PLCs, bases de datos y servicios, y habilitando aplicaciones escalables, seguras y sin límites de usuarios para supervisión, control y eficiencia operativa.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Video -->
-    <section class="ignition-video-section">
+    <section class="product-video-section">
       <div class="container">
         <div class="video-embed reveal">
           <iframe src="https://www.youtube.com/embed/7RWmfIVDkN8"
@@ -28,31 +50,8 @@
       </div>
     </section>
 
-    <!-- Texto informativo de Ignition -->
-    <section class="ignition-info-section">
-      <div class="container">
-        <div class="ignition-info reveal">
-          <p>Ignition de Inductive Automation es una plataforma SCADA, HMI y MES moderna con licenciamiento ilimitado: sin costo por número de tags, clientes, dispositivos ni diseñadores. Al ser 100% web y multiplataforma, permite desarrollar la aplicación una vez y desplegarla a cualquier navegador, en sitio o en la nube, con actualizaciones centralizadas y una arquitectura basada en IT.</p>
-          <p>Su diseño modular combina el módulo Platform con drivers OPC UA/DA y la Visualización con Vision (pantallas de planta) o Perspective (HMI/SCADA web responsivo), sumando Tag Historian, Alarm Notification, Reporting y módulos de terceros. Ignition integra OT e IT de forma natural, conectando PLCs, bases de datos y servicios, y habilitando aplicaciones escalables, seguras y sin límites de usuarios para supervisión, control y eficiencia operativa.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Solicitudes de Demo o POC -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-box reveal">
-          <div class="cta-box__text">
-            <h3>Solicitudes de Demo o POC</h3>
-            <p>Los clientes pueden solicitar la instalación y configuración de una POC de Ignition sin costo. El cliente solo debe proporcionar la infraestructura física necesaria.</p>
-          </div>
-          <a href="/contacto" data-page="contacto" class="btn btn-primary">Solicitar una Demo</a>
-        </div>
-      </div>
-    </section>
-
     <!-- Pasos de instalación -->
-    <section class="section ignition-steps-section">
+    <section class="section product-steps-section">
       <div class="container">
         <div class="exp-grid exp-grid--steps stagger" data-steps>
           <div class="exp-card">
@@ -110,12 +109,20 @@
             </ul>
           </div>
         </div>
-        <figure class="ignition-figure" data-steps-result>
-          <img src="img/products/ignition.jpg" alt="Ignition SCADA & HMI" loading="lazy">
-          <figcaption>Vista general de Ignition — SCADA, HMI y MES.</figcaption>
-        </figure>
+      </div>
+    </section>
+
+    <!-- Solicitudes de Demo o POC -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div class="cta-box__text">
+            <h3>Solicitudes de Demo o POC</h3>
+            <p>Los clientes pueden solicitar la instalación y configuración de una POC de Ignition sin costo. El cliente solo debe proporcionar la infraestructura física necesaria.</p>
+          </div>
+          <a href="/contacto" data-page="contacto" class="btn btn-primary">Solicitar una Demo</a>
+        </div>
       </div>
     </section>
 
   </div>
-

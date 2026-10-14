@@ -1,9 +1,14 @@
 /* ============================================
-   TATSOFT — PRODUCT PAGE
-   ============================================ */
+   FICHA DE PRODUCTO — BASE COMÚN
+   ============================================
+   Sustituye a los 8 ficheros canary/highbyte/kepware/ignition/n3uron/
+   tatsoft/flow/cygnet.css, que eran idénticos salvo el prefijo del selector.
+
+   Sobre esta base se montan tres maquetaciones (product-edge.css,
+   product-scada.css y product-dataops.css). Canary usa la base tal cual. */
 
 /* Encabezado con logo completo */
-.tatsoft-hero {
+.product-hero {
   position: relative;
   padding: 112px 0 20px;
   background-color: var(--white);
@@ -14,7 +19,7 @@
   border-bottom: 1px solid var(--line);
 }
 
-.tatsoft-hero__inner {
+.product-hero__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,18 +27,18 @@
   gap: 14px;
 }
 
-.tatsoft-hero__title {
+.product-hero__title {
   margin: 0;
   line-height: 0;
 }
 
-.tatsoft-hero__logo {
+.product-hero__logo {
   width: auto;
   max-height: 150px;
   max-width: 480px;
 }
 
-.tatsoft-hero__cat {
+.product-hero__cat {
   font-family: 'Barlow', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
@@ -65,25 +70,26 @@
   border: 0;
 }
 
-/* Ajuste de espaciado: logo -> video -> texto */
-.tatsoft-video-section { padding: 32px 0 16px; }
-.tatsoft-info-section { padding: 16px 0 48px; }
-.tatsoft-steps-section { padding: 48px 0 96px; }
+/* Ritmo vertical: logo -> video -> texto */
+.product-video-section { padding: 32px 0 16px; }
+.product-info-section { padding: 16px 0 48px; }
+.product-steps-section { padding: 48px 0 96px; }
+.product-figure-section { padding: 40px 0 8px; }
 
-/* Texto informativo de Tatsoft */
-.tatsoft-info p {
+/* Texto informativo */
+.product-info p {
   color: var(--gray);
   font-size: 1.05rem;
   line-height: 1.8;
   margin: 0 0 18px;
 }
 
-.tatsoft-info p:last-child { margin-bottom: 0; }
+.product-info p:last-child { margin-bottom: 0; }
 
-/* Figura ancha (captura) */
-.tatsoft-figure { margin: 44px auto 0; }
+/* Figura ancha (captura del software) */
+.product-figure { margin: 44px auto 0; }
 
-.tatsoft-figure img {
+.product-figure img {
   width: 100%;
   display: block;
   border-radius: var(--radius-lg);
@@ -94,12 +100,12 @@
 }
 
 /* Resultado: al completar los pasos, la imagen revela un brillo en su contorno */
-.tatsoft-figure.is-glow img {
+.product-figure.is-glow img {
   border-color: var(--navy);
-  animation: tatsoftGlow 1.6s ease-in-out infinite;
+  animation: productGlow 1.6s ease-in-out infinite;
 }
 
-@keyframes tatsoftGlow {
+@keyframes productGlow {
   0%, 100% {
     box-shadow: 0 0 0 3px rgba(25, 26, 85, 0.5),
                 0 0 40px 8px rgba(25, 26, 85, 0.55),
@@ -114,7 +120,7 @@
   }
 }
 
-.tatsoft-figure figcaption {
+.product-figure figcaption {
   margin-top: 14px;
   font-size: 0.9rem;
   color: var(--gray);

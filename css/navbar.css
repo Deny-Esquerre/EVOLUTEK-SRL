@@ -156,6 +156,21 @@
   color: var(--accent);
 }
 
+/* En el desplegable el indicador es un sombreado, no el subrayado de la barra
+   de arriba: la línea cruza la fila entera por debajo del logotipo y, al
+   quedarse fija en el producto que está abierto, ensucia el menú. Se apaga
+   también en el paso del ratón, que ya se indica con su propio sombreado.
+
+   Los dos selectores van con .nav-links delante para ganar a
+   .nav-links a.active::before y a .dropdown-menu a:hover, declarados antes y
+   con la misma especificidad. */
+.nav-links .dropdown-menu a::before { display: none; }
+
+.nav-links .dropdown-menu a.active {
+  background: rgba(74, 79, 212, 0.1);
+  color: var(--accent);
+}
+
 .dropdown-menu .partner-icon {
   width: 24px;
   height: 24px;

@@ -7,11 +7,13 @@
    Sobre esta base se montan tres maquetaciones (product-edge.css,
    product-scada.css y product-dataops.css). Canary usa la base tal cual. */
 
-/* Encabezado con logo completo */
+/* Encabezado con logo completo.
+   La franja va en gris, el mismo de las bandas del resto del sitio, para que
+   se distinga del cuerpo blanco de la ficha. El filete inferior la cierra. */
 .product-hero {
   position: relative;
   padding: 112px 0 20px;
-  background-color: var(--white);
+  background-color: var(--gray-bg);
   background-image:
     linear-gradient(rgba(25, 26, 85, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(25, 26, 85, 0.03) 1px, transparent 1px);

@@ -10,17 +10,22 @@
 //        alto = CROMO + (alto a 504 - CROMO) * ancho / 504
 //    data-h504 lleva el valor de LinkedIn de cada publicación.
 //
+//    CROMO está medido, no supuesto: con 212px sobraba una franja blanca de
+//    92px bajo cada publicación a 432 de ancho. Despejando con esa medida da
+//    72, que además reproduce el otro dato conocido —a 504 el alto justo es
+//    el que declara LinkedIn, por eso ahí salía barra sin holgura alguna—.
+//    Casi todo el alto de un incrustado es la imagen; la cabecera, el texto
+//    plegado y la barra de acciones ocupan mucho menos de lo que parecía.
+//
 // 2. El filtro. Oculta con el atributo hidden lo que no toca y mantiene
 //    aria-selected y los contadores al día.
 (function () {
-  var CROMO = 212;            // parte del incrustado que no escala, en px
+  var CROMO = 72;             // parte del incrustado que no escala, en px
   var ANCHO_BASE = 504;       // ancho al que LinkedIn mide sus alturas
 
-  // Holgura sobre el alto calculado. Las cifras de LinkedIn se quedan cortas y
-  // el incrustado acaba sacando su propia barra de desplazamiento; con esto el
-  // contenido entra entero. Es el unico numero que hay que mover si alguna
-  // publicacion vuelve a salir con barra (subirlo) o con hueco (bajarlo).
-  var MARGEN = 72;
+  // Pequeña holgura para que el alto calculado no quede al filo y acabe
+  // sacando barra de desplazamiento por un par de píxeles.
+  var MARGEN = 12;
   var instancias = [];
 
   // ---------- 1. Alto ----------

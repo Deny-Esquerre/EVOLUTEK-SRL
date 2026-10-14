@@ -112,9 +112,11 @@
 
   // ---------- Ciclo de vida ----------
   function initNovedades(page) {
-    if (!page.querySelector('.novedades-mosaico')) return;
+    // Los incrustados no viven solo en la página de novedades: el inicio
+    // lleva dos. Basta con que haya alguno para que haya algo que ajustar.
+    if (!page.querySelector('iframe[data-h504]')) return;
 
-    initFiltro(page);
+    initFiltro(page);          // devuelve sin hacer nada si no hay pestañas
     ajustarTodos(page);
 
     var pendiente = null;

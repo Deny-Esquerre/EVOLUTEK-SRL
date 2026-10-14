@@ -157,6 +157,30 @@
 /* En la rejilla de vídeos no hay columnas que evitar */
 .novedades-video-grid .embed-card { margin: 0; }
 
+/* ---- Reconocimientos en el inicio ----
+   Dos publicaciones bajo la caja de contacto. Aquí sí caben a su tamaño
+   nativo: dos marcos de 504 y un hueco de 32 suman 1040, y el contenedor
+   del inicio deja 1152. */
+.novedades-seccion--destacados { padding: 96px 0; }
+
+.novedades-seccion--destacados .novedades-h2 { margin-bottom: 36px; }
+
+.novedades-destacados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 504px));
+  justify-content: center;
+  gap: 32px;
+  align-items: start;
+}
+
+.novedades-seccion--destacados .embed-card { margin: 0; }
+
+@media (max-width: 640px) {
+  .novedades-seccion--destacados { padding: 56px 0; }
+  .novedades-seccion--destacados .novedades-h2 { margin-bottom: 26px; }
+  .novedades-destacados { gap: 22px; }
+}
+
 /* ---- Botón de cierre ---- */
 .novedades-cta {
   margin: 20px 0 0;

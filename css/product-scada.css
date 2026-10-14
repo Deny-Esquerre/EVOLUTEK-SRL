@@ -28,14 +28,9 @@
 }
 
 /* ---- La captura abre la página ---- */
+/* La banda gris tras la captura sí es propia de esta maquetación */
 .product--scada .product-showcase {
-  padding: 38px 0 10px;
   background: linear-gradient(180deg, var(--gray-bg) 0%, var(--gray-bg) 58%, transparent 58%);
-}
-
-.product--scada .product-showcase .product-figure {
-  margin: 0 auto;
-  max-width: 1040px;
 }
 
 .product--scada .product-showcase .product-figure:not(.product-figure--mockup) img {

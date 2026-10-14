@@ -76,6 +76,15 @@
 .product-steps-section { padding: 48px 0 96px; }
 .product-figure-section { padding: 40px 0 8px; }
 
+/* La captura abre la ficha, antes del texto. La usan la maquetación SCADA y
+   cualquier otra ficha cuyo producto se entienda mejor viéndolo. */
+.product-showcase { padding: 38px 0 10px; }
+
+.product-showcase .product-figure {
+  margin: 0 auto;
+  max-width: 1040px;
+}
+
 /* Texto informativo */
 .product-info p {
   color: var(--gray);

@@ -264,12 +264,15 @@ function startRouter() {
     if (e.key === 'Escape') closeMobileMenu();
   });
 
-  const pageId = pageFromPath(location.pathname);
-  markActiveLinks(pageId);
-
   // La página de la ruta ya viene en el HTML; solo hay que inicializarla.
+  let pageId = pageFromPath(location.pathname);
   const current = document.getElementById('page-' + pageId) ||
     pageRoot().querySelector('.page');
+
+  // En una ruta desconocida pageFromPath devuelve 'inicio', pero el HTML que
+  // ha servido el hosting es el de la página de error: manda la que está.
+  if (current && current.id) pageId = current.id.replace(/^page-/, '');
+  markActiveLinks(pageId);
   if (current) {
     activatePage(current, false);
   } else {

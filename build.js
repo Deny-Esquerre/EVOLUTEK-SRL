@@ -25,7 +25,7 @@ const CSS_ORDER = [
   'servicios.css', 'gallery.css',
   'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
   'product-snake.css', 'product-stair.css',
-  'cta.css', 'footer.css', 'animations.css', 'responsive.css'
+  'cta.css', 'error.css', 'footer.css', 'animations.css', 'responsive.css'
 ];
 
 // ready.js primero (define onReady y el ciclo de vida de página) y boot.js el
@@ -276,6 +276,17 @@ for (const route of ROUTES) {
   pages.push(route.dir ? route.dir + '/index.html' : 'index.html');
 }
 
+// Pagina de error: un unico archivo en la raiz de dist/. No es una ruta (no
+// lleva carpeta, no esta en el menu y el router no la conoce): es lo que sirve
+// el hosting cuando la URL pedida no existe, de modo que el visitante ve una
+// pagina del sitio y no la pantalla cruda del servidor. Se escribe aqui, antes
+// del rastreo de assets, para que los suyos tambien se copien.
+const NOT_FOUND = {
+  title: 'Página no encontrada — EVOLUTEK',
+  description: 'La página que buscas no existe o ha cambiado de dirección.'
+};
+fs.writeFileSync(dest('404.html'), routeHtml(NOT_FOUND, pageOf('404')), 'utf8');
+
 /* ---------- 5. copiar assets referenciados ---------- */
 
 const refs = new Set();
@@ -313,5 +324,6 @@ console.log(`  rutas generadas:    ${pages.length}`);
 for (const p of pages) console.log('    - /' + p.replace(/\/index\.html$/, '').replace(/^index\.html$/, ''));
 console.log(`  css/styles.min.css  ${kb(sizeOf(dest('css/styles.min.css')))}  (${kb(cssRaw.length)} -> ${kb(cssMin.length)})`);
 console.log(`  js/app.min.js       ${kb(sizeOf(dest('js/app.min.js')))}  (${kb(jsRaw.length)} -> ${kb(jsMin.length)})`);
+console.log(`  404.html            ${kb(sizeOf(dest('404.html')))}  (fuera de las rutas)`);
 console.log(`  assets copiados:    ${copied.length}`);
 for (const c of copied.sort()) console.log('    - ' + c);

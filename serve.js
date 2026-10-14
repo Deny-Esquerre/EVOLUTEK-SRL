@@ -85,6 +85,15 @@ http.createServer((req, res) => {
     return servirArchivo(res, path.join(ROOT, 'index.html'), ruta);
   }
 
+  // La misma página de error que sirve el hosting, con su código 404
+  const error404 = path.join(ROOT, '404.html');
+  if (!DEV && fs.existsSync(error404)) {
+    return fs.readFile(error404, (err, datos) => {
+      if (err) return enviar(res, 404, '404 — no existe ' + ruta);
+      enviar(res, 404, datos, TIPOS['.html']);
+    });
+  }
+
   enviar(res, 404, '404 — no existe ' + ruta);
 }).listen(PORT, () => {
   console.log('http://localhost:' + PORT + '  sirviendo ' + (DEV ? 'la raíz (desarrollo)' : 'dist/ (producción)'));

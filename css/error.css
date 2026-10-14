@@ -1,0 +1,73 @@
+/* ============================================
+   PÁGINA DE ERROR (404)
+   ============================================
+   Un único archivo en la raíz de dist/ que el hosting sirve cuando la URL no
+   existe. No es una ruta del sitio: no está en el menú ni la conoce el router.
+   El padding superior compensa la barra fija, que aquí no tiene page-hero. */
+
+.error-page {
+  padding: 168px 0 120px;
+  background-color: var(--gray-bg);
+  background-image:
+    linear-gradient(rgba(25, 26, 85, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(25, 26, 85, 0.03) 1px, transparent 1px);
+  background-size: 46px 46px;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.error-page__inner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.error-page__code {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(5rem, 16vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: -4px;
+  color: var(--navy);
+  opacity: 0.14;
+  margin-bottom: 10px;
+}
+
+.error-page h1 {
+  font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+.error-page p {
+  color: var(--gray);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0 auto 32px;
+}
+
+.error-page__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* .btn-outline está pensado para fondo oscuro: texto y borde blancos. Sobre el
+   gris claro de esta página hay que devolverle el contraste. */
+.error-page .btn-outline {
+  color: var(--navy);
+  border-color: var(--line-strong);
+}
+
+.error-page .btn-outline:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .error-page { padding: 140px 0 90px; }
+  .error-page__links .btn { padding: 13px 22px; }
+}

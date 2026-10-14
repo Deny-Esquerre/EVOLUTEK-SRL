@@ -38,7 +38,7 @@
   max-width: 1040px;
 }
 
-.product--scada .product-showcase .product-figure img {
+.product--scada .product-showcase .product-figure:not(.product-figure--mockup) img {
   box-shadow: var(--shadow-lg);
 }
 

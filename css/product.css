@@ -120,6 +120,18 @@
   }
 }
 
+/* Maqueta recortada sobre fondo transparente (p. ej. un portátil): el objeto
+   ya trae su propia forma y su sombra, así que el marco, el fondo blanco y el
+   redondeo del recuadro solo estorban. */
+.product-figure--mockup img {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.product-figure--mockup.is-glow img { animation: none; }
+
 .product-figure figcaption {
   margin-top: 14px;
   font-size: 0.9rem;

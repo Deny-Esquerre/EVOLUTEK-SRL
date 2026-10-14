@@ -350,3 +350,32 @@
   .about-layout--reverse .about-text { order: 1; }
   .about-layout--reverse .about-visual { order: 2; }
 }
+
+/* ============================================
+   NOSOTROS: AIRE ENTRE BLOQUES
+   ============================================
+   Dos costuras de la pagina se sumaban de mas. Entre el video y el texto:
+   los 90px con los que cierra el encabezado mas los 100 de la seccion, 190
+   seguidos. Y entre Mision y Vision y la llamada a contacto: otros 100 mas
+   los 72 de la caja. Se recortan las dos, mas en pantallas pequenas. */
+#page-nosotros .page-hero { padding-bottom: 64px; }
+
+.nosotros-intro { padding-top: 72px; }
+
+.nosotros-mv { padding-bottom: 72px; }
+
+#page-nosotros .cta-section { padding-top: 56px; }
+
+@media (max-width: 760px) {
+  #page-nosotros .page-hero { padding-bottom: 44px; }
+  .nosotros-intro { padding-top: 48px; }
+  .nosotros-mv { padding-bottom: 48px; }
+  #page-nosotros .cta-section { padding-top: 36px; }
+}
+
+@media (max-width: 480px) {
+  #page-nosotros .page-hero { padding-bottom: 36px; }
+  .nosotros-intro { padding-top: 38px; }
+  .nosotros-mv { padding-bottom: 38px; }
+  #page-nosotros .cta-section { padding-top: 30px; }
+}

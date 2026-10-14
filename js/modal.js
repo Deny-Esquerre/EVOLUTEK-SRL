@@ -37,7 +37,14 @@ function closePrivacyModal() {
   document.body.classList.remove('modal-open');
 }
 
-const PRIVACY_KEY = 'evolutek-privacy-consent';
+// La decisión no se guarda a propósito: el aviso tiene que salir en cada
+// visita y en cada recarga. Antes se recordaba en localStorage y, una vez
+// aceptado, no volvía a aparecer nunca en ese navegador.
+//
+// Aceptar o denegar lo retira mientras dure la visita, de modo que navegar
+// entre páginas no lo saca otra vez: el router cambia de página sin recargar
+// y este script no se vuelve a ejecutar.
+let privacyDecision = null;
 
 function hideConsentBar() {
   const bar = document.getElementById('consentBar');
@@ -45,21 +52,19 @@ function hideConsentBar() {
 }
 
 function acceptPrivacy() {
-  try { localStorage.setItem(PRIVACY_KEY, 'accepted'); } catch (e) {}
+  privacyDecision = 'accepted';
   hideConsentBar();
 }
 
 function denyPrivacy() {
-  try { localStorage.setItem(PRIVACY_KEY, 'denied'); } catch (e) {}
+  privacyDecision = 'denied';
   hideConsentBar();
 }
 
-// Muestra la barra de consentimiento al entrar, si aún no se ha decidido.
+// Al entrar sale siempre.
 onReady(function () {
-  let decided = null;
-  try { decided = localStorage.getItem(PRIVACY_KEY); } catch (e) {}
   const bar = document.getElementById('consentBar');
-  if (bar && !decided) bar.classList.add('show');
+  if (bar) bar.classList.add('show');
 });
 
 document.addEventListener('keydown', (e) => {

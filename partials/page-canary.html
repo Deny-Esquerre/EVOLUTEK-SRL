@@ -1,0 +1,124 @@
+  <!-- ========================================
+       PAGE: CANARY LABS
+       ======================================== -->
+  <div class="page" id="page-canary">
+
+    <!-- Encabezado: logo completo -->
+    <div class="canary-hero">
+      <div class="container">
+        <div class="canary-hero__inner">
+          <h1 class="canary-hero__title">
+            <img class="canary-hero__logo" src="logos/CanaryLabs_Logo.svg" alt="Canary Labs">
+          </h1>
+          <span class="canary-hero__cat">Historización de datos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video -->
+    <section class="canary-video-section">
+      <div class="container">
+        <div class="video-embed reveal">
+          <iframe src="https://www.youtube.com/embed/_sPQyX2HEuQ"
+                  title="Canary Labs — video"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Texto informativo de Canary -->
+    <section class="canary-info-section">
+      <div class="container">
+        <div class="canary-info reveal">
+          <p>Canary Labs es una plataforma de historización y análisis de datos de proceso para entornos industriales. En su núcleo está el Canary Historian, una base de datos de series temporales NoSQL con compresión sin pérdida que guarda cada valor con su marca de tiempo y su calidad sin interpolar la información: el desempeño se mantiene estable sin importar cuántos años de datos se acumulen y un solo historian puede registrar millones de tags. Así, la plataforma centraliza la información de plantas, procesos y activos dispersos, detecta tendencias, compara el desempeño entre periodos y convierte grandes volúmenes de datos operativos en decisiones de negocio.</p>
+          <p>Los datos se adquieren desde OPC UA/DA, MQTT Sparkplug, bases SQL, CSV y otras fuentes, con tecnología Store &amp; Forward que guarda en disco local y reenvía automáticamente si se interrumpe la comunicación. Sobre esa base, Canary aporta contexto y análisis con Views (modelado de activos y nomenclatura), el Calculation Server (KPIs y cálculos), Events (reglas y condiciones) y Axiom (tendencias, tableros y reportes en el navegador), y expone los datos a herramientas de BI, SCADA, data lakes o machine learning vía API web, conectores o Excel. Puede desplegarse en sitio —edge, planta o empresa— o en la nube, con más de 30.000 instalaciones en más de 70 países desde 1985.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solicitudes de Demo o POC -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div class="cta-box__text">
+            <h3>Solicitudes de Demo o POC</h3>
+            <p>Los clientes pueden solicitar la instalación y configuración de una POC de Canary sin costo. El cliente solo debe proporcionar la infraestructura física necesaria.</p>
+          </div>
+          <a href="/contacto" data-page="contacto" class="btn btn-primary">Solicitar una Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pasos de instalación -->
+    <section class="section canary-steps-section">
+      <div class="container">
+        <div class="exp-grid exp-grid--steps stagger" data-steps>
+          <div class="exp-card">
+            <h3>Requisitos previos</h3>
+            <p>Antes de instalar, define la infraestructura y valida los requisitos base.</p>
+            <ul>
+              <li>Servidor Windows o VM con recursos según el número de tags.</li>
+              <li>Disco dedicado para el almacenamiento de datos históricos.</li>
+              <li>Conectividad de red y puertos requeridos habilitados.</li>
+            </ul>
+          </div>
+          <div class="exp-card">
+            <h3>Instalación de la plataforma</h3>
+            <p>Ejecuta el instalador de Canary y selecciona los componentes.</p>
+            <ul>
+              <li>Instalar Historian, colectores y la consola Canary Admin.</li>
+              <li>Definir las rutas de instalación y de datos.</li>
+              <li>Aplicar la licencia por número de tags.</li>
+            </ul>
+          </div>
+          <div class="exp-card">
+            <h3>Conexión de fuentes de datos</h3>
+            <p>Configura los colectores para adquirir datos de proceso.</p>
+            <ul>
+              <li>Conectar OPC UA/DA, MQTT Sparkplug, SQL o CSV.</li>
+              <li>Crear sesiones de logging y grupos de tags.</li>
+              <li>Activar Store &amp; Forward para evitar pérdidas.</li>
+            </ul>
+          </div>
+          <div class="exp-card">
+            <h3>Modelado de tags y vistas</h3>
+            <p>Organiza la información en Views para dar contexto y estructura.</p>
+            <ul>
+              <li>Crear Virtual Views con la estructura de activos.</li>
+              <li>Renombrar tags y definir unidades y límites.</li>
+              <li>Calcular KPIs con el Calculation Server.</li>
+            </ul>
+          </div>
+          <div class="exp-card">
+            <h3>Visualización y tableros</h3>
+            <p>Construye tendencias y reportes con Axiom sobre los datos históricos.</p>
+            <ul>
+              <li>Diseñar tendencias y dashboards por proceso o activo.</li>
+              <li>Configurar reportes automáticos y filtros por condición.</li>
+              <li>Publicar vistas accesibles desde cualquier navegador.</li>
+            </ul>
+          </div>
+          <div class="exp-card">
+            <h3>Verificación y puesta en marcha</h3>
+            <p>Valida el sistema y deja la plataforma operativa con acompañamiento.</p>
+            <ul>
+              <li>Revisar el panel de diagnóstico y la captura en tiempo real.</li>
+              <li>Confirmar historización, calidad y retención de datos.</li>
+              <li>Capacitar a los usuarios y definir el soporte.</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="canary-figure" data-steps-result>
+          <img src="img/products/collectors-diagnostics.webp" alt="Panel de diagnóstico de colectores del sistema Canary" loading="lazy">
+          <figcaption>Panel de diagnóstico del sistema Canary: escritura, lectura y estado de los servicios.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+  </div>
+
+
+
+

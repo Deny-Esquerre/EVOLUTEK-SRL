@@ -1,0 +1,308 @@
+/* ============================================
+   ABOUT TWO-COLUMN
+   ============================================ */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .about-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.about-text h2 { margin-bottom: 20px; }
+.about-text h2 .slash { color: var(--navy-light); margin-right: 6px; }
+.about-text p { margin-bottom: 16px; }
+
+.about-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-visual .visual-circle {
+  width: 340px;
+  height: 340px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy-light));
+  border: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-visual .visual-circle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.about-visual .visual-circle::after {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--line-strong);
+}
+
+@keyframes rotateDash {
+  to { transform: rotate(360deg); }
+}
+
+.about-visual .visual-circle img {
+  width: 150px;
+  position: relative;
+  z-index: 2;
+  filter: brightness(0) invert(1);
+}
+
+/* ---- Bloques de contenido (¿Qué ofrecemos? / ¿Qué es IIoT?) ---- */
+.section-ofrecemos,
+.section-iiot {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-ofrecemos > .container,
+.section-iiot > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.num-watermark {
+  position: absolute;
+  top: 0.03em;
+  left: 0.5vw;
+  font-family: 'TT Supermolot Neue Demi Bold', 'Saira', 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: clamp(150px, 30vw, 460px);
+  line-height: 0.78;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.num-watermark--right {
+  left: auto;
+  right: 0.5vw;
+}
+
+.content-figure {
+  width: 100%;
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 60px -32px rgba(15, 16, 56, 0.45);
+}
+
+.content-figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Variante para ilustraciones/mapas: se muestra completo, sin recortar */
+.content-figure--map img {
+  aspect-ratio: 1216 / 1294;
+  object-fit: contain;
+  background: var(--white-off);
+}
+
+/* ---- Certificaciones (panel) ---- */
+.cert-band {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  justify-items: center;
+  align-items: start;
+  padding: 36px 44px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-top: 48px;
+}
+
+.cert-badge {
+  margin: 0;
+  text-align: center;
+}
+
+.cert-badge img {
+  width: 120px;
+  height: 150px;
+  object-fit: contain;
+  background: var(--white-off);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 10px;
+}
+
+.cert-badge figcaption {
+  margin-top: 10px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--navy-light);
+}
+
+/* ---- Valores ---- */
+.values-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.value-chip {
+  padding: 10px 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--navy);
+  background: var(--white);
+}
+
+.values-note {
+  text-align: center;
+  max-width: 640px;
+  margin: 28px auto 0;
+}
+
+/* ---- Experiencia y reconocimiento (tarjetas) ---- */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 26px;
+  counter-reset: expcard;
+}
+
+.exp-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 38px 32px 30px;
+  overflow: hidden;
+  transition: var(--transition);
+  counter-increment: expcard;
+}
+
+.exp-card::after {
+  content: counter(expcard, decimal-leading-zero);
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--navy);
+  opacity: 0.1;
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.exp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(25, 26, 85, 0.18);
+}
+
+.exp-card:hover::after { opacity: 0.16; }
+
+.exp-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(25, 26, 85, 0.05);
+  border: 1px solid rgba(25, 26, 85, 0.1);
+  color: var(--navy);
+  margin-bottom: 26px;
+  transition: var(--transition);
+}
+
+.exp-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.exp-card:hover .exp-icon {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.exp-card h3 {
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  letter-spacing: -0.3px;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.exp-sub {
+  color: var(--navy);
+  opacity: 0.55;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.exp-card > p:last-child {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Variante con etiqueta en lugar del número */
+.exp-card[data-label]::after {
+  content: attr(data-label);
+  top: 26px;
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.55;
+}
+
+.exp-card[data-label]:hover::after { opacity: 0.85; }
+
+.exp-card[data-label] > p:last-child { margin-top: 34px; }
+
+@media (max-width: 768px) {
+  .about-layout--reverse .about-text { order: 1; }
+  .about-layout--reverse .about-visual { order: 2; }
+}

@@ -1,0 +1,53 @@
+  <!-- PRIVACY CONSENT BAR -->
+  <div class="consent-bar" id="consentBar" role="region" aria-label="Consentimiento de privacidad">
+    <div class="consent-bar__inner">
+      <p>Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra <button type="button" class="link-btn" onclick="openPrivacyModal()">política de privacidad</button>.</p>
+      <div class="consent-bar__actions">
+        <button type="button" class="btn btn-accept" onclick="acceptPrivacy()">Aceptar todo</button>
+        <button type="button" class="btn btn-deny" onclick="denyPrivacy()">Denegar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIVACY POLICY MODAL -->
+  <div class="privacy-modal" id="privacyModal" aria-hidden="true">
+    <div class="privacy-modal__overlay" onclick="closePrivacyModal()"></div>
+    <div class="privacy-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+      <button class="privacy-modal__close" type="button" onclick="closePrivacyModal()" aria-label="Cerrar">&times;</button>
+      <h2 id="privacyTitle">Política de Privacidad</h2>
+      <p class="privacy-modal__updated">Última actualización: 2025</p>
+
+      <p>En EVOLUTEK valoramos y respetamos tu privacidad. Esta política describe cómo tratamos la información que recopilamos a través de nuestro sitio web y qué derechos tienes al respecto.</p>
+
+      <h3>1. Información que recopilamos</h3>
+      <p>Recopilamos únicamente la información que nos proporcionas de forma voluntaria al contactarnos, por ejemplo tu nombre, correo electrónico y el mensaje que nos envías. También podemos recopilar datos de navegación anónimos (como las páginas visitadas) con fines estadísticos.</p>
+
+      <h3>2. Uso de la información</h3>
+      <p>Utilizamos tu información para:</p>
+      <ul>
+        <li>Responder a tus consultas y solicitudes.</li>
+        <li>Gestionar la comunicación comercial y de servicio.</li>
+        <li>Mejorar el contenido y la experiencia de nuestro sitio.</li>
+      </ul>
+      <p>No vendemos ni cedemos tus datos personales a terceros.</p>
+
+      <h3>3. Imágenes y contenido de terceros</h3>
+      <p>Las imágenes utilizadas en este sitio son de carácter referencial y no están licenciadas por EVOLUTEK; se emplean únicamente con fines ilustrativos. Los logotipos y nombres de marcas de terceros (Canary Labs, HighByte, Kepware, Ignition, N3uron, Tatsoft, Flow Software y Cygnet) son propiedad de sus respectivos titulares y se muestran solo a modo informativo, sin que ello implique patrocinio o afiliación.</p>
+
+      <h3>4. Cookies</h3>
+      <p>Este sitio puede utilizar cookies para recordar tus preferencias y analizar de forma agregada el tráfico. Puedes configurar tu navegador para rechazarlas en cualquier momento.</p>
+
+      <h3>5. Enlaces a sitios de terceros</h3>
+      <p>Nuestro sitio puede contener enlaces a sitios externos. No somos responsables de sus contenidos ni de sus políticas de privacidad.</p>
+
+      <h3>6. Tus derechos</h3>
+      <p>Puedes solicitar el acceso, la corrección o la eliminación de tus datos personales escribiéndonos a nuestro correo de contacto.</p>
+
+      <h3>7. Cambios en esta política</h3>
+      <p>Podemos actualizar esta política ocasionalmente. Cualquier cambio se publicará en esta misma página.</p>
+
+      <h3>8. Contacto</h3>
+      <p>Oficina principal: Urbanización Enapu A-14, Talara, Piura, Perú.<br>
+      Escríbenos: <a href="mailto:Administracion@evolutek.pe">Administracion@evolutek.pe</a></p>
+    </div>
+  </div>

@@ -1,0 +1,11 @@
+  <!-- PRODUCT MODAL -->
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <div class="product-modal__overlay" onclick="closeProductModal()"></div>
+    <div class="product-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="pmName">
+      <button class="product-modal__close" type="button" onclick="closeProductModal()" aria-label="Cerrar">&times;</button>
+      <div class="product-modal__logo"><img id="pmLogo" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=""></div>
+      <span class="product-modal__cat" id="pmCat"></span>
+      <h3 id="pmName"></h3>
+      <p id="pmDesc"></p>
+    </div>
+  </div>

@@ -1,0 +1,87 @@
+/* ============================================
+   LOGO GRID (estático)
+   ============================================ */
+.logo-strip {
+  padding: 54px 0 60px;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo-strip-title {
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 38px;
+}
+
+.logo-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px 112px;
+}
+
+.logo-item {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+}
+
+.logo-item img {
+  height: 38px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.55);
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.logo-item:hover img,
+.logo-item:focus-visible img {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.06);
+}
+
+.logo-item:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 8px;
+  border-radius: 4px;
+}
+
+.logo-item--dark {
+  background: #0d0d12;
+  border-radius: 8px;
+  padding: 6px 22px;
+  height: 58px;
+}
+
+.logo-item--dark img {
+  filter: grayscale(100%) opacity(0.8);
+}
+
+.logo-item--dark:hover img,
+.logo-item--dark:focus-visible img {
+  filter: grayscale(0%) opacity(1);
+}
+
+@media (max-width: 640px) {
+  .logo-row { gap: 24px 48px; }
+}

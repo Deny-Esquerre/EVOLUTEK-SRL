@@ -1,0 +1,319 @@
+/* ============================================
+   PRODUCT MODAL
+   ============================================ */
+.product-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.product-modal.open { display: flex; }
+
+.product-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(25, 26, 85, 0.55);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.product-modal__dialog {
+  position: relative;
+  background: var(--white);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  padding: 46px 40px 40px;
+  box-shadow: 0 24px 60px rgba(25, 26, 85, 0.28);
+  text-align: center;
+  border-top: 3px solid var(--navy);
+  animation: modal-in 0.28s ease;
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.product-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background: none;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: var(--gray);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.product-modal__close:hover { color: var(--navy); }
+
+.product-modal__logo {
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.product-modal__logo img {
+  max-height: 58px;
+  max-width: 210px;
+  object-fit: contain;
+}
+
+.product-modal__cat {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.65;
+  margin-bottom: 10px;
+}
+
+.product-modal__dialog h3 {
+  font-size: 1.4rem;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+.product-modal__dialog p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+body.modal-open { overflow: hidden; }
+
+/* ============================================
+   PRIVACY POLICY MODAL
+   ============================================ */
+.privacy-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.privacy-modal.open { display: flex; }
+
+.privacy-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(25, 26, 85, 0.55);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.privacy-modal__dialog {
+  position: relative;
+  background: var(--white);
+  width: 100%;
+  max-width: 720px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  padding: 46px 48px 40px;
+  box-shadow: 0 24px 60px rgba(25, 26, 85, 0.28);
+  border-top: 3px solid var(--navy);
+  text-align: left;
+  animation: modal-in 0.28s ease;
+}
+
+.privacy-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background: none;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: var(--gray);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.privacy-modal__close:hover { color: var(--navy); }
+
+.privacy-modal__dialog h2 {
+  font-size: 1.6rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.privacy-modal__updated {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-bottom: 26px;
+}
+
+.privacy-modal__dialog h3 {
+  font-size: 1.02rem;
+  color: var(--navy);
+  margin: 22px 0 8px;
+}
+
+.privacy-modal__dialog p,
+.privacy-modal__dialog li {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--gray);
+}
+
+.privacy-modal__dialog ul {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+.privacy-modal__dialog a { color: var(--accent); }
+.privacy-modal__dialog a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .privacy-modal__dialog { padding: 40px 24px 32px; }
+}
+
+/* ============================================
+   PRIVACY CONSENT BAR
+   ============================================ */
+.consent-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2500;
+  background: var(--navy);
+  color: var(--white);
+  padding: 16px 24px;
+  box-shadow: 0 -10px 30px rgba(25, 26, 85, 0.25);
+  display: none;
+}
+
+.consent-bar.show { display: block; }
+
+.consent-bar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.consent-bar p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.consent-bar a {
+  color: var(--white);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.consent-bar__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.consent-bar__actions .btn {
+  padding: 10px 22px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  justify-content: center;
+}
+
+.consent-bar__actions .btn-accept {
+  background: var(--white);
+  color: var(--navy);
+}
+.consent-bar__actions .btn-accept:hover {
+  background: var(--accent-light);
+  color: var(--white);
+}
+
+.consent-bar__actions .btn-deny {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+.consent-bar__actions .btn-deny:hover {
+  border-color: var(--white);
+}
+
+@media (max-width: 700px) {
+  .consent-bar__inner { flex-direction: column; align-items: stretch; }
+  .consent-bar__actions { justify-content: stretch; }
+  .consent-bar__actions .btn { flex: 1; }
+}
+
+/* ---- Product hover tooltip ---- */
+.logo-tip {
+  position: fixed;
+  z-index: 2500;
+  max-width: 244px;
+  padding: 12px 15px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 14px 32px rgba(25, 26, 85, 0.3);
+  pointer-events: none;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: center;
+  transform: translate(-50%, calc(-100% - 6px));
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.logo-tip.show {
+  opacity: 1;
+  transform: translate(-50%, calc(-100% - 12px));
+}
+
+.logo-tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--navy);
+}
+
+.logo-tip strong {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.logo-tip__icon {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  margin: 0 auto 8px;
+  padding: 7px;
+  background: var(--white);
+  border-radius: 10px;
+}
+
+.logo-tip span {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+}

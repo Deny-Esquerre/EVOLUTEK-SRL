@@ -1,0 +1,140 @@
+/* TT Supermolot Neue — fuente comercial (usa la instalada o el archivo en /fonts) */
+@font-face {
+  font-family: 'TT Supermolot Neue Demi Bold';
+  src: local('TT Supermolot Neue Demi Bold'),
+       local('TTSupermolotNeue-DemiBold'),
+       url('../fonts/TTSupermolotNeue-DemiBold.woff2') format('woff2'),
+       url('../fonts/TTSupermolotNeue-DemiBold.woff') format('woff'),
+       url('../fonts/TTSupermolotNeue-DemiBold.ttf') format('truetype'),
+       url('../fonts/TTSupermolotNeue-DemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   CSS RESET & VARIABLES
+   ============================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #191A55;
+  --navy-dark: #0F1038;
+  --navy-light: #252680;
+  --accent: #4A4FD4;
+  --accent-light: #6C70E8;
+  --accent-glow: rgba(74, 79, 212, 0.3);
+  --gray: #6D6E78;
+  --gray-light: #9B9CA6;
+  --gray-bg: #F4F5F7;
+  --white: #FFFFFF;
+  --white-off: #FAFBFD;
+  --line: rgba(25, 26, 85, 0.12);
+  --line-strong: rgba(25, 26, 85, 0.22);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 2px 8px rgba(25, 26, 85, 0.06);
+  --shadow-md: 0 8px 30px rgba(25, 26, 85, 0.1);
+  --shadow-lg: 0 20px 60px rgba(25, 26, 85, 0.15);
+  --radius: 3px;
+  --radius-lg: 5px;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Barlow', 'Segoe UI', sans-serif;
+  color: var(--navy);
+  background-color: var(--white);
+  background-image:
+    linear-gradient(rgba(25, 26, 85, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(25, 26, 85, 0.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', 'Arial Black', sans-serif;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: -1px; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); letter-spacing: -0.5px; }
+h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); letter-spacing: 0; }
+
+p {
+  font-size: 1.05rem;
+  color: var(--gray);
+  line-height: 1.75;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   PAGE SYSTEM
+   ============================================
+   Cada ruta sirve SOLO su propia página, ya marcada como .active.visible por
+   build.js: se ve aunque el JS no llegue a ejecutarse. El router (js/nav.js)
+   intercambia páginas en caliente reutilizando estas mismas clases. */
+.page {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.page.active {
+  display: block;
+}
+.page.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   FOCO VISIBLE (navegación por teclado)
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .page { transition: none; }
+}
+
+/* Botón que se lee como un enlace (acciones que no navegan a una URL) */
+.link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Visible solo para lectores de pantalla y buscadores */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

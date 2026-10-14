@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 130" role="img" aria-label="Evolutek — Tecnología e Industria 4.0">
+  <style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&amp;family=Barlow:wght@400&amp;display=swap');</style>
+  <g id="mark">
+    <circle cx="62" cy="65" r="56" fill="#191A55"></circle>
+    <path d="M29.5 73.5 C25.5 72 24.3 68 24.3 60 C24.3 51.5 30 48 38 48 C40.5 39 49.5 31.6 61.9 31.6 C74.3 31.6 83.3 39 85.8 48 C93.8 48 99.5 51.5 99.5 60 C99.5 68 98.3 72 94.3 73.5" fill="none" stroke="#ffffff" stroke-width="9.2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <g fill="none" stroke="#ffffff" stroke-width="10.2" stroke-linecap="round" stroke-linejoin="round"><path d="M61.8 52.5 V84"></path><path d="M47.9 68 L61.8 84 L75.7 68"></path></g>
+    <circle cx="40.7" cy="98.5" r="6.9" fill="#ffffff"></circle>
+    <circle cx="61.8" cy="98.5" r="6.9" fill="#ffffff"></circle>
+    <circle cx="82.8" cy="98.5" r="6.9" fill="#ffffff"></circle>
+  </g>
+  <text x="128" y="70" fill="#191A55" font-family="Montserrat, 'Arial Black', sans-serif" font-weight="800" font-size="83" textLength="378" lengthAdjust="spacingAndGlyphs">EVOLUTEK</text>
+  <text x="130" y="110" fill="#6D6E78" font-family="Barlow, Roboto, sans-serif" font-weight="400" font-size="26" letter-spacing="1.2" textLength="372" lengthAdjust="spacing">TECNOLOGIA E INDUSTRIA 4.0</text>
+</svg>

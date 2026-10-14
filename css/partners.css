@@ -1,0 +1,55 @@
+/* ============================================
+   PARTNERS GRID
+   ============================================ */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.partner-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  transition: var(--transition);
+  min-height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.partner-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.partner-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--line-strong);
+}
+
+.partner-card:hover::after { transform: scaleX(1); }
+
+.partner-card img {
+  max-height: 50px;
+  max-width: 140px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.6);
+  transition: var(--transition);
+}
+
+.partner-card:hover img {
+  filter: grayscale(0%) opacity(1);
+}

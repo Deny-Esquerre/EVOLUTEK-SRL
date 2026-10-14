@@ -1,0 +1,15 @@
+# Salida del build: se regenera con `node build.js`
+dist/
+
+# Dependencias (el proyecto no usa ninguna, por si acaso)
+node_modules/
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Copia de un sitio Next.js ajeno guardada desde el navegador (9,4 MB).
+# El build NO la usa. Si la necesitas en el repo, borra estas dos líneas.
+logos/EVOLUTEK - Tecnología e Industria 4.0_files/
+logos/EVOLUTEK - Tecnología e Industria 4.0.html

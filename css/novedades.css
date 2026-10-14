@@ -1,0 +1,75 @@
+/* ============================================
+   NOVEDADES — PUBLICACIONES DE LINKEDIN
+   ============================================
+   Cada publicación es un iframe del incrustado oficial de LinkedIn
+   (linkedin.com/embed/feed/update/...), que declara frame-ancestors *, es
+   decir, permite expresamente ir dentro de otra web.
+
+   Dos cosas condicionan la maqueta:
+
+   1. El alto va fijo y escrito a mano, porque el iframe es de otro dominio y
+      no podemos medir su contenido ni él nos avisa de cuánto ocupa. Los
+      valores son los que da LinkedIn al copiar el código, medidos a 504px de
+      ancho, más un margen por si el texto reflota.
+
+   2. Las publicaciones tienen alturas muy distintas (de 541 a 876), de modo
+      que una rejilla dejaría huecos enormes bajo las cortas. Con columnas
+      CSS cada una se coloca donde cabe y el bloque queda compacto. */
+
+.novedades-grid {
+  columns: 2 440px;
+  column-gap: 30px;
+  max-width: 1070px;
+  margin: 0 auto;
+}
+
+.novedad {
+  break-inside: avoid;
+  margin: 0 0 30px;
+  max-width: 504px;
+}
+
+.novedad iframe {
+  display: block;
+  width: 100%;
+  /* +24px de margen: a menos de 504px de ancho el texto ocupa alguna línea más */
+  height: calc(var(--novedad-alto, 560px) + 24px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.novedades-pie {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.novedades-pie a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--accent);
+  transition: var(--transition);
+}
+
+.novedades-pie a:hover { color: var(--navy); }
+
+.novedades-pie a::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* En una sola columna el ancho baja a ~312px y el contenido crece bastante
+   más, así que el margen de alto tiene que ser mayor. */
+@media (max-width: 560px) {
+  .novedades-grid { columns: 1; }
+  .novedad { margin-bottom: 22px; }
+  .novedad iframe { height: calc(var(--novedad-alto, 560px) + 110px); }
+}

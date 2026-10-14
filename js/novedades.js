@@ -10,10 +10,11 @@
 //        alto = CROMO + (alto a 504 - CROMO) * ancho / 504
 //    data-h504 lleva el valor de LinkedIn de cada publicación.
 //
-//    Al iframe se le da ese alto con holgura, para que LinkedIn no saque su
-//    barra de desplazamiento. La franja en blanco del final no se quita
-//    acortándolo —es parte de su documento, y acortarlo solo provoca la
-//    barra— sino recortándola desde fuera: el marco mide RECORTE menos.
+//    El iframe recibe bastante más alto del que se ve, y el marco se queda
+//    con el alto del contenido: lo que sobra —la franja en blanco de LinkedIn
+//    y el seguro contra su barra de desplazamiento— cae fuera del marco y lo
+//    recorta su overflow:hidden. Así nunca hay ni barra ni hueco, y da igual
+//    lo estrecha que sea la columna.
 //
 //    CROMO está medido, no supuesto: con 212px sobraba una franja blanca de
 //    92px bajo cada publicación a 432 de ancho. Despejando con esa medida da
@@ -25,18 +26,24 @@
 // 2. El filtro. Oculta con el atributo hidden lo que no toca y mantiene
 //    aria-selected y los contadores al día.
 (function () {
-  var CROMO = 212;            // parte del incrustado que no escala, en px
+  var CROMO = 72;             // parte del incrustado que no escala, en px
   var ANCHO_BASE = 504;       // ancho al que LinkedIn mide sus alturas
 
-  // Holgura para que el iframe nunca se quede corto: si lo hace, LinkedIn
-  // saca su propia barra de desplazamiento.
-  var MARGEN = 72;
-
-  // Franja en blanco con la que LinkedIn termina su página. Forma parte de su
-  // documento, así que acortar el iframe no la quita: solo provoca la barra.
-  // Se recorta desde fuera, dando al marco menos alto que al iframe y dejando
-  // que su overflow:hidden se coma el sobrante.
+  // Franja en blanco con la que LinkedIn termina su página, medida sobre una
+  // captura. Forma parte de su documento: acortar el iframe no la quita, solo
+  // provoca la barra de desplazamiento. Se tapa desde fuera.
   var RECORTE = 92;
+
+  // Sobrante que se le da al iframe por encima de lo que se ve. Queda fuera
+  // del marco, así que no cuesta nada: es el seguro de que LinkedIn no saque
+  // barra aunque su contenido crezca más de lo previsto.
+  var HOLGURA = 120;
+
+  // En columnas estrechas el texto de la publicación ocupa más líneas de las
+  // que tiene a 504, y eso baja el contenido. Por debajo de 400px se le suma
+  // un cuarto de píxel por cada uno que falte.
+  var REFLOW_DESDE = 400;
+  var REFLOW_RATIO = 0.25;
   var instancias = [];
 
   // ---------- 1. Alto ----------
@@ -45,12 +52,16 @@
     if (!h504) return;
     var ancho = iframe.getBoundingClientRect().width;
     if (!ancho) return;                       // aún sin layout (página oculta)
-    var alto = Math.round(CROMO + (h504 - CROMO) * ancho / ANCHO_BASE) + MARGEN;
-    iframe.style.height = alto + 'px';
+    // Lo que se ve: el contenido de la publicación, sin la franja del final.
+    var visible = Math.round(CROMO + (h504 - CROMO) * ancho / ANCHO_BASE)
+      + Math.round(Math.max(0, REFLOW_DESDE - ancho) * REFLOW_RATIO);
+
+    // Al iframe se le da bastante más, y lo que sobra queda fuera del marco.
+    iframe.style.height = (visible + RECORTE + HOLGURA) + 'px';
 
     var marco = iframe.parentNode;
     if (marco && marco.classList && marco.classList.contains('embed-card')) {
-      marco.style.height = Math.max(160, alto - RECORTE) + 'px';
+      marco.style.height = Math.max(160, visible) + 'px';
     }
   }
 

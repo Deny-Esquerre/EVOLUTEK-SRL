@@ -236,6 +236,7 @@
   .novedades-mosaico { columns: 2; }
 }
 
+/* ---- Teléfonos ---- */
 @media (max-width: 640px) {
   .novedades-seccion { padding: 64px 0; }
 
@@ -256,4 +257,29 @@
   .novedades-mosaico { columns: 1; }
 
   .embed-card { margin-bottom: 22px; }
+}
+
+/* Pantallas muy estrechas: "Ver todas las publicaciones en LinkedIn" mide
+   263px y un teléfono de 360 solo deja 312 útiles, así que con el relleno del
+   botón no cabía en una línea. Deja de tener alto fijo y el texto se parte. */
+@media (max-width: 480px) {
+  .novedades-seccion { padding: 52px 0; }
+
+  .novedades-h2 { font-size: 28px; }
+
+  .novedades-boton {
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    min-height: 48px;
+    padding: 12px 20px;
+    max-width: 100%;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .novedades-tabs { gap: 12px 16px; }
+  .novedades-tab { font-size: 14px; padding-bottom: 10px; }
+
+  .novedades-texto { font-size: 16px; }
 }

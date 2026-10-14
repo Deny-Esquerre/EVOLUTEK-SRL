@@ -19,3 +19,23 @@
   z-index: 998;
 }
 .nav-overlay.open { display: block; }
+
+/* ============================================
+   AIRE ENTRE BLOQUES EN EL MOVIL
+   ============================================
+   En escritorio los 100px de .section y los 72 de .cta-section se leen como
+   respiracion; en un telefono son 172px seguidos de nada entre "Que es IIoT"
+   y la llamada a contacto, y otros 128 hasta los reconocimientos. Se recorta
+   solo donde se tocan esos tres bloques, sin alterar el ritmo de las demas
+   secciones. */
+@media (max-width: 760px) {
+  .section-iiot { padding-bottom: 56px; }
+  .cta-section { padding: 48px 0; }
+  .novedades-seccion--destacados { padding-top: 48px; }
+}
+
+@media (max-width: 480px) {
+  .section-iiot { padding-bottom: 44px; }
+  .cta-section { padding: 38px 0; }
+  .novedades-seccion--destacados { padding-top: 38px; }
+}

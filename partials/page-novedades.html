@@ -15,70 +15,103 @@
       <div class="accent-slash"></div>
     </div>
 
-    <!-- Las dos publicaciones con video: piden mas alto que las demas, asi
-         que van aparte para no descuadrar la rejilla. -->
-    <section class="section">
+    <!-- Los dos vídeos, con la introducción ocupando la primera columna -->
+    <section class="novedades-seccion">
       <div class="container">
-        <div class="section-header reveal">
-          <span class="label">En video</span>
-          <h2>Hablando un poco más de Evolutek</h2>
-        </div>
-        <div class="novedades-grid novedades-grid--video">
-          <article class="novedad">
+        <div class="novedades-video-grid">
+          <div class="novedades-intro">
+            <div>
+          <p class="novedades-eyebrow">
+            <span>En video</span><span class="novedades-eyebrow__linea" aria-hidden="true"></span><span class="novedades-eyebrow__n">02</span>
+          </p>
+              <h2 class="novedades-h2">Hablando un poco más de Evolutek</h2>
+              <p class="novedades-texto">Dos vídeos para conocernos por dentro: cómo abordamos la confiabilidad en la medición de hidrocarburos y qué significa, en la práctica, convertir el dato de planta en información que sirva para decidir.</p>
+            </div>
+            <a class="novedades-enlace" href="https://www.linkedin.com/company/evolutek-srl/" target="_blank" rel="noopener noreferrer">Ver todos los videos <span aria-hidden="true">↗</span></a>
+          </div>
+          <article class="embed-card">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7514427663533658112?collapsed=1"
-                    title="Publicación de Evolutek en LinkedIn"
+                    title="Publicación de LinkedIn: medición de hidrocarburos con IA y calibración metrológica"
+                    width="100%" height="690" data-h504="876"
                     loading="lazy" allowfullscreen></iframe>
           </article>
-          <article class="novedad">
+          <article class="embed-card">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7473480428620873728?collapsed=1"
-                    title="Publicación de Evolutek en LinkedIn"
+                    title="Publicación de LinkedIn: evolución constante y transformación del dato en valor"
+                    width="100%" height="690" data-h504="876"
                     loading="lazy" allowfullscreen></iframe>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- El resto, en rejilla de dos columnas y todas del mismo alto -->
-    <section class="section section-alt">
+    <!-- El resto, en mosaico y con filtro por categoría -->
+    <section class="novedades-seccion novedades-seccion--publicaciones">
       <div class="container">
-        <div class="section-header reveal">
-          <span class="label">LinkedIn</span>
-          <h2>Publicaciones recientes</h2>
+        <div class="novedades-cabecera">
+          <div>
+          <p class="novedades-eyebrow">
+            <span>LinkedIn</span><span class="novedades-eyebrow__linea" aria-hidden="true"></span><span class="novedades-eyebrow__n">06</span>
+          </p>
+            <h2 class="novedades-h2">Publicaciones recientes</h2>
+          </div>
+          <div class="novedades-tabs" role="tablist" aria-label="Filtrar publicaciones por categoría">
+              <button type="button" class="novedades-tab is-active" role="tab"
+                      id="nv-tab-todo" aria-controls="nv-mosaico" aria-selected="true"
+                      tabindex="0" data-filtro="todo">Todo <span class="novedades-tab__n">(6)</span></button>
+              <button type="button" class="novedades-tab" role="tab"
+                      id="nv-tab-demo" aria-controls="nv-mosaico" aria-selected="false"
+                      tabindex="-1" data-filtro="demo">Demos <span class="novedades-tab__n">(2)</span></button>
+              <button type="button" class="novedades-tab" role="tab"
+                      id="nv-tab-reconocimiento" aria-controls="nv-mosaico" aria-selected="false"
+                      tabindex="-1" data-filtro="reconocimiento">Reconocimientos <span class="novedades-tab__n">(2)</span></button>
+              <button type="button" class="novedades-tab" role="tab"
+                      id="nv-tab-articulo" aria-controls="nv-mosaico" aria-selected="false"
+                      tabindex="-1" data-filtro="articulo">Artículos <span class="novedades-tab__n">(2)</span></button>
+          </div>
         </div>
-        <div class="novedades-grid novedades-grid--posts">
-          <article class="novedad">
+
+        <div class="novedades-mosaico" id="nv-mosaico" role="tabpanel" aria-labelledby="nv-tab-todo">
+          <article class="embed-card" data-categoria="demo">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7508178086362779649?collapsed=1"
-                    title="Publicación de Evolutek en LinkedIn"
+                    title="Publicación de LinkedIn: módulo MCP de N3uron e inteligencia artificial"
+                    width="100%" height="450" data-h504="541"
                     loading="lazy" allowfullscreen></iframe>
           </article>
-          <article class="novedad">
+          <article class="embed-card" data-categoria="demo">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7471591378880483328?collapsed=1"
-                    title="Publicación de Evolutek en LinkedIn"
+                    title="Publicación de LinkedIn: configuración con OpenCode y FrameworX de Tatsoft"
+                    width="100%" height="450" data-h504="541"
                     loading="lazy" allowfullscreen></iframe>
           </article>
-          <article class="novedad">
+          <article class="embed-card" data-categoria="reconocimiento">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7452022277589581825?collapsed=1"
-                    title="Publicación de Evolutek en LinkedIn"
+                    title="Publicación de LinkedIn: tercer puesto en el DEMO Contest LATAM 2026 de Vertix"
+                    width="100%" height="488" data-h504="593"
                     loading="lazy" allowfullscreen></iframe>
           </article>
-          <article class="novedad">
+          <article class="embed-card" data-categoria="reconocimiento">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7389023482623418368?collapsed=1"
-                    title="Publicación de Evolutek en LinkedIn"
+                    title="Publicación de LinkedIn: certificación de Flow Software"
+                    width="100%" height="450" data-h504="541"
                     loading="lazy" allowfullscreen></iframe>
           </article>
-          <article class="novedad">
+          <article class="embed-card" data-categoria="articulo">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7396686606654398464?collapsed=1"
-                    title="Publicación de Evolutek en LinkedIn"
+                    title="Publicación de LinkedIn: Unified Architecture Framework (UAF)"
+                    width="100%" height="451" data-h504="542"
                     loading="lazy" allowfullscreen></iframe>
           </article>
-          <article class="novedad">
+          <article class="embed-card" data-categoria="articulo">
             <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7385709781849698304?collapsed=1"
-                    title="Publicación de Evolutek en LinkedIn"
+                    title="Publicación de LinkedIn: escalabilidad y deuda técnica"
+                    width="100%" height="488" data-h504="593"
                     loading="lazy" allowfullscreen></iframe>
           </article>
         </div>
-        <p class="novedades-pie">
-          <a href="https://www.linkedin.com/company/evolutek-srl/" target="_blank" rel="noopener noreferrer">Ver todo en LinkedIn</a>
+
+        <p class="novedades-cta">
+          <a class="novedades-boton" href="https://www.linkedin.com/company/evolutek-srl/" target="_blank" rel="noopener noreferrer">Ver todas las publicaciones en LinkedIn <span aria-hidden="true">↗</span></a>
         </p>
       </div>
     </section>

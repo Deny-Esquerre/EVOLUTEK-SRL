@@ -18,6 +18,7 @@
     'js/modal.js',
     'js/tooltip.js',
     'js/gallery.js',
+    'js/novedades.js',
     'js/boot.js'
   ];
 

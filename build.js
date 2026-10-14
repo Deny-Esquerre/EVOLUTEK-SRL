@@ -33,7 +33,7 @@ const CSS_ORDER = [
 // includes.js NO va al bundle de producción.
 const JS_ORDER = [
   'ready.js', 'nav.js', 'reveal.js', 'strategy-rail.js', 'hero.js',
-  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'gallery.js', 'boot.js'
+  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'gallery.js', 'novedades.js', 'boot.js'
 ];
 
 // Presentes en todas las rutas. Las páginas (partials/page-*.html) NO van en el

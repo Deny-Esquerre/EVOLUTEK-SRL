@@ -1,85 +1,251 @@
 /* ============================================
    NOVEDADES — PUBLICACIONES DE LINKEDIN
    ============================================
-   Cada publicación es un iframe del incrustado oficial de LinkedIn
-   (linkedin.com/embed/feed/update/...), que declara frame-ancestors *, es
-   decir, permite expresamente ir dentro de otra web.
+   Cada publicación es un iframe del incrustado oficial de LinkedIn, que
+   declara frame-ancestors *, es decir, permite expresamente ir dentro de
+   otra web. Su contenido no se toca: aquí solo se enmarca y se distribuye.
 
-   El alto va fijo y escrito a mano: el iframe es de otro dominio, así que no
-   podemos medir su contenido ni él nos avisa de cuánto ocupa. Los valores son
-   los que da LinkedIn al copiar el código, medidos a 504px de ancho.
+   Sobre el alto de los iframes: al ser de otro dominio no podemos medir su
+   contenido ni él nos avisa de cuánto ocupa. El alto lo calcula
+   js/novedades.js a partir del ancho real de la columna; lo que va en el
+   atributo height del HTML es el valor para la columna de escritorio, que
+   es lo que se ve si el script no llega a ejecutarse. */
 
-   Por eso las publicaciones van en dos bloques en vez de mezcladas: las dos
-   que llevan vídeo piden 876px de alto y las demás rondan los 541-593. Juntas
-   descuadraban la rejilla; separadas, cada bloque es homogéneo y las filas
-   casan. El alto se declara una vez por bloque y lo heredan sus tarjetas. */
+.novedades-seccion {
+  --nv-navy: #17195E;
+  --nv-texto: #4E536C;
+  --nv-meta: #6A6F88;
+  --nv-meta-claro: #8A8FA8;
+  --nv-borde: #E3E5EE;
+  --nv-linea: #C9CCDA;
+  --nv-foco: #2F5BEA;
+  padding: 120px 0;
+}
 
-.novedades-grid {
+.novedades-seccion--publicaciones {
+  background: #F6F7FA;
+  border-top: 1px solid #E9EBF2;
+}
+
+/* ---- Encabezados: alineados a la izquierda, sin píldora centrada ---- */
+.novedades-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 18px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--nv-meta);
+}
+
+.novedades-eyebrow__linea {
+  width: 40px;
+  height: 1px;
+  background: var(--nv-linea);
+}
+
+.novedades-eyebrow__n { color: var(--nv-meta); }
+
+.novedades-h2 {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--nv-navy);
+  text-align: left;
+}
+
+.novedades-texto {
+  margin: 18px 0 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--nv-texto);
+  max-width: 44ch;
+}
+
+/* ---- Sección 1: introducción + dos vídeos ---- */
+.novedades-video-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 30px;
-  max-width: 1070px;
-  margin: 0 auto;
-  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: start;
 }
 
-.novedades-grid--video { --novedad-alto: 876px; }
-
-/* El mayor de los seis (593) para todos: un par de ellas quedan con algo de
-   aire debajo, a cambio de que las tres filas casen. */
-.novedades-grid--posts { --novedad-alto: 593px; }
-
-.novedad {
-  width: 100%;
-  max-width: 504px;
+/* El enlace queda pegado abajo, a la altura del pie de los vídeos */
+.novedades-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  gap: 32px;
 }
 
-.novedad iframe {
+.novedades-enlace {
+  align-self: flex-start;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--nv-navy);
+  border-bottom: 1px solid var(--nv-navy);
+  padding-bottom: 2px;
+  transition: opacity 0.25s ease;
+}
+
+.novedades-enlace:hover { opacity: 0.6; }
+
+/* ---- Sección 2: cabecera con pestañas ---- */
+.novedades-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 28px;
+  margin-bottom: 44px;
+}
+
+.novedades-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  border-bottom: 1px solid #DCDFEA;
+}
+
+.novedades-tab {
+  position: relative;
+  bottom: -1px;                 /* el filete activo se apoya en el del grupo */
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 12px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--nv-meta);
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.novedades-tab:hover { color: var(--nv-navy); }
+
+.novedades-tab.is-active {
+  color: var(--nv-navy);
+  border-bottom-color: var(--nv-navy);
+}
+
+.novedades-tab__n { color: var(--nv-meta-claro); font-weight: 500; }
+
+/* ---- El mosaico ----
+   Columnas CSS y no rejilla: cada publicación mide lo que mide, y con
+   columnas se coloca donde cabe en lugar de estirar toda la fila hasta la
+   más alta, que es lo que dejaba huecos. */
+.novedades-mosaico {
+  columns: 3;
+  column-gap: 28px;
+}
+
+/* ---- El marco de cada inserción ---- */
+.embed-card {
+  break-inside: avoid;
+  margin: 0 0 28px;
+  background: #FFFFFF;
+  border: 1px solid var(--nv-borde);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.embed-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(23, 25, 94, 0.10);
+}
+
+.embed-card iframe {
   display: block;
   width: 100%;
-  /* +24px de margen: a menos de 504px de ancho el texto ocupa alguna línea más */
-  height: calc(var(--novedad-alto, 560px) + 24px);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--white);
+  border: 0;
 }
 
-.novedades-pie {
-  margin-top: 34px;
+/* En la rejilla de vídeos no hay columnas que evitar */
+.novedades-video-grid .embed-card { margin: 0; }
+
+/* ---- Botón de cierre ---- */
+.novedades-cta {
+  margin: 20px 0 0;
   text-align: center;
 }
 
-.novedades-pie a {
+.novedades-boton {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  height: 48px;
+  padding: 0 26px;
+  border: 1px solid var(--nv-navy);
+  border-radius: 8px;
   font-family: 'Barlow', sans-serif;
   font-weight: 600;
-  font-size: 0.92rem;
-  color: var(--accent);
-  transition: var(--transition);
+  font-size: 15px;
+  color: var(--nv-navy);
+  background: transparent;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
-.novedades-pie a:hover { color: var(--navy); }
-
-.novedades-pie a::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: rotate(45deg);
+.novedades-boton:hover {
+  background: var(--nv-navy);
+  color: #FFFFFF;
 }
 
-/* Dos columnas de 504px no caben por debajo de ~1070px con los márgenes del
-   contenedor, así que antes de que se estrechen de más pasan a una. */
-@media (max-width: 1060px) {
-  .novedades-grid { grid-template-columns: 1fr; gap: 26px; }
+/* ---- Foco visible ---- */
+.novedades-seccion :is(a, button):focus-visible {
+  outline: 2px solid var(--nv-foco);
+  outline-offset: 3px;
 }
 
-/* En una sola columna estrecha el ancho baja a ~312px y el contenido crece
-   bastante más, así que el margen de alto tiene que ser mayor. */
-@media (max-width: 560px) {
-  .novedades-grid { gap: 22px; }
-  .novedad iframe { height: calc(var(--novedad-alto, 560px) + 110px); }
+/* ============================================
+   PANTALLAS INTERMEDIAS Y ESTRECHAS
+   ============================================ */
+@media (max-width: 1040px) {
+  .novedades-seccion { padding: 88px 0; }
+
+  .novedades-video-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* La introducción pasa a ocupar el ancho entero, encima de los vídeos */
+  .novedades-intro {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    min-height: 0;
+  }
+
+  .novedades-texto { max-width: 52ch; }
+
+  .novedades-mosaico { columns: 2; }
+}
+
+@media (max-width: 640px) {
+  .novedades-seccion { padding: 64px 0; }
+
+  .novedades-h2 { font-size: 32px; }
+
+  .novedades-video-grid { grid-template-columns: 1fr; gap: 24px; }
+
+  .novedades-intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  .novedades-cabecera { gap: 22px; margin-bottom: 32px; }
+
+  .novedades-tabs { gap: 18px; }
+
+  .novedades-mosaico { columns: 1; }
+
+  .embed-card { margin-bottom: 22px; }
 }

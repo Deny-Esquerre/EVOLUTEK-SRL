@@ -114,17 +114,39 @@
 .footer-privacy a { text-decoration: underline; }
 
 @media (max-width: 900px) {
-  .footer { padding: 60px 0 26px; }
+  .footer { padding: 44px 0 22px; }
   .footer-inner {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 28px;
+    padding-bottom: 28px;
     text-align: center;
   }
-  .footer p { margin: 0 auto; }
-  .footer-logo { margin: 0 auto 20px; display: block; }
-  .social-icons { justify-content: center; }
-  .footer-contact li { justify-content: center; }
-  .footer-contact svg { margin-top: 1px; }
+  .footer p { margin: 0 auto; font-size: 0.88rem; line-height: 1.6; }
+  .footer-logo { height: 44px; margin: 0 auto 14px; display: block; }
+  .footer-col__title { margin-bottom: 14px; }
+
+  /* Navegación en fila que se parte, no en columna: en vertical son seis
+     filas que estiran el pie sin aportar nada; así caben en dos líneas. */
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 11px 20px;
+  }
+  .footer-links li { margin-bottom: 0; }
   .footer-links a:hover { transform: none; }
-  .footer-bottom { justify-content: center; text-align: center; }
+
+  .social-icons { justify-content: center; gap: 10px; margin-top: 18px; }
+  .social-icons a { width: 36px; height: 36px; }
+
+  .footer-contact li { justify-content: center; margin-bottom: 12px; }
+  .footer-contact li:last-child { margin-bottom: 0; }
+  .footer-contact svg { margin-top: 1px; }
+
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+    padding-top: 18px;
+    gap: 6px;
+  }
 }

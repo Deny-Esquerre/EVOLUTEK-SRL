@@ -19,9 +19,6 @@
   margin: 0 auto;
 }
 
-/* La copia de los logos solo sirve para el bucle del carrusel en móvil */
-.logo-row--clone { display: none; }
-
 .logo-row {
   display: flex;
   flex-wrap: wrap;
@@ -31,6 +28,11 @@
      caja fija, así que el espacio óptico entre marcas no cambia. */
   gap: 36px 72px;
 }
+
+/* La copia de los logos solo existe para el bucle del carrusel en móvil.
+   Va DESPUÉS de .logo-row a propósito: el clon lleva las dos clases y, a
+   igual especificidad, gana la última regla del archivo. */
+.logo-row--clone { display: none; }
 
 /* Tableta: se aprieta el hueco antes que partir la fila de cuatro */
 @media (max-width: 960px) and (min-width: 641px) {

@@ -12,10 +12,7 @@
    ninguna de las dos fichas los usa ya. */
 .product--edge .product-hero { padding: 104px 0 30px; }
 
-.product--edge .product-hero__logo {
-  max-height: 92px;
-  max-width: 300px;
-}
+.product--edge { --hero-logo-h: 92px; --hero-logo-w: 300px; }
 
 /* ---- Texto a dos columnas ---- */
 .product--edge .product-info-section { padding: 46px 0 36px; }

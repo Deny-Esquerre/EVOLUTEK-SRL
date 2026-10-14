@@ -7,7 +7,7 @@
 /* ---- Encabezado centrado y compacto ---- */
 .product--dataops .product-hero { padding: 104px 0 24px; }
 
-.product--dataops .product-hero__logo { max-height: 104px; }
+.product--dataops { --hero-logo-h: 104px; }
 
 .product--dataops .product-hero__inner { gap: 18px; }
 

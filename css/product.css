@@ -35,13 +35,19 @@
 }
 
 /* Sirve tanto para <img> como para un <svg> incrustado en el encabezado.
-   height:auto es lo que conserva la proporción cuando max-width recorta. */
+   height:auto es lo que conserva la proporción cuando max-width recorta.
+
+   El tamaño llega por variables en vez de por reglas que compiten entre sí:
+   cada maquetación de familia y cada modificador de ficha fijan --hero-logo-w
+   y --hero-logo-h en la raíz de la página, y la consulta de medios de más
+   abajo las vuelve a fijar en .product-hero, que está más cerca del logotipo.
+   Así la excepción de móvil gana sin pelear por especificidad. */
 .product-hero__logo {
   display: block;
   width: auto;
   height: auto;
-  max-height: 150px;
-  max-width: 480px;
+  max-height: var(--hero-logo-h, 150px);
+  max-width: var(--hero-logo-w, 480px);
 }
 
 /* Flow entrega su logotipo en negativo: las letras son blancas y sobre el
@@ -87,14 +93,29 @@
 /* Escala del logotipo. El tamaño que fija cada familia sirve para casi todas
    las marcas; un logotipo de trazo muy ancho queda desproporcionado y hay que
    bajarlo un punto (md) o dos (sm). */
-.page.product--logo-md .product-hero__logo {
-  max-height: 92px;
-  max-width: 390px;
-}
+.page.product--logo-md { --hero-logo-h: 92px; --hero-logo-w: 390px; }
 
-.page.product--logo-sm .product-hero__logo {
-  max-height: 68px;
-  max-width: 230px;
+.page.product--logo-sm { --hero-logo-h: 68px; --hero-logo-w: 230px; }
+
+/* ---- Móvil: manda el ancho de la pantalla ----
+   Un logotipo de 390px no cabe en un teléfono de 360, y con la placa de Flow
+   todavía menos: Tatsoft y Flow se salían del contenedor. Al fijar las
+   variables en .product-hero, más cerca del logotipo que la raíz de la
+   página, esto gana a cualquier familia o modificador. */
+@media (max-width: 600px) {
+  .product-hero {
+    --hero-logo-w: min(100%, 260px);
+    --hero-logo-h: 62px;
+  }
+
+  /* Con la placa, el relleno pasa a contar dentro de la caja para que el
+     conjunto no se salga, y el alto se compensa para que el logotipo no quede
+     diminuto dentro de ella. */
+  .product-hero__logo--plate {
+    box-sizing: border-box;
+    padding: 11px 16px;
+    max-height: calc(var(--hero-logo-h) + 22px);
+  }
 }
 
 /* Video responsivo */

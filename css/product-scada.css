@@ -8,7 +8,7 @@
 /* ---- Encabezado centrado, más compacto, con banda de acento ---- */
 .product--scada .product-hero { padding: 104px 0 26px; }
 
-.product--scada .product-hero__logo { max-height: 112px; }
+.product--scada { --hero-logo-h: 112px; }
 
 .product--scada .product-hero__cat {
   position: relative;

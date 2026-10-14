@@ -170,6 +170,16 @@
 .product-steps-section { padding: 48px 0 96px; }
 .product-figure-section { padding: 40px 0 8px; }
 
+/* Movil: los 96px tras los pasos mas los 38 de la caja de contacto eran 134
+   seguidos de nada. */
+@media (max-width: 760px) {
+  .product-steps-section { padding-bottom: 52px; }
+}
+
+@media (max-width: 480px) {
+  .product-steps-section { padding-bottom: 40px; }
+}
+
 /* La captura abre la ficha, antes del texto. La usan la maquetación SCADA y
    cualquier otra ficha cuyo producto se entienda mejor viéndolo. */
 .product-showcase { padding: 38px 0 10px; }

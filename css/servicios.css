@@ -80,3 +80,14 @@
   .service-detail { grid-template-columns: 1fr; }
   .service-detail.reversed { direction: ltr; }
 }
+
+/* Movil: entre servicios basta menos aire, y el ultimo no suma su margen al
+   relleno de la seccion (eran 280px hasta "Seis frentes de trabajo"). */
+@media (max-width: 760px) {
+  .service-detail { margin-bottom: 52px; }
+  .service-detail:last-child { margin-bottom: 0; }
+}
+
+@media (max-width: 480px) {
+  .service-detail { margin-bottom: 44px; }
+}

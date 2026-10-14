@@ -268,7 +268,7 @@
 
 /* ---- Teléfonos ---- */
 @media (max-width: 640px) {
-  .novedades-seccion { padding: 64px 0; }
+  .novedades-seccion { padding: 48px 0; }
 
   .novedades-h2 { font-size: 32px; }
 
@@ -293,7 +293,7 @@
    263px y un teléfono de 360 solo deja 312 útiles, así que con el relleno del
    botón no cabía en una línea. Deja de tener alto fijo y el texto se parte. */
 @media (max-width: 480px) {
-  .novedades-seccion { padding: 52px 0; }
+  .novedades-seccion { padding: 40px 0; }
 
   .novedades-h2 { font-size: 28px; }
 

@@ -5,6 +5,18 @@
   padding: 100px 0;
 }
 
+/* En el telefono los 100px por lado se suman en cada costura: 200px de nada
+   entre dos secciones seguidas. Va aqui, antes que el resto de hojas, para que
+   los ajustes propios de cada pagina (about.css, responsive.css) sigan
+   mandando sobre este valor general. */
+@media (max-width: 760px) {
+  .section { padding: 56px 0; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 44px 0; }
+}
+
 .section-header {
   text-align: center;
   margin-bottom: 60px;

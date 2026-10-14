@@ -96,6 +96,25 @@
    proporción del archivo no es exactamente 16:9. */
 .video-embed video { object-fit: contain; background: var(--navy-dark); }
 
+/* Demo interactiva incrustada. Pide más alto y más ancho que un vídeo: el
+   visitante navega por la interfaz real, no mira una grabación. */
+.video-embed--demo {
+  max-width: 1040px;
+  aspect-ratio: 16 / 10;
+}
+
+.embed-hint {
+  max-width: 1040px;
+  margin: 14px auto 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+@media (max-width: 640px) {
+  .video-embed--demo { aspect-ratio: 4 / 5; }
+}
+
 /* Ritmo vertical: logo -> video -> texto */
 .product-video-section { padding: 32px 0 16px; }
 .product-info-section { padding: 16px 0 48px; }

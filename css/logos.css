@@ -2,6 +2,9 @@
    LOGO GRID (estático)
    ============================================ */
 .logo-strip {
+  /* Medida única de la caja de cada logo */
+  --logo-box-w: 168px;
+  --logo-box-h: 48px;
   /* Mismo espacio por encima y por debajo de los logos */
   padding: 32px 0;
   background: var(--white);
@@ -24,9 +27,19 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 40px 112px;
+  /* Hueco menor que antes: ahora cada logo aporta su propio aire dentro de la
+     caja fija, así que el espacio óptico entre marcas no cambia. */
+  gap: 36px 72px;
 }
 
+/* Tableta: se aprieta el hueco antes que partir la fila de cuatro */
+@media (max-width: 960px) and (min-width: 641px) {
+  .logo-row { gap: 32px 44px; }
+}
+
+/* Todos los logos ocupan exactamente la misma caja: cada imagen se escala
+   dentro de ella con object-fit:contain, sin deformarse. Así una marca ancha y
+   otra compacta pesan lo mismo en la composición. */
 .logo-item {
   padding: 0;
   border: none;
@@ -35,13 +48,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 46px;
+  width: var(--logo-box-w);
+  height: var(--logo-box-h);
 }
 
 .logo-item img {
-  height: 38px;
-  width: auto;
-  max-width: 190px;
+  width: 100%;
+  height: 100%;
+  max-width: none;
   object-fit: contain;
   filter: grayscale(100%) opacity(0.55);
   transition: filter 0.35s ease, transform 0.35s ease;
@@ -59,11 +73,12 @@
   border-radius: 4px;
 }
 
+/* Flow necesita fondo oscuro, pero mantiene la caja común: el recuadro crece
+   hacia dentro con el padding, no hacia fuera. */
 .logo-item--dark {
   background: #0d0d12;
   border-radius: 8px;
-  padding: 6px 22px;
-  height: 58px;
+  padding: 7px 16px;
 }
 
 .logo-item--dark img {
@@ -89,6 +104,8 @@
    pero las dos series sí). */
 @media (max-width: 640px) {
   .logo-strip {
+    --logo-box-w: 148px;
+    --logo-box-h: 44px;
     overflow: hidden;   /* recorta la pista en los bordes de la pantalla */
   }
 
@@ -108,10 +125,7 @@
   .logo-item {
     flex: 0 0 auto;
     margin-right: 48px;
-    height: 54px;
   }
-
-  .logo-item img { height: 42px; }
 
   /* Se detiene mientras se toca o se mantiene el foco en un logo */
   .logo-grid:active,

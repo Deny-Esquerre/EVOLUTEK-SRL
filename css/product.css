@@ -52,6 +52,23 @@
   opacity: 0.65;
 }
 
+/* Encabezado solo con el logotipo: centrado, sin etiqueta de categoría y sin
+   el filete lateral de la maquetación "edge". Para marcas cuyo logotipo ya
+   dice de qué va el producto. */
+.product--hero-solo .product-hero__inner {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 0;
+  border-left: 0;
+}
+
+.product--hero-solo .product-hero__logo {
+  max-height: 68px;
+  max-width: 230px;
+}
+
 /* Video responsivo */
 .video-embed {
   position: relative;

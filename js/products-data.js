@@ -55,13 +55,5 @@ const PRODUCTS = {
     icon: 'logos/flowsoftware.png',
     logo: 'logos/flowsoftware_Logo.png',
     desc: 'Solución de integración y movimiento de datos industriales. Conecta sistemas, bases de datos y plataformas para mantener un flujo de información continuo, confiable y en tiempo real.'
-  },
-  cygnet: {
-    name: 'Cygnet',
-    cat: 'SCADA & Telemetría',
-    tip: 'SCADA y telemetría para petróleo y gas y activos remotos.',
-    icon: 'logos/cygnet.png',
-    logo: 'logos/cygnet.png',
-    desc: 'Sistema SCADA y de telemetría para el monitoreo remoto y la gestión de activos distribuidos, facilitando la supervisión y el control de operaciones industriales geográficamente dispersas.'
   }
 };

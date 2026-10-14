@@ -2,7 +2,7 @@
    FICHA DE PRODUCTO — BASE COMÚN
    ============================================
    Sustituye a los 8 ficheros canary/highbyte/kepware/ignition/n3uron/
-   tatsoft/flow/cygnet.css, que eran idénticos salvo el prefijo del selector.
+   tatsoft/flow.css, que eran idénticos salvo el prefijo del selector.
 
    Sobre esta base se montan tres maquetaciones (product-edge.css,
    product-scada.css y product-dataops.css). Canary usa la base tal cual. */

@@ -61,7 +61,7 @@ const ROUTES = [
   {
     dir: 'proyectos', page: 'productos',
     title: 'Productos — EVOLUTEK',
-    description: 'Portafolio de productos Evolutek: Canary Labs, HighByte, Kepware, Ignition, N3uron, Tatsoft, Flow Software y Cygnet para la Industria 4.0.'
+    description: 'Portafolio de productos Evolutek: Canary Labs, HighByte, Kepware, Ignition, N3uron, Tatsoft y Flow Software para la Industria 4.0.'
   },
   {
     dir: 'proyectos/canary', page: 'canary',
@@ -97,11 +97,6 @@ const ROUTES = [
     dir: 'proyectos/flow', page: 'flow',
     title: 'Flow Software — Integración de datos | EVOLUTEK',
     description: 'Flow Software: integración y movimiento de datos industriales. Conecta sistemas, bases de datos y plataformas en tiempo real.'
-  },
-  {
-    dir: 'proyectos/cygnet', page: 'cygnet',
-    title: 'Cygnet — SCADA y Telemetría | EVOLUTEK',
-    description: 'Cygnet: sistema SCADA y de telemetría para el monitoreo remoto y la gestión de activos distribuidos en petróleo y gas.'
   },
   {
     dir: 'servicios', page: 'servicios',

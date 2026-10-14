@@ -104,9 +104,9 @@ const ROUTES = [
     description: 'Servicios de Evolutek: consultoría, integración de sistemas, automatización, IoT y analítica avanzada para la Industria 4.0.'
   },
   {
-    dir: 'clientes', page: 'clientes',
-    title: 'Clientes — EVOLUTEK',
-    description: 'Clientes de Evolutek: empresas industriales que confían en nosotros para su transformación digital e Industria 4.0.'
+    dir: 'novedades', page: 'novedades',
+    title: 'Novedades — EVOLUTEK',
+    description: 'Novedades de Evolutek: proyectos, eventos y anuncios publicados en LinkedIn sobre automatización industrial, IIoT e Industria 4.0.'
   },
   {
     dir: 'contacto', page: 'contacto',

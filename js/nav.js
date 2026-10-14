@@ -13,7 +13,7 @@ const PAGE_ROUTES = {
   tatsoft: '/proyectos/tatsoft',
   flow: '/proyectos/flow',
   servicios: '/servicios',
-  clientes: '/clientes',
+  novedades: '/novedades',
   contacto: '/contacto'
 };
 
@@ -29,7 +29,7 @@ const PAGE_TITLES = {
   tatsoft: 'Tatsoft (FactoryStudio) — SCADA, HMI y OEE | EVOLUTEK',
   flow: 'Flow Software — Integración de datos | EVOLUTEK',
   servicios: 'Servicios — EVOLUTEK',
-  clientes: 'Clientes — EVOLUTEK',
+  novedades: 'Novedades — EVOLUTEK',
   contacto: 'Contacto — EVOLUTEK'
 };
 

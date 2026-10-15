@@ -22,7 +22,7 @@ const DIST = path.join(ROOT, 'dist');
 const CSS_ORDER = [
   'base.css', 'navbar.css', 'hero.css', 'page-hero.css', 'sections.css',
   'estrategia.css', 'about.css', 'partners.css', 'logos.css', 'modal.css',
-  'servicios.css', 'transformacion.css', 'novedades.css', 'contacto.css', 'nosotros.css',
+  'servicios.css', 'fiscalizacion.css', 'transformacion.css', 'novedades.css', 'contacto.css', 'nosotros.css',
   'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
   'product-stair.css', 'product-ketsol.css',
   'cta.css', 'error.css', 'footer.css', 'animations.css', 'responsive.css'
@@ -102,6 +102,11 @@ const ROUTES = [
     dir: 'servicios', page: 'servicios',
     title: 'Servicios — EVOLUTEK',
     description: 'Servicios de Evolutek: consultoría, integración de sistemas, automatización, IoT y analítica avanzada para la Industria 4.0.'
+  },
+  {
+    dir: 'servicios/fiscalizacion-hidrocarburos', page: 'fiscalizacion',
+    title: 'Fiscalización de Hidrocarburos — Servicios | EVOLUTEK',
+    description: 'Fiscalización de hidrocarburos con Evolutek: diseño, mantenimiento preventivo y correctivo de puntos de medición de gas y Unidades LACT, bajo estándares AGA y API.'
   },
   {
     dir: 'servicios/transformacion-digital', page: 'transformacion',

@@ -22,7 +22,7 @@ const DIST = path.join(ROOT, 'dist');
 const CSS_ORDER = [
   'base.css', 'navbar.css', 'hero.css', 'page-hero.css', 'sections.css',
   'estrategia.css', 'about.css', 'partners.css', 'logos.css', 'modal.css',
-  'servicios.css', 'novedades.css', 'contacto.css', 'nosotros.css',
+  'servicios.css', 'transformacion.css', 'novedades.css', 'contacto.css', 'nosotros.css',
   'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
   'product-stair.css', 'product-ketsol.css',
   'cta.css', 'error.css', 'footer.css', 'animations.css', 'responsive.css'
@@ -102,6 +102,11 @@ const ROUTES = [
     dir: 'servicios', page: 'servicios',
     title: 'Servicios — EVOLUTEK',
     description: 'Servicios de Evolutek: consultoría, integración de sistemas, automatización, IoT y analítica avanzada para la Industria 4.0.'
+  },
+  {
+    dir: 'servicios/transformacion-digital', page: 'transformacion',
+    title: 'Transformación Digital — Servicios | EVOLUTEK',
+    description: 'Transformación digital industrial con Evolutek: de los sistemas existentes a la analítica avanzada e IA, con N3uron, Ignition, Canary, Kepware y Flow Software.'
   },
   {
     dir: 'novedades', page: 'novedades',

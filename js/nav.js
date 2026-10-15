@@ -13,6 +13,7 @@ const PAGE_ROUTES = {
   flow: '/proyectos/flow',
   ketsol: '/proyectos/ketsol',
   servicios: '/servicios',
+  transformacion: '/servicios/transformacion-digital',
   novedades: '/novedades',
   contacto: '/contacto'
 };
@@ -29,6 +30,7 @@ const PAGE_TITLES = {
   flow: 'Flow Software — Integración de datos | EVOLUTEK',
   ketsol: 'Ketsol KMS — Plataforma de manufactura | EVOLUTEK',
   servicios: 'Servicios — EVOLUTEK',
+  transformacion: 'Transformación Digital — Servicios | EVOLUTEK',
   novedades: 'Novedades — EVOLUTEK',
   contacto: 'Contacto — EVOLUTEK'
 };

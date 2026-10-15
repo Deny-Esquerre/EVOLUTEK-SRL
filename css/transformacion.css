@@ -1,0 +1,232 @@
+/* ============================================
+   SERVICIO — TRANSFORMACIÓN DIGITAL
+   ============================================
+   Banner y cierre reutilizan .page-hero--video y .sv-cierre. Aquí van la
+   presentación, la ruta de madurez en cinco etapas (bloques que suben como
+   una escalera, del 01 al 05) y la marquesina de plataformas. */
+
+/* ---- Presentación ---- */
+.td-intro { padding: 96px 0 0; }
+
+.td-intro p {
+  max-width: 900px;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.55;
+  color: #2E2F45;
+}
+
+/* ---- Ruta de madurez ---- */
+.td-ruta { padding: 64px 0 96px; }
+
+.td-ruta__lede {
+  margin-bottom: 32px;
+  font-size: 1.1rem;
+  color: #5E5F69;
+}
+
+.td-ruta__etapas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.td-etapa {
+  --td-fondo: var(--gray-bg);
+  --td-texto: #45465A;
+  --td-titulo: var(--navy);
+  --td-num: var(--accent);
+  --td-placa: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 20px;
+  border-radius: 14px;
+  background: var(--td-fondo);
+  color: var(--td-texto);
+}
+
+/* La subida: cada etapa 40px más alta que la anterior. Alto fijo, no
+   mínimo, para que un texto que ocupe más líneas no rompa el escalón: la
+   placa de logotipos es la que cede o crece. */
+.td-etapa:nth-child(1) { height: 380px; }
+.td-etapa:nth-child(2) { height: 420px; --td-fondo: #E6E7F7; }
+.td-etapa:nth-child(3) { height: 460px; --td-fondo: #C9CBF2; --td-texto: #2E2F45; --td-num: var(--navy); --td-placa: rgba(255, 255, 255, 0.7); }
+.td-etapa:nth-child(4) { height: 500px; --td-fondo: var(--accent); --td-texto: #EEEFFD; --td-num: var(--white); --td-placa: rgba(255, 255, 255, 0.12); }
+.td-etapa:nth-child(5) { height: 540px; --td-fondo: var(--navy); --td-texto: #D5D7F2; --td-num: #A9ACF5; --td-placa: rgba(255, 255, 255, 0.08); }
+.td-etapa--oscura { --td-titulo: var(--white); }
+
+.td-etapa__num {
+  font-family: 'Saira', sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--td-num);
+}
+
+.td-etapa__nombre {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.12rem;
+  color: var(--td-titulo);
+}
+
+.td-etapa__desc { font-size: 0.95rem; line-height: 1.5; }
+
+/* La placa de logotipos ocupa el espacio que deja la subida */
+.td-etapa__marcas {
+  flex: 1;
+  min-height: 72px;
+  margin-top: 4px;
+  padding: 16px 14px;
+  border-radius: 10px;
+  background: var(--td-placa);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Logotipos "en plomo": silueta gris, clara sobre los fondos oscuros */
+.td-etapa__marcas img {
+  display: block;
+  max-width: 100%;
+  max-height: 30px;
+  width: auto;
+  filter: grayscale(1) brightness(0);
+  opacity: 0.5;
+}
+
+.td-etapa--oscura .td-etapa__marcas img {
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0.72;
+}
+
+.td-ia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.td-ia__iconos {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.td-etapa__marcas--ia img { width: 24px; height: 24px; max-height: none; }
+
+.td-ia__rotulo {
+  font-family: 'Saira', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: #A6A8B8;
+  text-align: center;
+}
+
+.td-etapa__habilita { font-size: 0.88rem; line-height: 1.5; }
+.td-etapa__habilita strong { color: var(--td-titulo); }
+
+/* ---- Plataformas: marquesina ---- */
+.td-plataformas {
+  border-top: 1px solid rgba(25, 26, 85, 0.08);
+  border-bottom: 1px solid rgba(25, 26, 85, 0.08);
+}
+
+.td-plataformas__inner {
+  padding: 64px 24px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  text-align: center;
+}
+
+.td-plataformas__texto {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.td-plataformas__texto p { font-size: 1.1rem; line-height: 1.6; color: #45465A; }
+
+.td-plataformas__kicker {
+  font-family: 'Saira', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray) !important;
+}
+
+.td-marcas {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.td-marcas__pista {
+  display: flex;
+  width: max-content;
+  animation: tdMarquesina 40s linear infinite;
+}
+
+.td-marcas:hover .td-marcas__pista { animation-play-state: paused; }
+
+.td-marcas__serie {
+  list-style: none;
+  margin: 0;
+  padding: 0 44px;
+  display: flex;
+  align-items: center;
+  gap: 88px;
+}
+
+.td-marcas__serie a {
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+.td-marcas__serie img {
+  display: block;
+  height: 34px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0);
+  opacity: 0.42;
+  transition: opacity var(--transition);
+}
+
+.td-marcas__serie a:hover img { opacity: 0.75; }
+
+@keyframes tdMarquesina { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .td-marcas__pista { animation: none; }
+}
+
+/* ---- Pantallas estrechas ---- */
+@media (max-width: 1024px) {
+  .td-ruta__etapas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .td-etapa:nth-child(n) { height: auto; }
+  .td-etapa__marcas { min-height: 112px; }
+}
+
+@media (max-width: 640px) {
+  .td-intro { padding-top: 56px; }
+  .td-ruta { padding: 40px 0 64px; }
+  .td-ruta__etapas { grid-template-columns: 1fr; gap: 12px; }
+  .td-etapa__marcas { min-height: 88px; }
+  .td-plataformas__inner { padding: 48px 16px 40px; gap: 28px; }
+  .td-marcas__serie { gap: 56px; padding: 0 28px; }
+  .td-marcas__serie img { height: 28px; }
+}

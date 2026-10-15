@@ -24,7 +24,7 @@ const CSS_ORDER = [
   'estrategia.css', 'about.css', 'partners.css', 'logos.css', 'modal.css',
   'servicios.css', 'novedades.css', 'contacto.css', 'nosotros.css',
   'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
-  'product-snake.css', 'product-stair.css',
+  'product-stair.css',
   'cta.css', 'error.css', 'footer.css', 'animations.css', 'responsive.css'
 ];
 
@@ -61,17 +61,12 @@ const ROUTES = [
   {
     dir: 'proyectos', page: 'productos',
     title: 'Productos — EVOLUTEK',
-    description: 'Portafolio de productos Evolutek: Canary Labs, HighByte, Kepware, Ignition, N3uron, Tatsoft y Flow Software para la Industria 4.0.'
+    description: 'Portafolio de productos Evolutek: Canary Labs, Kepware, Ignition, N3uron, Tatsoft y Flow Software para la Industria 4.0.'
   },
   {
     dir: 'proyectos/canary', page: 'canary',
     title: 'Canary Labs — Historización de datos | EVOLUTEK',
     description: 'Canary Labs: plataforma de historización y análisis de datos de proceso. Almacena y visualiza años de información operativa a alta velocidad.'
-  },
-  {
-    dir: 'proyectos/highbyte', page: 'highbyte',
-    title: 'HighByte Intelligence Hub — DataOps Industrial | EVOLUTEK',
-    description: 'HighByte Intelligence Hub: orquestación de datos industriales para modelar, contextualizar y entregar datos de planta listos para analítica (UNS).'
   },
   {
     dir: 'proyectos/kepware', page: 'kepware',

@@ -8,14 +8,6 @@ const PRODUCTS = {
     logo: 'logos/CanaryLabs_Logo.svg',
     desc: 'Plataforma de historización y análisis de datos de proceso. Almacena y visualiza años de información operativa a alta velocidad para detectar tendencias, generar reportes y mejorar el desempeño de tu planta.'
   },
-  highbyte: {
-    name: 'HighByte Intelligence Hub',
-    cat: 'DataOps Industrial',
-    tip: 'DataOps industrial para contextualizar e integrar datos de planta.',
-    icon: 'logos/highbyte.png',
-    logo: 'logos/Highbite_Logo.webp',
-    desc: 'Software de orquestación de datos industriales. Modela, contextualiza y entrega datos de planta listos para analítica, habilitando arquitecturas UNS (Unified Namespace) e Industrial Data Hub.'
-  },
   kepware: {
     name: 'Kepware',
     cat: 'Conectividad Industrial',

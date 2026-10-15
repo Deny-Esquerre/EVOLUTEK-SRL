@@ -30,7 +30,7 @@
   flex: 1 1 460px;
   max-width: 640px;
   color: var(--navy);
-  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
 }
 
 .ns-cabecera p {
@@ -45,7 +45,7 @@
   max-width: 680px;
   font-family: 'TT Supermolot Neue Demi Bold', 'Saira', 'Manrope', sans-serif;
   font-weight: 600;
-  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
   line-height: 1.04;
   letter-spacing: -1px;
   color: var(--white);
@@ -248,7 +248,7 @@
 .ns-ciclo {
   position: relative;
   overflow: hidden;
-  padding: 104px 0 112px;
+  padding: 88px 0 96px;
   background-color: var(--navy-dark);
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
@@ -281,7 +281,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 26px 26px 28px;
+  padding: 22px 22px 24px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
@@ -290,12 +290,12 @@
 
 .ns-ciclo__etapas li:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.35); }
 
-.ns-ciclo__etapas .ns-plata { font-family: 'Saira', sans-serif; font-weight: 600; font-size: 44px; line-height: 1; }
+.ns-ciclo__etapas .ns-plata { font-family: 'Saira', sans-serif; font-weight: 600; font-size: 34px; line-height: 1; }
 
-.ns-ciclo__etapas strong { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 22px; line-height: 1.2; color: var(--white); }
+.ns-ciclo__etapas strong { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; line-height: 1.25; color: var(--white); }
 
 /* ---- 4. Cifras y certificaciones ---- */
-.ns-cifras { padding: 104px 0 96px; }
+.ns-cifras { padding: 88px 0 80px; }
 
 .ns-cifras__rejilla {
   display: grid;
@@ -304,7 +304,7 @@
 }
 
 .ns-cifra {
-  padding: 34px 32px;
+  padding: 28px 26px;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -315,7 +315,7 @@
   display: block;
   font-family: 'Saira', sans-serif;
   font-weight: 600;
-  font-size: 84px;
+  font-size: 64px;
   line-height: 0.9;
   letter-spacing: -3px;
   color: var(--navy);
@@ -328,12 +328,12 @@
   margin-top: 16px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.25;
   color: var(--navy);
 }
 
-.ns-cifra p { margin-top: 6px; color: #5E5F69; font-size: 15.5px; }
+.ns-cifra p { margin-top: 6px; color: #5E5F69; font-size: 15px; }
 
 .ns-cifra--destacada { background: var(--navy); border-color: var(--navy); box-shadow: 0 20px 60px rgba(25, 26, 85, 0.25); }
 .ns-cifra--destacada strong { color: var(--white); }
@@ -556,7 +556,7 @@
   .ns-cabecera { margin-bottom: 24px; gap: 10px; }
   .ns-cabecera h2 { font-size: 1.55rem; }
   .ns-cabecera p { font-size: 15.5px; }
-  .ns-cabecera--oscura h2 { font-size: 2rem; letter-spacing: -0.6px; }
+  .ns-cabecera--oscura h2 { font-size: 1.7rem; letter-spacing: -0.4px; }
 
   .ns-cadena { padding: 44px 0; }
   .ns-cadena__pasos { gap: 18px 10px; }
@@ -568,13 +568,13 @@
   .ns-ciclo__slash { left: -110px; bottom: -130px; width: 240px; height: 420px; border-radius: 30px; }
   .ns-ciclo__etapas { gap: 10px; }
   .ns-ciclo__etapas li { padding: 18px 16px; gap: 6px; }
-  .ns-ciclo__etapas .ns-plata { font-size: 32px; }
+  .ns-ciclo__etapas .ns-plata { font-size: 28px; }
   .ns-ciclo__etapas strong { font-size: 16px; }
 
   .ns-cifras { padding: 44px 0; }
   .ns-cifras__rejilla { grid-template-columns: 1fr; gap: 14px; }
   .ns-cifra { padding: 24px 22px; }
-  .ns-cifra__valor { font-size: 64px; letter-spacing: -2px; }
+  .ns-cifra__valor { font-size: 52px; letter-spacing: -1.5px; }
   .ns-cifra strong { font-size: 17px; margin-top: 10px; }
   .ns-cifra p { font-size: 15px; margin-top: 4px; }
   .ns-certs { grid-template-columns: 1fr; gap: 14px; margin-top: 14px; padding: 18px 20px; }

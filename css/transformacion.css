@@ -11,25 +11,25 @@
 .td-intro__cuerpo {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .td-intro__cuerpo p {
-  font-size: clamp(1.2rem, 2vw, 1.625rem);
-  line-height: 1.7;
-  color: #5E5F69;
+  /* Mismo tamaño que el texto de los bloques de Inicio */
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--gray);
 }
 
 /* ---- Ruta de madurez ---- */
 .td-ruta { padding: 64px 0 96px; }
 
 .td-ruta__lede {
-  max-width: 860px;
   margin-bottom: 32px;
-  font-size: clamp(1.2rem, 2vw, 1.625rem);
+  font-size: 1.05rem;
   font-weight: 700;
-  line-height: 1.5;
-  color: #000000;
+  line-height: 1.75;
+  color: var(--navy);
 }
 
 .td-ruta__etapas {

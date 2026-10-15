@@ -11,13 +11,14 @@
 .fz-intro__cuerpo {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .fz-intro__cuerpo p {
-  font-size: clamp(1.2rem, 2vw, 1.625rem);
-  line-height: 1.65;
-  color: #45465A;
+  /* Mismo tamaño que el texto de los bloques de Inicio */
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--gray);
 }
 
 /* ---- Tres etapas ilustradas ---- */

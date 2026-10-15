@@ -3,16 +3,34 @@
    ============================================
    Banner y cierre reutilizan .page-hero--video y .sv-cierre. Aquí van la
    presentación, la ruta de madurez en cinco etapas (bloques que suben como
-   una escalera, del 01 al 05) y la marquesina de plataformas. */
+   una escalera, del 01 al 05) y las tres razones para empezar. */
 
 /* ---- Presentación ---- */
 .td-intro { padding: 96px 0 0; }
 
-.td-intro p {
-  max-width: 900px;
+.td-intro__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 32px 64px;
+  align-items: start;
+}
+
+.td-intro__lede {
   font-size: clamp(1.25rem, 2vw, 1.6rem);
-  line-height: 1.55;
+  line-height: 1.5;
   color: #2E2F45;
+}
+
+.td-intro__cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.td-intro__cuerpo p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #5E5F69;
 }
 
 /* ---- Ruta de madurez ---- */
@@ -132,86 +150,67 @@
 .td-etapa__habilita { font-size: 0.88rem; line-height: 1.5; }
 .td-etapa__habilita strong { color: var(--td-titulo); }
 
-/* ---- Plataformas: marquesina ---- */
-.td-plataformas {
-  border-top: 1px solid rgba(25, 26, 85, 0.08);
-  border-bottom: 1px solid rgba(25, 26, 85, 0.08);
+/* ---- Por dónde empezamos ---- */
+.td-inicio {
+  padding: 88px 0 96px;
+  background: var(--gray-bg);
 }
 
-.td-plataformas__inner {
-  padding: 64px 24px 56px;
+.td-inicio__cabecera {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 36px;
-  text-align: center;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 48px;
+  margin-bottom: 40px;
 }
 
-.td-plataformas__texto {
-  max-width: 680px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.td-inicio__cabecera h2 {
+  color: var(--navy);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
 }
 
-.td-plataformas__texto p { font-size: 1.1rem; line-height: 1.6; color: #45465A; }
+.td-inicio__cabecera p { font-size: 1.1rem; color: #5E5F69; }
 
-.td-plataformas__kicker {
-  font-family: 'Saira', sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem !important;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gray) !important;
-}
-
-.td-marcas {
-  width: 100%;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-
-.td-marcas__pista {
-  display: flex;
-  width: max-content;
-  animation: tdMarquesina 40s linear infinite;
-}
-
-.td-marcas:hover .td-marcas__pista { animation-play-state: paused; }
-
-.td-marcas__serie {
+.td-inicio__razones {
   list-style: none;
   margin: 0;
-  padding: 0 44px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.td-razon {
   display: flex;
-  align-items: center;
-  gap: 88px;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px 28px;
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
 }
 
-.td-marcas__serie a {
-  display: flex;
-  align-items: center;
-  height: 64px;
+.td-razon__num {
+  font-family: 'Saira', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--accent);
 }
 
-.td-marcas__serie img {
-  display: block;
-  height: 34px;
-  width: auto;
-  max-width: 170px;
-  object-fit: contain;
-  filter: grayscale(1) brightness(0);
-  opacity: 0.42;
-  transition: opacity var(--transition);
-}
+.td-razon h3 { font-size: 1.2rem; line-height: 1.3; color: var(--navy); }
 
-.td-marcas__serie a:hover img { opacity: 0.75; }
+.td-razon p { font-size: 1rem; line-height: 1.6; color: #5E5F69; }
 
-@keyframes tdMarquesina { to { transform: translateX(-50%); } }
-
-@media (prefers-reduced-motion: reduce) {
-  .td-marcas__pista { animation: none; }
+.td-razon__pie {
+  margin-top: auto;
+  padding-top: 8px;
+  font-family: 'Saira', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--navy);
 }
 
 /* ---- Pantallas estrechas ---- */
@@ -219,6 +218,7 @@
   .td-ruta__etapas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .td-etapa:nth-child(n) { height: auto; }
   .td-etapa__marcas { min-height: 112px; }
+  .td-inicio__razones { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -226,7 +226,8 @@
   .td-ruta { padding: 40px 0 64px; }
   .td-ruta__etapas { grid-template-columns: 1fr; gap: 12px; }
   .td-etapa__marcas { min-height: 88px; }
-  .td-plataformas__inner { padding: 48px 16px 40px; gap: 28px; }
-  .td-marcas__serie { gap: 56px; padding: 0 28px; }
-  .td-marcas__serie img { height: 28px; }
+  .td-intro__inner { grid-template-columns: 1fr; gap: 24px; }
+  .td-inicio { padding: 56px 0 64px; }
+  .td-inicio__razones { grid-template-columns: 1fr; gap: 16px; }
+  .td-razon { padding: 26px 22px; }
 }

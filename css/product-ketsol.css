@@ -111,14 +111,6 @@
   border-color: var(--navy);
 }
 
-/* Demo en el navegador: un acceso directo bajo el marco, por si el visitante
-   prefiere abrirla a pantalla completa */
-.ks-demo__acciones {
-  display: flex;
-  justify-content: center;
-  margin-top: 18px;
-}
-
 /* ---- Pantallas estrechas: la escalera se mantiene, con peldaños cortos ---- */
 @media (max-width: 760px) {
   .ks-pasos { padding: 32px 0 64px; }

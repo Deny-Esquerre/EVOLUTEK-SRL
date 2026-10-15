@@ -42,9 +42,23 @@
     }, 7000));
   }
 
+  // Velocidad de reproducción por video: data-velocidad="0.5" lo pasa a la
+  // mitad. El navegador la reinicia al cargar el archivo, así que se vuelve
+  // a aplicar en loadedmetadata.
+  function initVideoSpeed(root) {
+    root.querySelectorAll('video[data-velocidad]').forEach(function (v) {
+      const rate = parseFloat(v.dataset.velocidad) || 1;
+      const apply = function () { v.playbackRate = rate; };
+      apply();
+      v.addEventListener('loadedmetadata', apply);
+      v.addEventListener('play', apply);
+    });
+  }
+
   function initHero(root) {
     initHeroPhrases(root);
     initHeroVideos(root);
+    initVideoSpeed(root);
   }
 
   function destroyHero(root) {

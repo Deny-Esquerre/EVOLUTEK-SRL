@@ -159,52 +159,6 @@
   object-fit: cover;
 }
 
-/* Variante para ilustraciones/mapas: se muestra completo, sin recortar */
-.content-figure--map img {
-  aspect-ratio: 1216 / 1294;
-  object-fit: contain;
-  background: var(--white-off);
-}
-
-/* ---- Certificaciones (panel) ---- */
-.cert-band {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 32px;
-  justify-items: center;
-  align-items: start;
-  padding: 36px 44px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  margin-top: 48px;
-}
-
-.cert-badge {
-  margin: 0;
-  text-align: center;
-}
-
-.cert-badge img {
-  width: 120px;
-  height: 150px;
-  object-fit: contain;
-  background: var(--white-off);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 10px;
-}
-
-.cert-badge figcaption {
-  margin-top: 10px;
-  font-family: 'Barlow', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: var(--navy-light);
-}
 
 /* ---- Valores ---- */
 .values-list {
@@ -349,33 +303,4 @@
 @media (max-width: 768px) {
   .about-layout--reverse .about-text { order: 1; }
   .about-layout--reverse .about-visual { order: 2; }
-}
-
-/* ============================================
-   NOSOTROS: AIRE ENTRE BLOQUES
-   ============================================
-   Dos costuras de la pagina se sumaban de mas. Entre el video y el texto:
-   los 90px con los que cierra el encabezado mas los 100 de la seccion, 190
-   seguidos. Y entre Mision y Vision y la llamada a contacto: otros 100 mas
-   los 72 de la caja. Se recortan las dos, mas en pantallas pequenas. */
-#page-nosotros .page-hero { padding-bottom: 64px; }
-
-.nosotros-intro { padding-top: 72px; }
-
-.nosotros-mv { padding-bottom: 72px; }
-
-#page-nosotros .cta-section { padding-top: 56px; }
-
-@media (max-width: 760px) {
-  #page-nosotros .page-hero { padding-bottom: 44px; }
-  .nosotros-intro { padding-top: 48px; }
-  .nosotros-mv { padding-bottom: 48px; }
-  #page-nosotros .cta-section { padding-top: 36px; }
-}
-
-@media (max-width: 480px) {
-  #page-nosotros .page-hero { padding-bottom: 36px; }
-  .nosotros-intro { padding-top: 38px; }
-  .nosotros-mv { padding-bottom: 38px; }
-  #page-nosotros .cta-section { padding-top: 30px; }
 }

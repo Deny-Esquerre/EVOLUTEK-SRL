@@ -22,7 +22,7 @@ const DIST = path.join(ROOT, 'dist');
 const CSS_ORDER = [
   'base.css', 'navbar.css', 'hero.css', 'page-hero.css', 'sections.css',
   'estrategia.css', 'about.css', 'partners.css', 'logos.css', 'modal.css',
-  'servicios.css', 'novedades.css', 'contacto.css',
+  'servicios.css', 'novedades.css', 'contacto.css', 'nosotros.css',
   'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
   'product-snake.css', 'product-stair.css',
   'cta.css', 'error.css', 'footer.css', 'animations.css', 'responsive.css'

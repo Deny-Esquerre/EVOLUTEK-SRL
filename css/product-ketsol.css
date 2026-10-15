@@ -4,9 +4,8 @@
    Cada paso es un peldaño: un bloque con su número a la izquierda y la
    tarjeta al lado, cada uno un poco más adentro que el anterior. Un filete
    en "L" baja desde el número de un peldaño hasta el del siguiente, de modo
-   que la silueta dibuja la escalera. Los números se oscurecen al bajar, del
-   acento claro al navy profundo, y cada peldaño entra por su cuenta al
-   aparecer en pantalla (.reveal-left en cada uno, no un stagger del grupo). */
+   que la silueta dibuja la escalera. Todos los números van en el navy de la
+   marca, y cada peldaño entra por su cuenta al aparecer en pantalla (.reveal-left en cada uno, no un stagger del grupo). */
 
 .ks-pasos { padding: 48px 0 96px; }
 
@@ -28,11 +27,11 @@
   margin-left: calc(var(--i, 0) * var(--ks-paso));
 }
 
-.ks-peldano:nth-child(2) { --i: 1; --ks-tono: #5A5FDE; }
-.ks-peldano:nth-child(3) { --i: 2; --ks-tono: #4A4FD4; }
-.ks-peldano:nth-child(4) { --i: 3; --ks-tono: #3236A0; }
-.ks-peldano:nth-child(5) { --i: 4; --ks-tono: #191A55; }
-.ks-peldano:nth-child(6) { --i: 5; --ks-tono: #0F1038; }
+.ks-peldano:nth-child(2) { --i: 1; }
+.ks-peldano:nth-child(3) { --i: 2; }
+.ks-peldano:nth-child(4) { --i: 3; }
+.ks-peldano:nth-child(5) { --i: 4; }
+.ks-peldano:nth-child(6) { --i: 5; }
 
 /* El filete en "L" hacia el número del peldaño siguiente */
 .ks-peldano:not(:last-child)::after {
@@ -57,7 +56,7 @@
   display: grid;
   place-items: center;
   border-radius: 12px;
-  background: var(--ks-tono, #6C70E8);
+  background: var(--navy);
   color: var(--white);
   font-family: 'Saira', sans-serif;
   font-weight: 700;
@@ -103,7 +102,7 @@
   width: 7px;
   height: 7px;
   border-radius: 2px;
-  background: var(--ks-tono, #6C70E8);
+  background: var(--navy);
 }
 
 .ks-peldano:hover .ks-peldano__cuerpo {

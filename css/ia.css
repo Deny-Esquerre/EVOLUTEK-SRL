@@ -32,6 +32,12 @@
   justify-content: flex-start;
 }
 
+/* La pantalla del celular crece con la conversación en vez de cortarla */
+.ia-celular > div {
+  height: auto !important;
+  min-height: 400px;
+}
+
 /* ---- Marquesina de modelos ---- */
 .ia-modelos { padding: 24px 0 96px; }
 
@@ -149,6 +155,30 @@
   .ia-celular {
     position: static !important;
   }
+  /* La laptop se dibuja a su tamaño de escritorio (760px) y se reduce
+     entera con zoom, para que el panel no se corte ni se apriete. */
+  .ia-laptop {
+    width: 760px !important;
+    max-width: none !important;
+    flex: none;
+    zoom: 0.88;
+  }
   .ia-modelos { padding-bottom: 64px; }
   .ia-modelo { width: 260px; }
+}
+
+@media (max-width: 640px) {
+  .ia-laptop { zoom: 0.7; }
+}
+
+@media (max-width: 520px) {
+  .ia-laptop { zoom: 0.55; }
+}
+
+@media (max-width: 420px) {
+  .ia-laptop { zoom: 0.43; }
+}
+
+@media (max-width: 360px) {
+  .ia-laptop { zoom: 0.38; }
 }

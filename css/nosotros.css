@@ -86,6 +86,8 @@
 
 .ns-quienes__texto p { color: #5E5F69; font-size: 1.05rem; }
 
+.ns-quienes__texto p + p { margin-top: 14px; }
+
 .ns-quienes__texto .ns-quienes__lede { margin-bottom: 16px; color: #33354A; font-size: 1.15rem; }
 
 .ns-mapa {

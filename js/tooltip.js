@@ -29,7 +29,7 @@
   }
 
   function initTooltips(root) {
-    root.querySelectorAll('.logo-item[data-product]').forEach(function (item) {
+    root.querySelectorAll('.logo-item[data-product], .ns-cert[data-product]').forEach(function (item) {
       const key = item.dataset.product;
       item.addEventListener('mouseenter', function () { showLogoTip(item, key); });
       item.addEventListener('mouseleave', hideLogoTip);

@@ -15,141 +15,142 @@
       <div class="accent-slash"></div>
     </div>
 
-    <!-- Intro sections like Vertix -->
-    <section class="section">
+    <!-- Tres líneas de servicio -->
+    <section class="sv-lineas">
       <div class="container">
-        <div class="service-detail reveal">
-          <div>
-            <h2>Servicios de Implementación y Soporte</h2>
-            <p>Acompañamos a nuestros clientes en cada etapa del proceso de implementación de soluciones industriales, desde la planificación estratégica hasta la ejecución técnica, capacitación operativa y soporte continuo. Facilitamos una adopción rápida y efectiva de los sistemas, asegurando la estabilización operativa y el máximo aprovechamiento de los recursos digitales.</p>
-          </div>
-          <div class="service-detail-visual">
-            <img src="img/services/servicios-implementacion.jpg" alt="Equipo de ingenieros trabajando en una sala de servidores — implementación y soporte">
-            <span class="service-number">01</span>
-          </div>
+        <div class="sv-cabecera reveal">
+          <h2>Tres líneas de servicio, un mismo equipo</h2>
+          <p>De la implementación al dato y del dato a la acción: así acompañamos cada proyecto industrial.</p>
         </div>
 
-        <div class="service-detail reversed reveal">
-          <div>
-            <h2>Industrial DataOps: Consultoría e Implementación</h2>
-            <p>Nuestro enfoque en Industrial DataOps combina arquitecturas abiertas basadas en UNS con soluciones ligeras, escalables y orientadas tanto al Edge como a la nube. Gestionamos la conexión inicial de datos, su activación inteligente en tiempo real y la posterior escalabilidad de los sistemas de datos industriales.</p>
-          </div>
-          <div class="service-detail-visual">
-            <img src="img/services/servicios-dataops.jpg" alt="Fibra óptica en una sala de servidores — Industrial DataOps">
-            <span class="service-number">02</span>
-          </div>
-        </div>
+        <div class="sv-lineas__rejilla stagger">
+          <article class="sv-linea">
+            <div class="sv-linea__media">
+              <img src="img/services/servicios-implementacion.jpg" width="1280" height="720" loading="lazy" alt="Equipo de ingenieros trabajando en una sala de servidores">
+              <span class="sv-linea__num">01</span>
+            </div>
+            <div class="sv-linea__texto">
+              <h3>Implementación y Soporte</h3>
+              <p>Acompañamos cada etapa de la implementación de soluciones industriales: planificación estratégica, ejecución técnica, capacitación operativa y soporte continuo, hasta estabilizar la operación y sacar el máximo partido a los recursos digitales.</p>
+            </div>
+          </article>
 
-        <div class="service-detail reveal">
-          <div>
-            <h2>Inteligencia Artificial Industrial: De los Datos a la Acción</h2>
-            <p>Contamos con un equipo especializado en inteligencia artificial industrial y machine learning enfocado en entornos productivos complejos. Acompañamos a las empresas desde la identificación de casos de uso hasta el desarrollo, despliegue y escalamiento de modelos predictivos y algoritmos avanzados.</p>
-          </div>
-          <div class="service-detail-visual">
-            <img src="img/services/servicios-ia.jpg" alt="Animación de dispositivos futuristas — inteligencia artificial industrial">
-            <span class="service-number">03</span>
-          </div>
+          <article class="sv-linea">
+            <div class="sv-linea__media">
+              <img src="img/services/servicios-dataops.jpg" width="1280" height="720" loading="lazy" alt="Fibra óptica en una sala de servidores">
+              <span class="sv-linea__num">02</span>
+            </div>
+            <div class="sv-linea__texto">
+              <h3>Industrial DataOps</h3>
+              <p>Arquitecturas abiertas basadas en UNS, ligeras y escalables, del Edge a la nube. Nos encargamos de la conexión inicial de los datos, su activación en tiempo real y el crecimiento posterior del sistema.</p>
+            </div>
+          </article>
+
+          <article class="sv-linea">
+            <div class="sv-linea__media">
+              <img src="img/services/servicios-ia.jpg" width="1280" height="720" loading="lazy" alt="Ilustración de dispositivos y paneles de datos">
+              <span class="sv-linea__num">03</span>
+            </div>
+            <div class="sv-linea__texto">
+              <h3>Inteligencia Artificial Industrial</h3>
+              <p>Un equipo especializado en IA y machine learning para entornos productivos complejos: desde identificar los casos de uso hasta desarrollar, desplegar y escalar modelos predictivos y algoritmos avanzados.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Pasarela de servicios -->
-    <section class="section section-alt">
+    <!-- Seis frentes de trabajo: pestañas a la izquierda (números en móvil) y
+         el panel del elegido a la derecha. js/frentes.js las hace avanzar solas
+         hasta que el visitante elige una. Sin JS se ven los seis paneles. -->
+    <section class="sv-frentes">
+      <div class="sv-frentes__slash" aria-hidden="true"></div>
       <div class="container">
-        <div class="section-header reveal">
-          <span class="label">Qué hacemos</span>
+        <div class="sv-cabecera sv-cabecera--oscura reveal">
           <h2>Seis frentes de trabajo</h2>
+          <p>Lo que hacemos dentro de cada proyecto, según el punto de partida de tu planta.</p>
         </div>
-        <div class="gallery reveal" data-gallery>
-          <div class="gallery__track">
-          <article class="gallery__slide" aria-label="Servicio 1 de 6">
-            <div class="gallery__media">
-              <div class="gallery__panel" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
-                     stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 13 15.5 9.5"/><path d="M12 6V4"/><path d="M5 13H3"/><path d="M21 13h-2"/></svg>
-              </div>
-            </div>
-            <div class="gallery__text">
-              <span class="gallery__num">01</span>
+
+        <div class="sv-frentes__cuerpo reveal" data-frentes>
+          <div class="sv-frentes__tabs" role="tablist" aria-label="Frentes de trabajo">
+            <button class="sv-tab" type="button" role="tab" id="frenteTab1" aria-controls="frentePanel1" aria-selected="true"><span class="sv-tab__num">01</span><span class="sv-tab__nombre">Transformación digital</span><span class="sv-tab__barra" aria-hidden="true"></span></button>
+            <button class="sv-tab" type="button" role="tab" id="frenteTab2" aria-controls="frentePanel2" aria-selected="false" tabindex="-1"><span class="sv-tab__num">02</span><span class="sv-tab__nombre">Analítica avanzada</span><span class="sv-tab__barra" aria-hidden="true"></span></button>
+            <button class="sv-tab" type="button" role="tab" id="frenteTab3" aria-controls="frentePanel3" aria-selected="false" tabindex="-1"><span class="sv-tab__num">03</span><span class="sv-tab__nombre">Industrial DataOps</span><span class="sv-tab__barra" aria-hidden="true"></span></button>
+            <button class="sv-tab" type="button" role="tab" id="frenteTab4" aria-controls="frentePanel4" aria-selected="false" tabindex="-1"><span class="sv-tab__num">04</span><span class="sv-tab__nombre">Integración IT/OT</span><span class="sv-tab__barra" aria-hidden="true"></span></button>
+            <button class="sv-tab" type="button" role="tab" id="frenteTab5" aria-controls="frentePanel5" aria-selected="false" tabindex="-1"><span class="sv-tab__num">05</span><span class="sv-tab__nombre">Historización de datos</span><span class="sv-tab__barra" aria-hidden="true"></span></button>
+            <button class="sv-tab" type="button" role="tab" id="frenteTab6" aria-controls="frentePanel6" aria-selected="false" tabindex="-1"><span class="sv-tab__num">06</span><span class="sv-tab__nombre">Business Intelligence</span><span class="sv-tab__barra" aria-hidden="true"></span></button>
+          </div>
+
+          <div class="sv-frentes__paneles">
+            <article class="sv-panel" role="tabpanel" id="frentePanel1" aria-labelledby="frenteTab1">
+              <span class="sv-panel__marca" aria-hidden="true">01</span>
+              <span class="sv-panel__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7"/><path d="M12 13 15.5 9.5"/><path d="M12 6V4"/><path d="M5 13H3"/><path d="M21 13h-2"/></svg></span>
               <h3>Consultoría de Transformación Digital Industrial</h3>
-              <p>Medimos el grado de madurez digital de la planta —calidad de los datos, infraestructura disponible y capacidades del equipo técnico— y entregamos una hoja de ruta priorizada: qué conviene abordar primero, con qué requisitos y con qué retorno esperado.</p>
-            </div>
-          </article>
-          <article class="gallery__slide" aria-label="Servicio 2 de 6">
-            <div class="gallery__media">
-              <div class="gallery__panel" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
-                     stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="7" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="19" cy="17" r="2"/><path d="M7 7.8 10.2 11M7 16.2 10.2 13M13.8 11 17 7.8M13.8 13 17 16.2"/></svg>
-              </div>
-            </div>
-            <div class="gallery__text">
-              <span class="gallery__num">02</span>
+              <p>Medimos la madurez digital de la planta —calidad de los datos, infraestructura y capacidades del equipo técnico— y entregamos una hoja de ruta priorizada: qué abordar primero, con qué requisitos y con qué retorno esperado.</p>
+              <ul class="sv-panel__etiquetas"><li>Madurez digital</li><li>Hoja de ruta</li><li>Retorno esperado</li></ul>
+              <a class="sv-panel__enlace" href="/contacto" data-page="contacto">Hablemos de este frente<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+
+            <article class="sv-panel" role="tabpanel" id="frentePanel2" aria-labelledby="frenteTab2">
+              <span class="sv-panel__marca" aria-hidden="true">02</span>
+              <span class="sv-panel__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="7" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="19" cy="17" r="2"/><path d="M7 7.8 10.2 11M7 16.2 10.2 13M13.8 11 17 7.8M13.8 13 17 16.2"/></svg></span>
               <h3>Despliegue de Modelos de Analítica Avanzada</h3>
-              <p>Llevamos los modelos predictivos del laboratorio a la operación. Algoritmos de machine learning y redes neuronales entrenados con datos reales de proceso, integrados en la arquitectura OT/IT que ya existe en lugar de obligar a rehacerla.</p>
-            </div>
-          </article>
-          <article class="gallery__slide" aria-label="Servicio 3 de 6">
-            <div class="gallery__media">
-              <div class="gallery__panel" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
-                     stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="9.5" width="5" height="5" rx="1"/><rect x="16.5" y="9.5" width="5" height="5" rx="1"/><circle cx="12" cy="12" r="2"/><path d="M7.5 12h2.5M14 12h2.5"/><path d="M12 4.5V8M12 16v3.5"/></svg>
-              </div>
-            </div>
-            <div class="gallery__text">
-              <span class="gallery__num">03</span>
+              <p>Llevamos los modelos predictivos del laboratorio a la operación: machine learning y redes neuronales entrenados con datos reales de proceso, integrados en la arquitectura OT/IT que ya existe en lugar de obligar a rehacerla.</p>
+              <ul class="sv-panel__etiquetas"><li>Machine learning</li><li>Datos de proceso</li><li>OT/IT</li></ul>
+              <a class="sv-panel__enlace" href="/contacto" data-page="contacto">Hablemos de este frente<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+
+            <article class="sv-panel" role="tabpanel" id="frentePanel3" aria-labelledby="frenteTab3">
+              <span class="sv-panel__marca" aria-hidden="true">03</span>
+              <span class="sv-panel__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="9.5" width="5" height="5" rx="1"/><rect x="16.5" y="9.5" width="5" height="5" rx="1"/><circle cx="12" cy="12" r="2"/><path d="M7.5 12h2.5M14 12h2.5"/><path d="M12 4.5V8M12 16v3.5"/></svg></span>
               <h3>Consultoría en Industrial DataOps</h3>
-              <p>Ordenamos el recorrido del dato desde el edge hasta la nube bajo principios de Industrial DataOps: un espacio de nombres unificado (UNS), información contextualizada en origen y una arquitectura que crece sin multiplicar integraciones punto a punto.</p>
-            </div>
-          </article>
-          <article class="gallery__slide" aria-label="Servicio 4 de 6">
-            <div class="gallery__media">
-              <div class="gallery__panel" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
-                     stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="7" height="7" rx="1"/><rect x="14" y="13.5" width="7" height="7" rx="1"/><path d="M10 7h4.5a2 2 0 0 1 2 2v4.5"/><path d="M14.5 11.5 16.5 13.5 18.5 11.5"/><path d="M14 17H9.5a2 2 0 0 1-2-2v-4.5"/><path d="M9.5 8.5 7.5 10.5 5.5 8.5"/></svg>
-              </div>
-            </div>
-            <div class="gallery__text">
-              <span class="gallery__num">04</span>
+              <p>Ordenamos el recorrido del dato desde el edge hasta la nube: un espacio de nombres unificado (UNS), información contextualizada en origen y una arquitectura que crece sin multiplicar integraciones punto a punto.</p>
+              <ul class="sv-panel__etiquetas"><li>UNS</li><li>Edge a nube</li><li>Contexto en origen</li></ul>
+              <a class="sv-panel__enlace" href="/contacto" data-page="contacto">Hablemos de este frente<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+
+            <article class="sv-panel" role="tabpanel" id="frentePanel4" aria-labelledby="frenteTab4">
+              <span class="sv-panel__marca" aria-hidden="true">04</span>
+              <span class="sv-panel__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="7" height="7" rx="1"/><rect x="14" y="13.5" width="7" height="7" rx="1"/><path d="M10 7h4.5a2 2 0 0 1 2 2v4.5"/><path d="M14.5 11.5 16.5 13.5 18.5 11.5"/><path d="M14 17H9.5a2 2 0 0 1-2-2v-4.5"/><path d="M9.5 8.5 7.5 10.5 5.5 8.5"/></svg></span>
               <h3>Integración de Comunicaciones IT/OT</h3>
               <p>Conectamos la planta con los sistemas de gestión mediante OPC UA, MQTT y REST, con una capa de comunicación segura y estandarizada que sustituye a los drivers propietarios y a los enlaces hechos a medida.</p>
-            </div>
-          </article>
-          <article class="gallery__slide" aria-label="Servicio 5 de 6">
-            <div class="gallery__media">
-              <div class="gallery__panel" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
-                     stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/><path d="M5 11.5v6c0 1.4 3.1 2.5 7 2.5"/><circle cx="17.5" cy="17" r="3.5"/><path d="M17.5 15.3V17l1.2 1"/></svg>
-              </div>
-            </div>
-            <div class="gallery__text">
-              <span class="gallery__num">05</span>
+              <ul class="sv-panel__etiquetas"><li>OPC UA</li><li>MQTT</li><li>REST</li></ul>
+              <a class="sv-panel__enlace" href="/contacto" data-page="contacto">Hablemos de este frente<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+
+            <article class="sv-panel" role="tabpanel" id="frentePanel5" aria-labelledby="frenteTab5">
+              <span class="sv-panel__marca" aria-hidden="true">05</span>
+              <span class="sv-panel__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"/><path d="M5 11.5v6c0 1.4 3.1 2.5 7 2.5"/><circle cx="17.5" cy="17" r="3.5"/><path d="M17.5 15.3V17l1.2 1"/></svg></span>
               <h3>Sistemas de Historización de Datos</h3>
               <p>Capturamos y almacenamos series temporales de SCADA, PLC y dispositivos de campo a alta velocidad, con años de histórico disponibles para análisis, trazabilidad normativa y mantenimiento predictivo.</p>
-            </div>
-          </article>
-          <article class="gallery__slide" aria-label="Servicio 6 de 6">
-            <div class="gallery__media">
-              <div class="gallery__panel" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
-                     stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h17"/><rect x="5" y="12" width="3.4" height="8.5" rx="0.6"/><rect x="10.3" y="8" width="3.4" height="12.5" rx="0.6"/><rect x="15.6" y="14" width="3.4" height="6.5" rx="0.6"/><path d="M4.5 8.5 9 4.5l4.5 3 6-5.5"/></svg>
-              </div>
-            </div>
-            <div class="gallery__text">
-              <span class="gallery__num">06</span>
-              <h3>Desarrollo de Soluciones de Business Intelligence</h3>
+              <ul class="sv-panel__etiquetas"><li>SCADA</li><li>PLC</li><li>Series temporales</li></ul>
+              <a class="sv-panel__enlace" href="/contacto" data-page="contacto">Hablemos de este frente<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+
+            <article class="sv-panel" role="tabpanel" id="frentePanel6" aria-labelledby="frenteTab6">
+              <span class="sv-panel__marca" aria-hidden="true">06</span>
+              <span class="sv-panel__icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h17"/><rect x="5" y="12" width="3.4" height="8.5" rx="0.6"/><rect x="10.3" y="8" width="3.4" height="12.5" rx="0.6"/><rect x="15.6" y="14" width="3.4" height="6.5" rx="0.6"/><path d="M4.5 8.5 9 4.5l4.5 3 6-5.5"/></svg></span>
+              <h3>Soluciones de Business Intelligence</h3>
               <p>Convertimos el dato de planta en tableros que se usan a diario: producción, disponibilidad e indicadores de eficiencia en Power BI, Tableau o Grafana, con una única fuente de verdad para operaciones y dirección.</p>
-            </div>
-          </article>
+              <ul class="sv-panel__etiquetas"><li>Power BI</li><li>Tableau</li><li>Grafana</li></ul>
+              <a class="sv-panel__enlace" href="/contacto" data-page="contacto">Hablemos de este frente<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-box reveal">
-          <h3>¿Necesitas un servicio especializado para tu industria?</h3>
-          <a href="/contacto" data-page="contacto" class="btn btn-primary">Contáctanos</a>
+    <!-- Cierre -->
+    <section class="sv-cierre">
+      <div class="sv-cierre__slash" aria-hidden="true"></div>
+      <div class="container sv-cierre__inner reveal">
+        <div class="sv-cierre__texto">
+          <h2>¿Necesitas un servicio especializado para tu industria?</h2>
+          <p>Cuéntanos tu caso y armamos contigo el alcance.</p>
+        </div>
+        <div class="sv-cierre__acciones">
+          <a class="sv-cierre__boton" href="/contacto" data-page="contacto">Contáctanos<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="sv-cierre__correo" href="mailto:Administracion@evolutek.pe">Administracion@evolutek.pe</a>
         </div>
       </div>
     </section>

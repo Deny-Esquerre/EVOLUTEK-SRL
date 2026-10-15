@@ -1,93 +1,468 @@
 /* ============================================
-   SERVICIOS PAGE - Service items
-   ============================================ */
-/* Títulos más compactos que el h2 base */
-#page-servicios h2 {
-  color: #111111;
-  letter-spacing: -0.2px;
-  line-height: 1.2;
+   SERVICIOS
+   ============================================
+   Bajo el encabezado de video: tres lineas de servicio en tarjetas, los seis
+   frentes en una seccion oscura con pestañas (js/frentes.js) y un cierre
+   claro con la llamada a contacto. */
+
+/* ---- Cabecera comun de las secciones ---- */
+.sv-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 64px;
+  margin-bottom: 48px;
 }
 
-#page-servicios .service-detail h2 {
-  font-size: clamp(1.3rem, 2.1vw, 1.7rem);
-  margin-bottom: 18px;
+.sv-cabecera h2 {
+  flex: 1 1 420px;
+  max-width: 600px;
+  color: var(--navy);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
 }
 
-.service-detail {
+.sv-cabecera p {
+  flex: 1 1 360px;
+  max-width: 480px;
+  color: #5E5F69;
+  font-size: 1.1rem;
+}
+
+.sv-cabecera--oscura { margin-bottom: 56px; }
+
+.sv-cabecera--oscura h2 {
+  font-family: 'TT Supermolot Neue Demi Bold', 'Saira', 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -1px;
+  color: var(--white);
+}
+
+.sv-cabecera--oscura p { color: rgba(255, 255, 255, 0.78); }
+
+/* ---- 1. Tres lineas de servicio ---- */
+.sv-lineas { padding: 96px 0 104px; }
+
+.sv-lineas__rejilla {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: center;
-  margin-bottom: 80px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
 }
 
-.service-detail.reversed { direction: rtl; }
-.service-detail.reversed > * { direction: ltr; }
-
-.service-detail-visual {
-  position: relative;
-  height: 300px;
+.sv-linea {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(135deg, var(--navy-dark), var(--navy-light));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--accent);
+  box-shadow: 0 8px 30px rgba(25, 26, 85, 0.08);
 }
 
-.service-detail-visual::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 34px 34px;
+.sv-linea__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--navy-dark);
 }
 
-.service-detail-visual .service-number {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 8rem;
-  letter-spacing: 0;
-  color: rgba(255, 255, 255, 0.16);
-  position: absolute;
-  top: 50%;
-  right: 28px;
-  transform: translateY(-50%);
-  z-index: 2;
-}
-
-.service-detail-visual img {
-  position: absolute;
-  inset: 0;
+.sv-linea__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
+  transition: transform 0.5s ease;
 }
 
-.service-detail-visual::after {
-  content: '';
+.sv-linea:hover .sv-linea__media img { transform: scale(1.04); }
+
+.sv-linea__num {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(15, 16, 56, 0.72), rgba(15, 16, 56, 0.28));
-  z-index: 1;
+  left: 0;
+  bottom: 0;
+  padding: 8px 18px;
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Saira', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.3;
 }
 
-@media (max-width: 768px) {
-  .service-detail { grid-template-columns: 1fr; }
-  .service-detail.reversed { direction: ltr; }
+.sv-linea__texto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 28px 32px;
 }
 
-/* Movil: entre servicios basta menos aire, y el ultimo no suma su margen al
-   relleno de la seccion (eran 280px hasta "Seis frentes de trabajo"). */
+.sv-linea__texto h3 { font-size: 1.3rem; line-height: 1.2; color: var(--navy); }
+
+.sv-linea__texto p { color: #5E5F69; font-size: 1rem; }
+
+/* ---- 2. Seis frentes de trabajo ---- */
+.sv-frentes {
+  position: relative;
+  overflow: hidden;
+  padding: 104px 0 112px;
+  background-color: var(--navy-dark);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+.sv-frentes__slash {
+  position: absolute;
+  left: -120px;
+  bottom: -160px;
+  width: 420px;
+  height: 620px;
+  background: var(--accent);
+  opacity: 0.14;
+  transform: skewX(-12deg);
+  border-radius: 48px;
+}
+
+.sv-frentes .container { position: relative; }
+
+.sv-frentes__cuerpo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 32px;
+}
+
+.sv-frentes__tabs {
+  flex: 1 1 340px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sv-tab {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 64px;
+  padding: 14px 20px;
+  font: inherit;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.sv-tab:hover { border-color: rgba(255, 255, 255, 0.35); }
+
+.sv-tab:focus-visible { outline: 3px solid var(--accent-light); outline-offset: 2px; }
+
+.sv-tab__num {
+  flex: none;
+  font-family: 'Saira', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.sv-tab__nombre { flex: 1; min-width: 0; font-weight: 600; font-size: 17px; line-height: 1.3; }
+
+/* La barra de la pestaña activa se llena mientras corre el turno automatico
+   (la duracion la pone frentes.js); al elegir una a mano queda llena. */
+.sv-tab__barra {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: var(--accent);
+}
+
+.sv-tab[aria-selected="true"] {
+  background: var(--white);
+  color: var(--navy);
+  border-color: var(--white);
+}
+
+.sv-tab[aria-selected="true"] .sv-tab__num { color: var(--accent); }
+
+.sv-tab[aria-selected="true"] .sv-tab__barra { width: 100%; }
+
+.sv-frentes.is-auto .sv-tab[aria-selected="true"] .sv-tab__barra {
+  animation: svBarra var(--sv-turno, 6s) linear forwards;
+}
+
+@keyframes svBarra {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+.sv-frentes__paneles {
+  flex: 999 1 560px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sv-panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-height: 440px;
+  padding: 48px 48px 44px;
+  background: var(--navy);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.sv-panel > * { position: relative; }
+
+/* Con JS solo se ve el panel elegido; sin JS se ven los seis seguidos. */
+.sv-frentes.is-js .sv-panel[hidden] { display: none; }
+
+.sv-frentes.is-js .sv-panel { animation: svPanel 0.45s ease; }
+
+@keyframes svPanel {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.sv-panel__marca {
+  position: absolute !important;
+  right: -10px;
+  bottom: -70px;
+  font-family: 'Saira', sans-serif;
+  font-weight: 600;
+  font-size: 280px;
+  line-height: 1;
+  letter-spacing: -8px;
+  color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.sv-panel__icono {
+  width: 76px;
+  height: 76px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 30px rgba(74, 79, 212, 0.45);
+}
+
+.sv-panel__icono svg { width: 38px; height: 38px; }
+
+.sv-panel h3 {
+  max-width: 560px;
+  margin-top: 6px;
+  font-size: 2rem;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--white);
+}
+
+.sv-panel p {
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+.sv-panel__etiquetas {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sv-panel__etiquetas li {
+  padding: 6px 12px;
+  font-family: 'Saira', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius);
+}
+
+.sv-panel__enlace {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  color: var(--white);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  transition: var(--transition);
+}
+
+.sv-panel__enlace:hover { color: var(--white); border-color: var(--accent-light); gap: 14px; }
+
+.sv-panel__enlace:focus-visible { outline: 3px solid var(--accent-light); outline-offset: 3px; }
+
+/* ---- 3. Cierre ---- */
+.sv-cierre {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(25, 26, 85, 0.08);
+}
+
+.sv-cierre__slash {
+  position: absolute;
+  right: -40px;
+  top: -60px;
+  width: 300px;
+  height: 420px;
+  background: var(--accent);
+  opacity: 0.07;
+  transform: skewX(-12deg);
+  border-radius: 40px;
+}
+
+.sv-cierre__inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.sv-cierre__texto { flex: 1 1 520px; max-width: 680px; }
+
+.sv-cierre__texto h2 {
+  font-family: 'TT Supermolot Neue Demi Bold', 'Saira', 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+  line-height: 1.1;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.sv-cierre__texto p { color: #5E5F69; font-size: 1.1rem; }
+
+.sv-cierre__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+}
+
+.sv-cierre__boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 15px 28px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white);
+  background: var(--navy);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.sv-cierre__boton:hover { background: var(--navy-light); color: var(--white); }
+
+.sv-cierre__correo {
+  padding: 4px 0;
+  font-weight: 600;
+  color: var(--navy);
+  border-bottom: 1px solid rgba(25, 26, 85, 0.35);
+}
+
+.sv-cierre__correo:hover { color: var(--accent); border-color: var(--accent); }
+
+.sv-cierre__boton:focus-visible,
+.sv-cierre__correo:focus-visible { outline: 3px solid var(--accent-light); outline-offset: 3px; }
+
+/* ---- Tableta ---- */
+@media (max-width: 960px) {
+  .sv-lineas__rejilla { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; }
+  .sv-linea__media { aspect-ratio: 16 / 9; }
+}
+
+/* ---- Telefono: las pestañas pasan a ser seis numeros en fila ---- */
 @media (max-width: 760px) {
-  .service-detail { margin-bottom: 52px; }
-  .service-detail:last-child { margin-bottom: 0; }
+  .sv-lineas { padding: 56px 0; }
+  .sv-cabecera { margin-bottom: 28px; gap: 10px; }
+  .sv-cabecera h2 { font-size: 1.75rem; }
+  .sv-cabecera p { font-size: 1rem; }
+  .sv-lineas__rejilla { gap: 20px; }
+  .sv-linea__num { font-size: 18px; padding: 6px 14px; }
+  .sv-linea__texto { padding: 20px 20px 24px; gap: 8px; }
+  .sv-linea__texto h3 { font-size: 1.15rem; }
+  .sv-linea__texto p { font-size: 15px; }
+
+  .sv-frentes { padding: 56px 0; }
+  .sv-frentes__slash { left: -110px; bottom: -120px; width: 240px; height: 420px; border-radius: 30px; }
+  .sv-cabecera--oscura { margin-bottom: 24px; }
+  .sv-cabecera--oscura h2 { font-size: 2.2rem; }
+  .sv-frentes__cuerpo { gap: 14px; }
+  .sv-frentes__tabs {
+    flex-basis: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .sv-tab { min-height: 48px; padding: 0; justify-content: center; border-radius: var(--radius); }
+  .sv-tab__num { font-size: 16px; color: rgba(255, 255, 255, 0.75); }
+  /* El nombre se oculta a la vista pero sigue siendo el nombre accesible */
+  .sv-tab__nombre {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .sv-panel { min-height: 470px; padding: 28px 22px 26px; gap: 16px; }
+  .sv-panel__marca { font-size: 170px; right: -6px; bottom: -40px; letter-spacing: -5px; }
+  .sv-panel__icono { width: 60px; height: 60px; }
+  .sv-panel__icono svg { width: 30px; height: 30px; }
+  .sv-panel h3 { font-size: 1.4rem; line-height: 1.2; margin-top: 4px; }
+  .sv-panel p { font-size: 15.5px; line-height: 1.6; }
+  .sv-panel__etiquetas { gap: 8px; }
+  .sv-panel__etiquetas li { font-size: 13px; padding: 5px 10px; }
+
+  .sv-cierre__inner { padding-top: 48px; padding-bottom: 52px; gap: 22px; }
+  .sv-cierre__texto h2 { font-size: 1.85rem; }
+  .sv-cierre__texto p { font-size: 1rem; }
+  .sv-cierre__acciones { flex-direction: column; align-items: stretch; width: 100%; gap: 14px; }
+  .sv-cierre__correo { align-self: center; }
 }
 
 @media (max-width: 480px) {
-  .service-detail { margin-bottom: 44px; }
+  .sv-lineas,
+  .sv-frentes { padding: 44px 0; }
+  .sv-lineas .container,
+  .sv-frentes .container { padding: 0 16px; }
+}
+
+/* Menos movimiento: sin zoom en las fotos ni barra que corre */
+@media (prefers-reduced-motion: reduce) {
+  .sv-linea:hover .sv-linea__media img { transform: none; }
+  .sv-frentes.is-js .sv-panel { animation: none; }
 }

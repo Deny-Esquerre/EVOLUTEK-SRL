@@ -17,7 +17,7 @@
     'js/products-data.js',
     'js/modal.js',
     'js/tooltip.js',
-    'js/gallery.js',
+    'js/frentes.js',
     'js/novedades.js',
     'js/contacto.js',
     'js/boot.js'

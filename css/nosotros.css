@@ -188,6 +188,62 @@
 
 .ns-cadena__pasos strong { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; color: var(--navy); }
 
+/* Sin titular: la frase queda sola, a la izquierda */
+.ns-cabecera--solo { margin-bottom: 44px; }
+.ns-cabecera--solo p { flex: 0 1 640px; max-width: 640px; font-size: 1.2rem; color: #33354A; }
+
+/* Recorrido del dato: un pulso viaja por el conector de 01 a 06 y cada nodo
+   se enciende al pasar. Ciclo de 6 s en bucle; desfase de 1 s por nodo. */
+.ns-cadena__pasos::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  top: 39px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(74, 79, 212, 0.18), 0 0 18px rgba(74, 79, 212, 0.6);
+  animation: nsPulso 6s cubic-bezier(.45, 0, .55, 1) infinite;
+}
+
+@keyframes nsPulso {
+  0%   { left: 8%;  opacity: 0; }
+  6%   { opacity: 1; }
+  90%  { left: calc(92% - 12px); opacity: 1; }
+  100% { left: calc(92% - 12px); opacity: 0; }
+}
+
+.ns-cadena__num { animation: nsNodo 6s ease-in-out infinite; }
+.ns-cadena__pasos li:nth-child(1) .ns-cadena__num { animation-delay: 0s; }
+.ns-cadena__pasos li:nth-child(2) .ns-cadena__num { animation-delay: 1.05s; }
+.ns-cadena__pasos li:nth-child(3) .ns-cadena__num { animation-delay: 2.1s; }
+.ns-cadena__pasos li:nth-child(4) .ns-cadena__num { animation-delay: 3.15s; }
+.ns-cadena__pasos li:nth-child(5) .ns-cadena__num { animation-delay: 4.2s; }
+.ns-cadena__pasos li:nth-child(6) .ns-cadena__num { animation-delay: 5.25s; }
+
+@keyframes nsNodo {
+  0%, 16%, 100% { transform: scale(1); border-color: rgba(25, 26, 85, 0.14); box-shadow: 0 10px 30px rgba(25, 26, 85, 0.10); }
+  6%            { transform: scale(1.08); border-color: var(--accent); box-shadow: 0 0 0 6px rgba(74, 79, 212, 0.16), 0 14px 34px rgba(74, 79, 212, 0.28); }
+}
+
+.ns-cadena__num--fin { animation-name: nsNodoFin; }
+@keyframes nsNodoFin {
+  0%, 16%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(25, 26, 85, 0.25); }
+  6%            { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(74, 79, 212, 0.22), 0 14px 34px rgba(74, 79, 212, 0.4); }
+}
+
+/* En tableta y móvil el conector se oculta: el recorrido pasa a ser solo el
+   encendido de los nodos en orden. */
+@media (max-width: 960px) {
+  .ns-cadena__pasos::after { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ns-cadena__pasos::after { display: none; }
+  .ns-cadena__num { animation: none; }
+}
+
 /* ---- 3. Ciclo de vida ---- */
 .ns-ciclo {
   position: relative;

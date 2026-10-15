@@ -260,10 +260,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent);
+  background: transparent;
   color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: var(--radius-lg);
-  box-shadow: 0 12px 30px rgba(74, 79, 212, 0.45);
 }
 
 .sv-panel__icono svg { width: 38px; height: 38px; }

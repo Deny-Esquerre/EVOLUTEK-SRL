@@ -3,23 +3,10 @@
    ============================================
    Banner y cierre reutilizan .page-hero--video y .sv-cierre. Aquí van la
    presentación, la ruta de madurez en cinco etapas (bloques que suben como
-   una escalera, del 01 al 05) y las tres razones para empezar. */
+   una escalera, del 01 al 05). */
 
 /* ---- Presentación ---- */
 .td-intro { padding: 96px 0 0; }
-
-.td-intro__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 32px 64px;
-  align-items: start;
-}
-
-.td-intro__lede {
-  font-size: clamp(1.25rem, 2vw, 1.6rem);
-  line-height: 1.5;
-  color: #2E2F45;
-}
 
 .td-intro__cuerpo {
   display: flex;
@@ -28,7 +15,7 @@
 }
 
 .td-intro__cuerpo p {
-  font-size: 1.05rem;
+  font-size: clamp(1.2rem, 2vw, 1.625rem);
   line-height: 1.7;
   color: #5E5F69;
 }
@@ -37,9 +24,12 @@
 .td-ruta { padding: 64px 0 96px; }
 
 .td-ruta__lede {
+  max-width: 860px;
   margin-bottom: 32px;
-  font-size: 1.1rem;
-  color: #5E5F69;
+  font-size: clamp(1.2rem, 2vw, 1.625rem);
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
 }
 
 .td-ruta__etapas {
@@ -150,75 +140,11 @@
 .td-etapa__habilita { font-size: 0.88rem; line-height: 1.5; }
 .td-etapa__habilita strong { color: var(--td-titulo); }
 
-/* ---- Por dónde empezamos ---- */
-.td-inicio {
-  padding: 88px 0 96px;
-  background: var(--gray-bg);
-}
-
-.td-inicio__cabecera {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px 48px;
-  margin-bottom: 40px;
-}
-
-.td-inicio__cabecera h2 {
-  color: var(--navy);
-  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
-}
-
-.td-inicio__cabecera p { font-size: 1.1rem; color: #5E5F69; }
-
-.td-inicio__razones {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
-
-.td-razon {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 32px 28px;
-  border-radius: 14px;
-  background: var(--white);
-  box-shadow: var(--shadow-sm);
-}
-
-.td-razon__num {
-  font-family: 'Saira', sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
-  line-height: 1;
-  color: var(--accent);
-}
-
-.td-razon h3 { font-size: 1.2rem; line-height: 1.3; color: var(--navy); }
-
-.td-razon p { font-size: 1rem; line-height: 1.6; color: #5E5F69; }
-
-.td-razon__pie {
-  margin-top: auto;
-  padding-top: 8px;
-  font-family: 'Saira', sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  color: var(--navy);
-}
-
 /* ---- Pantallas estrechas ---- */
 @media (max-width: 1024px) {
   .td-ruta__etapas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .td-etapa:nth-child(n) { height: auto; }
   .td-etapa__marcas { min-height: 112px; }
-  .td-inicio__razones { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -226,8 +152,4 @@
   .td-ruta { padding: 40px 0 64px; }
   .td-ruta__etapas { grid-template-columns: 1fr; gap: 12px; }
   .td-etapa__marcas { min-height: 88px; }
-  .td-intro__inner { grid-template-columns: 1fr; gap: 24px; }
-  .td-inicio { padding: 56px 0 64px; }
-  .td-inicio__razones { grid-template-columns: 1fr; gap: 16px; }
-  .td-razon { padding: 26px 22px; }
 }

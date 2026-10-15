@@ -552,7 +552,7 @@
   .ns-mv__tarjeta p { font-size: 15.5px; }
 
   .ns-cierre__inner { padding-top: 48px; padding-bottom: 52px; gap: 18px; flex-direction: column; align-items: stretch; }
-  .ns-cierre h2 { font-size: 1.75rem; }
+  .ns-cierre h2 { flex: none; font-size: 1.75rem; }
   .ns-boton { width: 100%; }
 }
 

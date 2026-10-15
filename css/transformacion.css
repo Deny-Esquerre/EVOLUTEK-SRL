@@ -127,6 +127,7 @@
 }
 
 .td-etapa__marcas--ia img { width: 24px; height: 24px; max-height: none; }
+.td-etapa__marcas--ia .td-ia__iconos--ketsol img { width: auto; height: 22px; }
 
 .td-ia__rotulo {
   font-family: 'Saira', sans-serif;

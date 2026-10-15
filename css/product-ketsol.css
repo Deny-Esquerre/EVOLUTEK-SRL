@@ -1,0 +1,137 @@
+/* ============================================
+   FICHA DE PRODUCTO — KETSOL: PASOS EN ESCALERA
+   ============================================
+   Cada paso es un peldaño: un bloque con su número a la izquierda y la
+   tarjeta al lado, cada uno un poco más adentro que el anterior. Un filete
+   en "L" baja desde el número de un peldaño hasta el del siguiente, de modo
+   que la silueta dibuja la escalera. Los números se oscurecen al bajar, del
+   acento claro al navy profundo, y cada peldaño entra por su cuenta al
+   aparecer en pantalla (.reveal-left en cada uno, no un stagger del grupo). */
+
+.ks-pasos { padding: 48px 0 96px; }
+
+.ks-escalera {
+  list-style: none;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+  --ks-paso: 60px;
+  --ks-num: 64px;
+}
+
+.ks-peldano {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding-bottom: 26px;
+  margin-left: calc(var(--i, 0) * var(--ks-paso));
+}
+
+.ks-peldano:nth-child(2) { --i: 1; --ks-tono: #5A5FDE; }
+.ks-peldano:nth-child(3) { --i: 2; --ks-tono: #4A4FD4; }
+.ks-peldano:nth-child(4) { --i: 3; --ks-tono: #3236A0; }
+.ks-peldano:nth-child(5) { --i: 4; --ks-tono: #191A55; }
+.ks-peldano:nth-child(6) { --i: 5; --ks-tono: #0F1038; }
+
+/* El filete en "L" hacia el número del peldaño siguiente */
+.ks-peldano:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--ks-num) / 2 - 1px);
+  top: var(--ks-num);
+  width: var(--ks-paso);
+  height: calc(100% - var(--ks-num));
+  border-left: 2px solid var(--line-strong);
+  border-bottom: 2px solid var(--line-strong);
+  border-bottom-left-radius: 12px;
+  pointer-events: none;
+}
+
+.ks-peldano__num {
+  flex: none;
+  position: relative;
+  z-index: 1;
+  width: var(--ks-num);
+  height: var(--ks-num);
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--ks-tono, #6C70E8);
+  color: var(--white);
+  font-family: 'Saira', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+  box-shadow: 0 10px 24px rgba(25, 26, 85, 0.18);
+}
+
+.ks-peldano__cuerpo {
+  flex: 1;
+  min-width: 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 24px 22px;
+  box-shadow: 0 8px 24px rgba(25, 26, 85, 0.06);
+  transition: var(--transition);
+}
+
+.ks-peldano__cuerpo h3 { font-size: 1.15rem; line-height: 1.25; color: var(--navy); margin-bottom: 6px; }
+.ks-peldano__cuerpo p { color: #5E5F69; font-size: 0.98rem; margin-bottom: 10px; }
+
+.ks-peldano__cuerpo ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.ks-peldano__cuerpo li {
+  position: relative;
+  padding-left: 18px;
+  color: #45465A;
+  font-size: 0.93rem;
+}
+
+.ks-peldano__cuerpo li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--ks-tono, #6C70E8);
+}
+
+.ks-peldano:hover .ks-peldano__cuerpo {
+  transform: translateX(6px);
+  border-color: var(--navy);
+}
+
+/* Demo en el navegador: un acceso directo bajo el marco, por si el visitante
+   prefiere abrirla a pantalla completa */
+.ks-demo__acciones {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+/* ---- Pantallas estrechas: la escalera se mantiene, con peldaños cortos ---- */
+@media (max-width: 760px) {
+  .ks-pasos { padding: 32px 0 64px; }
+
+  .ks-escalera { --ks-paso: 14px; --ks-num: 44px; }
+
+  .ks-peldano { gap: 12px; padding-bottom: 18px; }
+
+  .ks-peldano__num { font-size: 1.05rem; border-radius: 10px; }
+
+  .ks-peldano__cuerpo { padding: 16px 16px 18px; }
+
+  .ks-peldano__cuerpo h3 { font-size: 1.05rem; }
+
+  .ks-peldano:hover .ks-peldano__cuerpo { transform: none; }
+}

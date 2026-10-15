@@ -15,6 +15,23 @@
       </div>
     </div>
 
+    <!-- Demo en el navegador -->
+    <section class="product-video-section">
+      <div class="container">
+        <div class="video-embed video-embed--demo reveal">
+          <iframe src="https://docs.ketsol.io/s/8b3a0c59-6a85-43e3-a3b2-2e29554cea18"
+                  title="Ketsol KMS Edge — demo en el navegador"
+                  loading="lazy"
+                  allow="fullscreen"
+                  allowfullscreen></iframe>
+        </div>
+        <p class="embed-hint">Demo en el navegador: recorre KMS Edge tú mismo, sin instalar nada.</p>
+        <div class="ks-demo__acciones">
+          <a class="btn btn-primary" href="https://docs.ketsol.io/s/8b3a0c59-6a85-43e3-a3b2-2e29554cea18" target="_blank" rel="noopener">Abrir la demo en pantalla completa</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Video -->
     <section class="product-video-section">
       <div class="container">
@@ -38,65 +55,59 @@
       </div>
     </section>
 
-    <!-- Pasos de instalación -->
-    <section class="section product-steps-section">
+    <!-- Pasos de implementación: escalera -->
+    <section class="ks-pasos">
       <div class="container">
-        <div class="exp-grid exp-grid--steps stagger" data-steps>
-          <div class="exp-card">
-            <h3>Requisitos previos</h3>
-            <p>Antes de instalar, define la infraestructura y valida los requisitos base.</p>
-            <ul>
-              <li>Servidor o PC Windows, o gateway industrial para KMS Edge.</li>
-              <li>Conectividad de red hacia PLCs, DCS y SCADA.</li>
-              <li>Inventario de equipos, protocolos y tags a integrar.</li>
-            </ul>
-          </div>
-          <div class="exp-card">
-            <h3>Instalación y licencia</h3>
-            <p>Instala la plataforma y deja el servicio operativo.</p>
-            <ul>
-              <li>Instalar KMS o KMS Edge en Windows.</li>
-              <li>Preparar la base de datos (PostgreSQL o SQL Server).</li>
-              <li>Activar la licencia correspondiente.</li>
-            </ul>
-          </div>
-          <div class="exp-card">
-            <h3>Conexión de equipos</h3>
-            <p>Enlaza los orígenes de datos de la planta.</p>
-            <ul>
-              <li>Configurar Modbus, OPC UA y drivers de PLC.</li>
-              <li>Crear y validar los tags de cada equipo.</li>
-              <li>Comprobar la lectura en tiempo real.</li>
-            </ul>
-          </div>
-          <div class="exp-card">
-            <h3>Histórico y exportación</h3>
-            <p>Guarda el dato y llévalo a otros sistemas.</p>
-            <ul>
-              <li>Configurar el archivo cíclico (historian).</li>
-              <li>Definir retención y agregaciones.</li>
-              <li>Exportar a OPC UA, MQTT o SQL Server.</li>
-            </ul>
-          </div>
-          <div class="exp-card">
-            <h3>Dashboards y reportes</h3>
-            <p>Convierte el dato en información para la operación.</p>
-            <ul>
-              <li>Diseñar dashboards, tendencias y tablas dinámicas.</li>
-              <li>Programar reportes en PDF y por correo.</li>
-              <li>Configurar alarmas y alertas.</li>
-            </ul>
-          </div>
-          <div class="exp-card">
-            <h3>Puesta en marcha</h3>
-            <p>Valida el sistema y deja la plataforma operativa con acompañamiento.</p>
-            <ul>
-              <li>Pruebas con la operación real de la planta.</li>
-              <li>Capacitación a usuarios y operadores.</li>
-              <li>Definición del soporte y la escalabilidad.</li>
-            </ul>
-          </div>
-        </div>
+        <ol class="ks-escalera">
+          <li class="ks-peldano reveal-left">
+            <span class="ks-peldano__num" aria-hidden="true">01</span>
+            <div class="ks-peldano__cuerpo">
+              <h3>Requisitos previos</h3>
+              <p>Antes de instalar, define la infraestructura y valida los requisitos base.</p>
+              <ul><li>Servidor o PC Windows, o gateway industrial para KMS Edge.</li><li>Conectividad de red hacia PLCs, DCS y SCADA.</li><li>Inventario de equipos, protocolos y tags a integrar.</li></ul>
+            </div>
+          </li>
+          <li class="ks-peldano reveal-left">
+            <span class="ks-peldano__num" aria-hidden="true">02</span>
+            <div class="ks-peldano__cuerpo">
+              <h3>Instalación y licencia</h3>
+              <p>Instala la plataforma y deja el servicio operativo.</p>
+              <ul><li>Instalar KMS o KMS Edge en Windows.</li><li>Preparar la base de datos (PostgreSQL o SQL Server).</li><li>Activar la licencia correspondiente.</li></ul>
+            </div>
+          </li>
+          <li class="ks-peldano reveal-left">
+            <span class="ks-peldano__num" aria-hidden="true">03</span>
+            <div class="ks-peldano__cuerpo">
+              <h3>Conexión de equipos</h3>
+              <p>Enlaza los orígenes de datos de la planta.</p>
+              <ul><li>Configurar Modbus, OPC UA y drivers de PLC.</li><li>Crear y validar los tags de cada equipo.</li><li>Comprobar la lectura en tiempo real.</li></ul>
+            </div>
+          </li>
+          <li class="ks-peldano reveal-left">
+            <span class="ks-peldano__num" aria-hidden="true">04</span>
+            <div class="ks-peldano__cuerpo">
+              <h3>Histórico y exportación</h3>
+              <p>Guarda el dato y llévalo a otros sistemas.</p>
+              <ul><li>Configurar el archivo cíclico (historian).</li><li>Definir retención y agregaciones.</li><li>Exportar a OPC UA, MQTT o SQL Server.</li></ul>
+            </div>
+          </li>
+          <li class="ks-peldano reveal-left">
+            <span class="ks-peldano__num" aria-hidden="true">05</span>
+            <div class="ks-peldano__cuerpo">
+              <h3>Dashboards y reportes</h3>
+              <p>Convierte el dato en información para la operación.</p>
+              <ul><li>Diseñar dashboards, tendencias y tablas dinámicas.</li><li>Programar reportes en PDF y por correo.</li><li>Configurar alarmas y alertas.</li></ul>
+            </div>
+          </li>
+          <li class="ks-peldano reveal-left">
+            <span class="ks-peldano__num" aria-hidden="true">06</span>
+            <div class="ks-peldano__cuerpo">
+              <h3>Puesta en marcha</h3>
+              <p>Valida el sistema y deja la plataforma operativa con acompañamiento.</p>
+              <ul><li>Pruebas con la operación real de la planta.</li><li>Capacitación a usuarios y operadores.</li><li>Definición del soporte y la escalabilidad.</li></ul>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 

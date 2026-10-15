@@ -340,11 +340,13 @@
 .ns-cifra--destacada p { color: rgba(255, 255, 255, 0.78); }
 .ns-cifra--destacada .ns-cifra__valor { color: transparent; }
 
+/* El rótulo va en su propia fila y los tres certificados debajo, en tres
+   columnas iguales, para que ninguno salte a otra línea. */
 .ns-certs {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: center;
-  gap: 24px 40px;
+  gap: 20px 32px;
   margin-top: 28px;
   padding: 24px 32px;
   background: var(--white);
@@ -353,6 +355,7 @@
 }
 
 .ns-certs__titulo {
+  grid-column: 1 / -1;
   font-family: 'Saira', sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -538,7 +541,7 @@
   .ns-cifra__valor { font-size: 64px; letter-spacing: -2px; }
   .ns-cifra strong { font-size: 17px; margin-top: 10px; }
   .ns-cifra p { font-size: 15px; margin-top: 4px; }
-  .ns-certs { flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 14px; padding: 18px 20px; }
+  .ns-certs { grid-template-columns: 1fr; gap: 14px; margin-top: 14px; padding: 18px 20px; }
   .ns-certs__titulo { font-size: 13px; }
   .ns-certs img { height: 58px; }
 

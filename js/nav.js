@@ -14,6 +14,7 @@ const PAGE_ROUTES = {
   ketsol: '/proyectos/ketsol',
   servicios: '/servicios',
   fiscalizacion: '/servicios/fiscalizacion-hidrocarburos',
+  ia: '/servicios/soluciones-ia',
   transformacion: '/servicios/transformacion-digital',
   novedades: '/novedades',
   contacto: '/contacto'
@@ -32,6 +33,7 @@ const PAGE_TITLES = {
   ketsol: 'Ketsol KMS — Plataforma de manufactura | EVOLUTEK',
   servicios: 'Servicios — EVOLUTEK',
   fiscalizacion: 'Fiscalización de Hidrocarburos — Servicios | EVOLUTEK',
+  ia: 'Soluciones Personalizadas con IA — Servicios | EVOLUTEK',
   transformacion: 'Transformación Digital — Servicios | EVOLUTEK',
   novedades: 'Novedades — EVOLUTEK',
   contacto: 'Contacto — EVOLUTEK'

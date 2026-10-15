@@ -1,0 +1,154 @@
+/* ============================================
+   SERVICIO — SOLUCIONES PERSONALIZADAS CON IA
+   ============================================
+   Banner y cierre reutilizan .page-hero--video y .sv-cierre. Aquí van la
+   presentación, los mockups de laptop y celular (sus estilos van en línea,
+   copiados del diseño; aquí solo su comportamiento en móvil), la marquesina
+   de modelos y los principios. */
+
+/* ---- Presentación ---- */
+.ia-intro { padding: 96px 0 24px; }
+
+.ia-intro__cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ia-intro__cuerpo p {
+  /* Mismo tamaño que el texto de los bloques de Inicio */
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--gray);
+}
+
+/* ---- Mockups ---- */
+.ia-mockups { padding: 56px 0 120px; }
+
+.ia-mockups__escena {
+  position: relative;
+  padding-right: 120px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ---- Marquesina de modelos ---- */
+.ia-modelos { padding: 24px 0 96px; }
+
+.ia-modelos__lede {
+  margin: 0 auto 32px;
+  max-width: 640px;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--gray);
+}
+
+.ia-modelos__marquesina {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ia-modelos__pista {
+  display: flex;
+  width: max-content;
+  animation: iaMarquesina 36s linear infinite;
+}
+
+.ia-modelos__marquesina:hover .ia-modelos__pista { animation-play-state: paused; }
+
+.ia-modelos__serie {
+  list-style: none;
+  margin: 0;
+  padding: 0 8px;
+  display: flex;
+  gap: 16px;
+}
+
+.ia-modelo {
+  flex: none;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--white);
+  border: 1px solid rgba(25, 26, 85, 0.1);
+  border-radius: 14px;
+}
+
+.ia-modelo__logo {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--gray-bg);
+  display: grid;
+  place-items: center;
+}
+
+.ia-modelo__texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ia-modelo__texto strong {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: var(--navy);
+}
+
+.ia-modelo__texto span { font-size: 0.875rem; line-height: 1.4; color: var(--gray); }
+
+@keyframes iaMarquesina { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ia-modelos__pista { animation: none; }
+}
+
+/* ---- Principios ---- */
+.ia-principios { background: var(--gray-bg); }
+
+.ia-principios__rejilla {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+.ia-principio {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ia-principio h3 { font-size: 1.2rem; color: var(--navy); }
+
+.ia-principio p { font-size: 1rem; line-height: 1.65; color: #5E5F69; }
+
+/* ---- Pantallas estrechas ---- */
+@media (max-width: 900px) {
+  .ia-principios__rejilla { grid-template-columns: 1fr; gap: 28px; padding-top: 56px; padding-bottom: 56px; }
+}
+
+/* En móvil el celular deja de superponerse y va centrado bajo la laptop */
+@media (max-width: 760px) {
+  .ia-intro { padding-top: 56px; }
+  .ia-mockups { padding: 32px 0 64px; }
+  .ia-mockups__escena {
+    padding-right: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .ia-celular {
+    position: static !important;
+  }
+  .ia-modelos { padding-bottom: 64px; }
+  .ia-modelo { width: 260px; }
+}

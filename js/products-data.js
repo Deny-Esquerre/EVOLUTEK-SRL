@@ -47,5 +47,13 @@ const PRODUCTS = {
     icon: 'logos/flowsoftware.png',
     logo: 'logos/flowsoftware_Logo.png',
     desc: 'Solución de integración y movimiento de datos industriales. Conecta sistemas, bases de datos y plataformas para mantener un flujo de información continuo, confiable y en tiempo real.'
+  },
+  ketsol: {
+    name: 'Ketsol KMS',
+    cat: 'Plataforma de manufactura',
+    tip: 'Conecta, historiza y analiza la planta con dashboards, alertas e IA.',
+    icon: 'logos/ketsol-icon.svg',
+    logo: 'logos/ketsol.svg',
+    desc: 'Plataforma industrial que conecta PLCs, DCS y SCADA con más de 50 protocolos nativos, guarda el histórico de series temporales y lo convierte en dashboards, reportes, alertas por anomalías y respuestas en lenguaje natural con IA.'
   }
 };

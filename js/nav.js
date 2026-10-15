@@ -11,6 +11,7 @@ const PAGE_ROUTES = {
   n3uron: '/proyectos/n3uron',
   tatsoft: '/proyectos/tatsoft',
   flow: '/proyectos/flow',
+  ketsol: '/proyectos/ketsol',
   servicios: '/servicios',
   novedades: '/novedades',
   contacto: '/contacto'
@@ -26,6 +27,7 @@ const PAGE_TITLES = {
   n3uron: 'N3uron — Edge & MQTT | EVOLUTEK',
   tatsoft: 'Tatsoft (FactoryStudio) — SCADA, HMI y OEE | EVOLUTEK',
   flow: 'Flow Software — Integración de datos | EVOLUTEK',
+  ketsol: 'Ketsol KMS — Plataforma de manufactura | EVOLUTEK',
   servicios: 'Servicios — EVOLUTEK',
   novedades: 'Novedades — EVOLUTEK',
   contacto: 'Contacto — EVOLUTEK'

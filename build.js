@@ -61,7 +61,7 @@ const ROUTES = [
   {
     dir: 'proyectos', page: 'productos',
     title: 'Productos — EVOLUTEK',
-    description: 'Portafolio de productos Evolutek: Canary Labs, Kepware, Ignition, N3uron, Tatsoft y Flow Software para la Industria 4.0.'
+    description: 'Portafolio de productos Evolutek: Canary Labs, Kepware, Ignition, N3uron, Tatsoft, Flow Software y Ketsol para la Industria 4.0.'
   },
   {
     dir: 'proyectos/canary', page: 'canary',
@@ -92,6 +92,11 @@ const ROUTES = [
     dir: 'proyectos/flow', page: 'flow',
     title: 'Flow Software — Integración de datos | EVOLUTEK',
     description: 'Flow Software: integración y movimiento de datos industriales. Conecta sistemas, bases de datos y plataformas en tiempo real.'
+  },
+  {
+    dir: 'proyectos/ketsol', page: 'ketsol',
+    title: 'Ketsol KMS — Plataforma de manufactura | EVOLUTEK',
+    description: 'Ketsol KMS: conecta PLCs, DCS y SCADA con más de 50 protocolos, historiza los datos y los convierte en dashboards, reportes, alertas e IA para la planta.'
   },
   {
     dir: 'servicios', page: 'servicios',

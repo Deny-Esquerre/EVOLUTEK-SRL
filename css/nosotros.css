@@ -369,9 +369,11 @@
 .ns-certs figcaption { font-weight: 600; color: var(--navy); }
 
 /* ---- 5. Misión y visión ---- */
+/* Va justo después del bloque del mapa y antes de la cadena del dato (gris):
+   en blanco, con el filete de arriba para separarla del mapa. */
 .ns-mv {
   padding: 96px 0;
-  background: var(--gray-bg);
+  background: var(--white);
   border-top: 1px solid rgba(25, 26, 85, 0.08);
 }
 

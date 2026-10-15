@@ -2,7 +2,7 @@
    SERVICIO — FISCALIZACIÓN DE HIDROCARBUROS
    ============================================
    Banner y cierre reutilizan .page-hero--video y .sv-cierre. Aquí van la
-   presentación, las tres etapas ilustradas (tarjetas del mismo alto) y la
+   presentación, las tres etapas con foto (tarjetas del mismo alto) y la
    lista de equipos junto a la foto del skid. */
 
 /* ---- Presentación ---- */
@@ -49,21 +49,23 @@
 
 .fz-etapa:hover { border-color: var(--navy); }
 
-.fz-etapa__ilustracion {
+.fz-etapa__foto {
   flex: none;
   height: 230px;
-  padding: 20px 20px 8px;
+  overflow: hidden;
   background: var(--gray-bg);
   border-bottom: 1px solid var(--line-strong);
-  display: flex;
-  align-items: flex-end;
 }
 
-.fz-etapa__svg {
+.fz-etapa__foto img {
   display: block;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
+
+.fz-etapa:hover .fz-etapa__foto img { transform: scale(1.04); }
 
 .fz-etapa__texto {
   flex: 1;
@@ -158,6 +160,6 @@
 @media (max-width: 640px) {
   .fz-intro { padding-top: 56px; }
   .fz-etapas { padding: 40px 0 64px; }
-  .fz-etapa__ilustracion { height: 200px; }
+  .fz-etapa__foto { height: 200px; }
   .fz-equipos__lista li { padding: 18px 0; font-size: 1.05rem; }
 }

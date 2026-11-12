@@ -21,6 +21,7 @@
     'js/pasarela.js',
     'js/novedades.js',
     'js/contacto.js',
+    'js/navidad.js',
     'js/boot.js'
   ];
 

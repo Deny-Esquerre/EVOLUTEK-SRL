@@ -25,7 +25,7 @@ const CSS_ORDER = [
   'servicios.css', 'fiscalizacion.css', 'ia.css', 'transformacion.css', 'novedades.css', 'contacto.css', 'nosotros.css',
   'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
   'product-stair.css', 'product-ketsol.css',
-  'cta.css', 'error.css', 'footer.css', 'animations.css', 'responsive.css'
+  'cta.css', 'error.css', 'footer.css', 'animations.css', 'navidad.css', 'responsive.css'
 ];
 
 // ready.js primero (define onReady y el ciclo de vida de página) y boot.js el
@@ -33,7 +33,7 @@ const CSS_ORDER = [
 // includes.js NO va al bundle de producción.
 const JS_ORDER = [
   'ready.js', 'nav.js', 'reveal.js', 'strategy-rail.js', 'hero.js',
-  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'frentes.js', 'pasarela.js', 'novedades.js', 'contacto.js', 'boot.js'
+  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'frentes.js', 'pasarela.js', 'novedades.js', 'contacto.js', 'navidad.js', 'boot.js'
 ];
 
 // Dominio público. canonical, Open Graph y sitemap.xml necesitan URLs
@@ -453,6 +453,9 @@ const reUrl = /url\(\s*(['"]?)([^'")]+)\1\s*\)/g;
 addRefs(shell, reAttr);
 for (const name of Object.keys(PAGE_CACHE_ALL)) addRefs(PAGE_CACHE_ALL[name], reAttr);
 let u; while ((u = reUrl.exec(cssRaw))) refs.add(u[2]);
+// Rutas de imagen escritas como texto en el JS (p. ej. el logo de temporada
+// que pone js/navidad.js): no aparecen en ningún HTML ni CSS.
+addRefs(jsRaw, /['"]((?:EVOLUTEK|img|logos)\/[^'"\s]+\.(?:png|webp|jpe?g|svg|gif|avif))['"]/g);
 
 const isExternal = r => /^(https?:)?\/\//i.test(r) || /^(data:|#|mailto:|tel:|javascript:)/i.test(r);
 const copied = [];

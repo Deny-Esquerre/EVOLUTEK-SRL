@@ -1,0 +1,117 @@
+/* ============================================
+   TEMPORADA NAVIDEÑA (js/navidad.js)
+   Todo cuelga de elementos que crea el script, así que fuera de temporada
+   estas reglas no tocan nada.
+   ============================================ */
+
+/* ---------- Logo con gorro navideño ----------
+   La imagen incluye el gorro por encima del isotipo, así que es más alta que
+   el logo normal: a 70px el círculo y las letras miden lo mismo que en el
+   logo de siempre (54px), y se sube 9px para que el círculo quede centrado
+   en la barra y el gorro asome hacia arriba. */
+.navbar-logo.navbar-logo--navidad {
+  height: 70px;
+  width: auto;
+  transform: translateY(-9px);
+}
+
+/* ---------- Guirnalda de luces ----------
+   Cuelga del borde inferior de la barra. Va dentro de la barra (que crea su
+   propio contexto de apilamiento), por debajo de .navbar-inner: los menús
+   desplegables y el menú móvil siempre quedan encima de los focos. */
+.navidad-luces {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: -3px;
+  z-index: 1;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.navidad-luces svg { display: block; overflow: visible; }
+
+/* Cada foco se mece desde su casquillo, a su propio ritmo. */
+.navidad-foco {
+  transform-origin: 0 0;
+  animation: navidad-vaiven var(--vaiven, 4s) ease-in-out var(--vaiven-d, 0s) infinite alternate;
+}
+
+.navidad-foco__halo {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* 1) Encendido en cascada, de izquierda a derecha, al cargar la página. */
+.navidad-luces:not(.is-on) .navidad-foco__luz,
+.navidad-luces:not(.is-on) .navidad-foco__halo { opacity: 0; }
+
+.navidad-luces.is-on .navidad-foco__luz {
+  animation: navidad-encender 0.55s ease-out calc(var(--i) * 28ms) both;
+}
+
+.navidad-luces.is-on .navidad-foco__halo {
+  animation: navidad-encender-halo 0.8s ease-out calc(var(--i) * 28ms) both;
+}
+
+/* 2) Secuencias: el script fija --nivel (0 a 1) en cada foco y el programa
+   en curso fija --trans en la tira (seca para destellos, suave para ondas). */
+.navidad-luces.en-secuencia .navidad-foco__luz,
+.navidad-luces.en-secuencia .navidad-foco__halo { animation: none; }
+
+.navidad-luces.en-secuencia .navidad-foco__luz {
+  opacity: calc(0.16 + 0.84 * var(--nivel, 1));
+  transition: opacity var(--trans, 0.2s) ease-out;
+}
+
+.navidad-luces.en-secuencia .navidad-foco__halo {
+  opacity: var(--nivel, 1);
+  transform: scale(calc(0.7 + 0.45 * var(--nivel, 1)));
+  transition: opacity var(--trans, 0.2s) ease-out, transform var(--trans, 0.2s) ease-out;
+}
+
+@keyframes navidad-encender {
+  0%   { opacity: 0; }
+  60%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* El halo destella un instante al encenderse y luego se asienta. */
+@keyframes navidad-encender-halo {
+  0%   { opacity: 0; transform: scale(0.6); }
+  55%  { opacity: 1; transform: scale(1.3); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes navidad-vaiven {
+  from { transform: rotate(-3deg); }
+  to   { transform: rotate(3deg); }
+}
+
+/* ---------- Nieve en la cabecera ----------
+   Entre la capa de contraste y el texto. Se desvanece hacia abajo para que
+   la cabecera no termine en un corte seco de copos. */
+.navidad-nieve {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+  transition: opacity 0.8s ease;
+}
+
+.navidad-nieve.is-off { opacity: 0; }
+
+/* ---------- Movimiento reducido ----------
+   Focos encendidos y quietos (el secuenciador no arranca). */
+@media (prefers-reduced-motion: reduce) {
+  .navidad-foco,
+  .navidad-luces .navidad-foco__luz,
+  .navidad-luces .navidad-foco__halo { animation: none !important; }
+  .navidad-luces .navidad-foco__luz,
+  .navidad-luces .navidad-foco__halo { opacity: 1 !important; }
+}

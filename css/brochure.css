@@ -56,17 +56,6 @@
   color: var(--navy);
 }
 
-.brochure-card__meta {
-  display: block;
-  margin-top: 4px;
-  font-family: 'Saira', 'Barlow', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
 .brochure-card__flecha {
   flex: none;
   color: var(--accent);

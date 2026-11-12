@@ -1,0 +1,98 @@
+/* ============================================
+   FIESTAS PATRIAS (js/fiestas-patrias.js)
+   Todo cuelga de elementos que crea el script, así que fuera de temporada
+   estas reglas no tocan nada.
+   ============================================ */
+
+/* ---------- Escarapela en el logo ----------
+   Prendida sobre el borde superior izquierdo del círculo del isotipo. */
+.fiestas-patrias .navbar-brand { position: relative; }
+
+.fp-escarapela {
+  position: absolute;
+  left: -10px;
+  top: -6px;
+  width: 32px;
+  height: 38px;
+  transform: rotate(-14deg);
+  transform-origin: 50% 40%;
+  filter: drop-shadow(0 2px 2px rgba(15, 16, 56, 0.25));
+  pointer-events: none;
+  animation: fp-prender 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+}
+
+.fp-escarapela svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+@keyframes fp-prender {
+  from { opacity: 0; transform: rotate(-40deg) scale(0.4); }
+  to   { opacity: 1; transform: rotate(-14deg) scale(1); }
+}
+
+/* ---------- Banderas del Perú ----------
+   Cuelgan del borde inferior de la barra, por debajo de .navbar-inner: los
+   menús desplegables y el menú móvil siempre quedan encima. */
+.fp-banderolas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: -3px;
+  z-index: 1;
+  line-height: 0;
+  pointer-events: none;
+  /* Sombra suave: separa la franja blanca de un fondo blanco. */
+  filter: drop-shadow(0 2px 2px rgba(15, 16, 56, 0.18));
+}
+
+.fp-banderolas svg { display: block; overflow: visible; }
+
+/* Dos capas por bandera: la exterior se despliega al cargar (en cascada,
+   de izquierda a derecha) y la interior ondea. Así las dos animaciones de
+   transform no se pisan. El retraso del ondeo crece con el índice, de modo
+   que avanza por la tira como una ráfaga de viento. */
+.fp-banderola,
+.fp-tela { transform-origin: 0 0; }
+
+.fp-tela {
+  animation: fp-ondear 2.8s ease-in-out calc(var(--i) * -0.16s) infinite alternate;
+}
+
+.fp-banderolas:not(.is-on) .fp-banderola { opacity: 0; }
+
+.fp-banderolas.is-on .fp-banderola {
+  animation: fp-desplegar 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) calc(var(--i) * 30ms) both;
+}
+
+@keyframes fp-desplegar {
+  from { opacity: 0; transform: scaleY(0); }
+  to   { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes fp-ondear {
+  from { transform: rotate(-5deg) skewX(2deg); }
+  to   { transform: rotate(5deg) skewX(-2deg); }
+}
+
+/* ---------- Confeti y fuegos en la cabecera ----------
+   Entre la capa de contraste y el texto; se desvanece hacia abajo. */
+.fp-festejo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+}
+
+@media (max-width: 480px) {
+  .fp-escarapela { left: -8px; top: -3px; width: 26px; height: 31px; }
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .fp-escarapela,
+  .fp-tela,
+  .fp-banderolas .fp-banderola { animation: none !important; opacity: 1 !important; }
+}

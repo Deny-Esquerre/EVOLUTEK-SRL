@@ -22,6 +22,7 @@
     'js/novedades.js',
     'js/contacto.js',
     'js/navidad.js',
+    'js/fiestas-patrias.js',
     'js/boot.js'
   ];
 

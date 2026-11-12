@@ -25,7 +25,7 @@ const CSS_ORDER = [
   'servicios.css', 'fiscalizacion.css', 'ia.css', 'transformacion.css', 'novedades.css', 'contacto.css', 'nosotros.css',
   'product.css', 'product-edge.css', 'product-scada.css', 'product-dataops.css',
   'product-stair.css', 'product-ketsol.css',
-  'cta.css', 'error.css', 'footer.css', 'animations.css', 'navidad.css', 'responsive.css'
+  'cta.css', 'error.css', 'footer.css', 'animations.css', 'navidad.css', 'fiestas-patrias.css', 'responsive.css'
 ];
 
 // ready.js primero (define onReady y el ciclo de vida de página) y boot.js el
@@ -33,7 +33,7 @@ const CSS_ORDER = [
 // includes.js NO va al bundle de producción.
 const JS_ORDER = [
   'ready.js', 'nav.js', 'reveal.js', 'strategy-rail.js', 'hero.js',
-  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'frentes.js', 'pasarela.js', 'novedades.js', 'contacto.js', 'navidad.js', 'boot.js'
+  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'frentes.js', 'pasarela.js', 'novedades.js', 'contacto.js', 'navidad.js', 'fiestas-patrias.js', 'boot.js'
 ];
 
 // Dominio público. canonical, Open Graph y sitemap.xml necesitan URLs

@@ -1,0 +1,52 @@
+  <!-- PRIVACY CONSENT BAR -->
+  <div class="consent-bar" id="consentBar" role="region" aria-label="Privacy consent">
+    <div class="consent-bar__inner">
+      <p>We use cookies to improve your experience. By continuing, you accept our <button type="button" class="link-btn" onclick="openPrivacyModal()">privacy policy</button>.</p>
+      <div class="consent-bar__actions">
+        <button type="button" class="btn btn-accept" onclick="acceptPrivacy()">Accept all</button>
+        <button type="button" class="btn btn-deny" onclick="denyPrivacy()">Deny</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIVACY POLICY MODAL -->
+  <div class="privacy-modal" id="privacyModal" aria-hidden="true">
+    <div class="privacy-modal__overlay" onclick="closePrivacyModal()"></div>
+    <div class="privacy-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+      <button class="privacy-modal__close" type="button" onclick="closePrivacyModal()" aria-label="Close">&times;</button>
+      <h2 id="privacyTitle">Privacy Policy</h2>
+      <p class="privacy-modal__updated">Last updated: 2025</p>
+
+      <p>At EVOLUTEK, we value and respect your privacy. This policy describes how we handle the information we collect through our website and the rights you have regarding it.</p>
+
+      <h3>1. Information we collect</h3>
+      <p>We collect only the information you voluntarily provide when contacting us, such as your name, email address and the message you send us. We may also collect anonymous browsing data (such as pages visited) for statistical purposes.</p>
+
+      <h3>2. Use of information</h3>
+      <p>We use your information to:</p>
+      <ul>
+        <li>Respond to your inquiries and requests.</li>
+        <li>Manage commercial and service communications.</li>
+        <li>Improve the content and experience of our site.</li>
+      </ul>
+      <p>We do not sell or transfer your personal data to third parties.</p>
+
+      <h3>3. Images and third-party content</h3>
+      <p>The images used on this site are for reference only and are not licensed by EVOLUTEK; they are used solely for illustrative purposes. Third-party logos and brand names (Canary Labs, Kepware, Ignition, N3uron, Tatsoft, Flow Software and Ketsol) are the property of their respective owners and are shown for informational purposes only, without implying sponsorship or affiliation.</p>
+
+      <h3>4. Cookies</h3>
+      <p>This site may use cookies to remember your preferences and to analyze traffic in aggregate form. You can set your browser to reject them at any time.</p>
+
+      <h3>5. Links to third-party sites</h3>
+      <p>Our site may contain links to external sites. We are not responsible for their content or their privacy policies.</p>
+
+      <h3>6. Your rights</h3>
+      <p>You may request access to, correction of or deletion of your personal data by writing to our contact email address.</p>
+
+      <h3>7. Changes to this policy</h3>
+      <p>We may update this policy from time to time. Any changes will be posted on this page.</p>
+
+      <h3>8. Contact</h3>
+      <p>Email us: <a href="mailto:Administracion@evolutek.pe">Administracion@evolutek.pe</a></p>
+    </div>
+  </div>

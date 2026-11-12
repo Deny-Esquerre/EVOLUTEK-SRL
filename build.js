@@ -139,6 +139,91 @@ const ROUTES = [
   }
 ];
 
+// Versión en inglés: mismas páginas (partials/en/), bajo /en. Los títulos
+// deben coincidir con PAGE_TITLES_EN de js/nav.js.
+const ROUTES_EN = [
+  {
+    dir: 'en', page: 'inicio',
+    title: 'EVOLUTEK — Industrial Automation & Industry 4.0 in Peru',
+    description: 'Evolutek drives the digital transformation of industry in Peru and Latin America: automation, IIoT, SCADA, data historians and AI to modernize your plant.'
+  },
+  {
+    dir: 'en/about', page: 'nosotros',
+    title: 'About Us — Industry 4.0 System Integrators in Peru | EVOLUTEK',
+    description: 'Meet Evolutek: engineering and technology for Industry 4.0, with hands-on experience integrating automation, IIoT and analytics to modernize industry.'
+  },
+  {
+    dir: 'en/products', page: 'productos',
+    title: 'Products — Industrial SCADA & IIoT Software | EVOLUTEK',
+    description: 'Industrial software we integrate: Canary Labs, Kepware, Ignition, N3uron, Tatsoft, Flow Software and Ketsol to connect, historize and analyze your data.'
+  },
+  {
+    dir: 'en/products/canary', page: 'canary',
+    title: 'Canary Labs — Data Historian | EVOLUTEK',
+    description: 'Canary Labs: a data historian and analytics platform for process data. Store and visualize years of operational data at high speed.'
+  },
+  {
+    dir: 'en/products/kepware', page: 'kepware',
+    title: 'Kepware — Industrial Connectivity | EVOLUTEK',
+    description: 'Kepware: an industrial communications server with OPC UA/DA, Modbus and 150+ protocols to connect PLCs and devices to your SCADA systems.'
+  },
+  {
+    dir: 'en/products/ignition', page: 'ignition',
+    title: 'Ignition — SCADA, HMI & MES | EVOLUTEK',
+    description: 'Ignition: a SCADA, HMI and MES platform with no per-tag licensing. Real-time monitoring, control and visualization from any browser or mobile device.'
+  },
+  {
+    dir: 'en/products/n3uron', page: 'n3uron',
+    title: 'N3uron — Edge & MQTT | EVOLUTEK',
+    description: 'N3uron: an edge and IIoT platform with native MQTT, OPC UA and REST support to collect field data and send it securely to the cloud.'
+  },
+  {
+    dir: 'en/products/tatsoft', page: 'tatsoft',
+    title: 'Tatsoft (FactoryStudio) — SCADA, HMI & OEE | EVOLUTEK',
+    description: 'Tatsoft (FactoryStudio): a SCADA/HMI platform with OEE and production management modules to monitor performance in real time.'
+  },
+  {
+    dir: 'en/products/flow', page: 'flow',
+    title: 'Flow Software — Data Integration | EVOLUTEK',
+    description: 'Flow Software: industrial data integration. Connect systems, databases and platforms in real time and turn data into KPIs.'
+  },
+  {
+    dir: 'en/products/ketsol', page: 'ketsol',
+    title: 'Ketsol KMS — Manufacturing Platform | EVOLUTEK',
+    description: 'Ketsol KMS: connect PLCs, DCS and SCADA through 50+ protocols, historize the data and turn it into dashboards, reports, alerts and AI for the plant.'
+  },
+  {
+    dir: 'en/services', page: 'servicios', crumb: 'Services',
+    title: 'Industrial Automation & Industry 4.0 Services | EVOLUTEK',
+    description: 'Evolutek services: consulting, systems integration, automation, IIoT, hydrocarbon fiscal metering and AI solutions for industry.'
+  },
+  {
+    dir: 'en/services/hydrocarbon-fiscal-metering', page: 'fiscalizacion',
+    title: 'Hydrocarbon Fiscal Metering — Services | EVOLUTEK',
+    description: 'Hydrocarbon fiscal metering: design plus preventive and corrective maintenance of gas metering points and LACT units, to AGA and API standards.'
+  },
+  {
+    dir: 'en/services/ai-solutions', page: 'ia',
+    title: 'Custom AI Solutions — Services | EVOLUTEK',
+    description: 'Custom AI for industry: anomaly detection, failure prediction and natural-language recommendations with Claude, Gemini and local models.'
+  },
+  {
+    dir: 'en/services/digital-transformation', page: 'transformacion',
+    title: 'Digital Transformation — Services | EVOLUTEK',
+    description: 'Industrial digital transformation with Evolutek: from your existing systems to advanced analytics and AI, with N3uron, Ignition, Canary, Kepware and Flow Software.'
+  },
+  {
+    dir: 'en/news', page: 'novedades',
+    title: 'News — Industry 4.0 Projects & Events | EVOLUTEK',
+    description: 'Evolutek news: projects, events and announcements on industrial automation, IIoT and Industry 4.0 in Peru and the region, published on LinkedIn.'
+  },
+  {
+    dir: 'en/contact', page: 'contacto',
+    title: 'Contact — Get a Quote for Your Industry 4.0 Project | EVOLUTEK',
+    description: 'Contact us to discuss your industrial digital transformation project: automation, IIoT, SCADA, advanced analytics and artificial intelligence.'
+  }
+].map(r => Object.assign({ lang: 'en' }, r));
+
 const read = p => fs.readFileSync(p, 'utf8');
 const repo = p => path.join(ROOT, p);
 const dest = p => path.join(DIST, p);
@@ -221,42 +306,57 @@ function minifyJs(src) {
 
 const PAGE_SLOT = '@@PAGE@@';
 
-let shell = read(repo('index.html'));
+// Carpeta de parciales de cada idioma: el inglés vive en partials/en/ con los
+// mismos nombres de archivo.
+const partialsDir = lang => (lang === 'en' ? 'partials/en/' : 'partials/');
 
-// parciales compartidos -> contenido
-for (const name of SHARED_PARTIALS) {
-  const marker = new RegExp('[ \t]*<div data-include="partials/' + name + '\.html"></div>');
-  if (!marker.test(shell)) throw new Error('No se encontró el placeholder: ' + name);
-  shell = shell.replace(marker, read(repo(`partials/${name}.html`)).replace(/\s+$/, ''));
+// Un shell por idioma: el mismo index.html con el menú, el pie y los modales
+// de ese idioma, y su lang en <html>.
+function buildShell(lang) {
+  let shell = read(repo('index.html'));
+  if (lang === 'en') {
+    if (!/<html lang="es">/.test(shell)) throw new Error('No se encontró <html lang="es"> en index.html.');
+    shell = shell.replace('<html lang="es">', '<html lang="en">');
+  }
+
+  // parciales compartidos -> contenido
+  for (const name of SHARED_PARTIALS) {
+    const marker = new RegExp('[ \t]*<div data-include="partials/' + name + '\.html"></div>');
+    if (!marker.test(shell)) throw new Error('No se encontró el placeholder: ' + name);
+    shell = shell.replace(marker, read(repo(partialsDir(lang) + name + '.html')).replace(/\s+$/, ''));
+  }
+
+  // El año del aviso de copyright lo pone la compilación, no la mano: así deja de
+  // quedarse atrasado en cuanto cambia el año. El valor que hay en el parcial es
+  // el que se ve en desarrollo, donde no pasa por aquí.
+  const HUECO_ANIO = /(<span data-year>)\d{4}(<\/span>)/;
+  if (!HUECO_ANIO.test(shell)) throw new Error(`No se encontró el hueco del año (<span data-year>) en el pie (${lang}).`);
+  shell = shell.replace(HUECO_ANIO, (m, a, b) => a + new Date().getFullYear() + b);
+
+  // Los marcadores de página se colapsan en un único hueco que se rellena por ruta.
+  let slotDone = false;
+  shell = shell.replace(/[ \t]*<div data-include="partials\/page-[a-z0-9-]+\.html"><\/div>\r?\n?/g, () => {
+    if (slotDone) return '';
+    slotDone = true;
+    return '    ' + PAGE_SLOT + '\n';
+  });
+  if (!slotDone) throw new Error('No se encontró ningún placeholder de página.');
+
+  // 23 <link> css -> 1
+  shell = shell.replace(/(\s*<link rel="stylesheet" href="css\/[^"]+">)+/, '\n  <link rel="stylesheet" href="css/styles.min.css">');
+  // includes.js -> bundle
+  shell = shell.replace('<script src="js/includes.js"></script>', '<script src="js/app.min.js"></script>');
+
+  if (shell.includes('data-include')) throw new Error('Quedaron placeholders sin resolver.');
+  return shell;
 }
 
-// El año del aviso de copyright lo pone la compilación, no la mano: así deja de
-// quedarse atrasado en cuanto cambia el año. El valor que hay en el parcial es
-// el que se ve en desarrollo, donde no pasa por aquí.
-const HUECO_ANIO = /(<span data-year>)\d{4}(<\/span>)/;
-if (!HUECO_ANIO.test(shell)) throw new Error('No se encontró el hueco del año (<span data-year>).');
-shell = shell.replace(HUECO_ANIO, (m, a, b) => a + new Date().getFullYear() + b);
-
-// Los marcadores de página se colapsan en un único hueco que se rellena por ruta.
-let slotDone = false;
-shell = shell.replace(/[ \t]*<div data-include="partials\/page-[a-z0-9-]+\.html"><\/div>\r?\n?/g, () => {
-  if (slotDone) return '';
-  slotDone = true;
-  return '    ' + PAGE_SLOT + '\n';
-});
-if (!slotDone) throw new Error('No se encontró ningún placeholder de página.');
-
-// 23 <link> css -> 1
-shell = shell.replace(/(\s*<link rel="stylesheet" href="css\/[^"]+">)+/, '\n  <link rel="stylesheet" href="css/styles.min.css">');
-// includes.js -> bundle
-shell = shell.replace('<script src="js/includes.js"></script>', '<script src="js/app.min.js"></script>');
-
-if (shell.includes('data-include')) throw new Error('Quedaron placeholders sin resolver.');
+const SHELLS = { es: buildShell('es'), en: buildShell('en') };
 
 // Lee la página de una ruta y la marca como visible, de modo que la ruta se
 // renderice correctamente aunque el JavaScript no llegue a ejecutarse.
-function readPage(name) {
-  const src = read(repo(`partials/page-${name}.html`)).replace(/\s+$/, '');
+function readPage(name, lang) {
+  const src = read(repo(partialsDir(lang) + `page-${name}.html`)).replace(/\s+$/, '');
   // Conserva las clases propias de la página (p. ej. product--scada) y solo
   // añade active/visible, para que la ruta se vea sin depender del JS.
   const out = src.replace(/<div class="page([^"]*)"(\s+id="page-[a-z0-9]+")/, function (m, extra, id) {
@@ -291,18 +391,34 @@ const escHtml = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').re
 // "" -> https://evolutek.pe/ ; "servicios/soluciones-ia" -> .../servicios/soluciones-ia
 const urlOf = dir => SITE_URL + '/' + dir;
 
-// Datos de la empresa para Google (se incrustan solo en la portada).
-const ORG_JSONLD = {
+// Datos de la empresa para Google (se incrustan solo en la portada de cada idioma).
+const orgJsonLd = lang => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'EVOLUTEK',
-  url: SITE_URL + '/',
+  url: urlOf(lang === 'en' ? 'en' : ''),
   logo: urlOf(OG_IMAGE),
   email: 'Administracion@evolutek.pe',
-  description: ROUTES[0].description,
-  areaServed: 'PE',
+  description: (lang === 'en' ? ROUTES_EN : ROUTES)[0].description,
+  areaServed: lang === 'en' ? ['PE', 'BO', 'BR', 'Latin America'] : 'PE',
   sameAs: ['https://www.linkedin.com/company/evolutek-srl/']
-};
+});
+
+// Rutas indexables (sin duplicados con canonical propio), por idioma.
+const indexables = lang => (lang === 'en' ? ROUTES_EN : ROUTES).filter(r => r.canonical === undefined);
+
+// La misma página en los dos idiomas, para los <link rel="alternate" hreflang>.
+// x-default (visitantes de otros idiomas) apunta a la versión en español.
+function alternates(route) {
+  const es = indexables('es').find(r => r.page === route.page);
+  const en = indexables('en').find(r => r.page === route.page);
+  if (!es || !en) return [];
+  return [
+    `<link rel="alternate" hreflang="es" href="${urlOf(es.dir)}">`,
+    `<link rel="alternate" hreflang="en" href="${urlOf(en.dir)}">`,
+    `<link rel="alternate" hreflang="x-default" href="${urlOf(es.dir)}">`
+  ];
+}
 
 // Etiquetas SEO de una ruta. Sin "dir" (la página 404) solo se pide no indexar.
 function seoHead(route) {
@@ -311,12 +427,15 @@ function seoHead(route) {
     t.push('<meta name="robots" content="noindex, follow">');
     return t;
   }
+  const en = route.lang === 'en';
   const url = urlOf(route.canonical !== undefined ? route.canonical : route.dir);
   t.push(
     `<link rel="canonical" href="${url}">`,
+    ...alternates(route),
     '<meta name="robots" content="index, follow, max-image-preview:large">',
     '<meta property="og:type" content="website">',
-    '<meta property="og:locale" content="es_PE">',
+    `<meta property="og:locale" content="${en ? 'en_US' : 'es_PE'}">`,
+    `<meta property="og:locale:alternate" content="${en ? 'es_PE' : 'en_US'}">`,
     '<meta property="og:site_name" content="EVOLUTEK">',
     `<meta property="og:title" content="${escHtml(route.title)}">`,
     `<meta property="og:description" content="${escHtml(route.description)}">`,
@@ -324,8 +443,8 @@ function seoHead(route) {
     `<meta property="og:image" content="${urlOf(OG_IMAGE)}">`,
     '<meta name="twitter:card" content="summary_large_image">'
   );
-  if (route.dir === '') {
-    t.push('<script type="application/ld+json">' + JSON.stringify(ORG_JSONLD) + '</script>');
+  if (route.dir === '' || route.dir === 'en') {
+    t.push('<script type="application/ld+json">' + JSON.stringify(orgJsonLd(route.lang)) + '</script>');
   } else if (route.canonical === undefined) {
     t.push('<script type="application/ld+json">' + JSON.stringify(breadcrumbs(route)) + '</script>');
   }
@@ -334,18 +453,21 @@ function seoHead(route) {
 
 // Nombre corto de una ruta para las migas: "crumb" si lo tiene, o lo que va
 // antes de " — " o " | " en el título.
-const shortName = dir => {
-  const r = ROUTES.find(x => x.dir === dir);
+const shortName = (dir, lang) => {
+  const r = (lang === 'en' ? ROUTES_EN : ROUTES).find(x => x.dir === dir);
   return r.crumb || r.title.split(/ — | \| /)[0];
 };
 
-// Inicio > Servicios > Soluciones con IA, en el formato que Google entiende.
+// Inicio > Servicios > Soluciones con IA (o Home > Services > Custom AI
+// Solutions), en el formato que Google entiende.
 function breadcrumbs(route) {
-  const parts = route.dir.split('/');
-  const items = [{ name: 'Inicio', dir: '' }];
+  const en = route.lang === 'en';
+  const raiz = en ? 'en' : '';
+  const parts = (en ? route.dir.replace(/^en\/?/, '') : route.dir).split('/');
+  const items = [{ name: en ? 'Home' : 'Inicio', dir: raiz }];
   for (let i = 1; i <= parts.length; i++) {
-    const dir = parts.slice(0, i).join('/');
-    items.push({ name: shortName(dir), dir });
+    const dir = (en ? 'en/' : '') + parts.slice(0, i).join('/');
+    items.push({ name: shortName(dir, route.lang), dir });
   }
   return {
     '@context': 'https://schema.org',
@@ -364,9 +486,19 @@ function lcpPreload(pageHtml) {
   return m ? [`<link rel="preload" as="image" href="${m[1]}" fetchpriority="high">`] : [];
 }
 
+// El selector de idioma del menú apunta ya en el HTML a esta misma página en
+// el otro idioma (js/nav.js lo mantiene al navegar), así funciona sin JS.
+function langSwitchHref(route) {
+  if (route.dir === undefined) return null;
+  const otro = indexables(route.lang === 'en' ? 'es' : 'en').find(r => r.page === route.page);
+  return otro ? '/' + otro.dir : null;
+}
+
 function routeHtml(route, pageHtml) {
   const head = lcpPreload(pageHtml).concat(seoHead(route));
-  return shell
+  const destino = langSwitchHref(route);
+  return SHELLS[route.lang || 'es']
+    .replace(/href="[^"]*"( class="lang-switch")/, function (m, resto) { return destino ? 'href="' + destino + '"' + resto : m; })
     .replace(PAGE_SLOT, function () { return pageHtml; })
     .replace(/<title>[\s\S]*?<\/title>/, function () { return '<title>' + escHtml(route.title) + '</title>'; })
     .replace(/(<meta name="description" content=")[^"]*(")/, function (m, a, b) { return a + escHtml(route.description) + b; })
@@ -374,15 +506,18 @@ function routeHtml(route, pageHtml) {
 }
 
 // Las páginas se leen una sola vez aunque varias rutas apunten a la misma
-// (p. ej. "/" e "/inicio").
+// (p. ej. "/" e "/inicio"). La clave lleva el idioma: "es:canary", "en:canary".
 const PAGE_CACHE_ALL = {};
-const pageOf = name => (PAGE_CACHE_ALL[name] || (PAGE_CACHE_ALL[name] = readPage(name)));
+const pageOf = (name, lang = 'es') => {
+  const k = lang + ':' + name;
+  return PAGE_CACHE_ALL[k] || (PAGE_CACHE_ALL[k] = readPage(name, lang));
+};
 
 const pages = [];
-for (const route of ROUTES) {
+for (const route of ROUTES.concat(ROUTES_EN)) {
   const file = route.dir ? dest(route.dir + '/index.html') : dest('index.html');
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, routeHtml(route, pageOf(route.page)), 'utf8');
+  fs.writeFileSync(file, routeHtml(route, pageOf(route.page, route.lang)), 'utf8');
   pages.push(route.dir ? route.dir + '/index.html' : 'index.html');
 }
 
@@ -399,12 +534,17 @@ fs.writeFileSync(dest('404.html'), routeHtml(NOT_FOUND, pageOf('404')), 'utf8');
 
 // sitemap.xml: una entrada por ruta, salvo los duplicados con canonical propio.
 const today = new Date().toISOString().slice(0, 10);
-const sitemapUrls = ROUTES.filter(r => r.canonical === undefined).map(r =>
-  '  <url>\n' +
-  `    <loc>${urlOf(r.dir)}</loc>\n` +
-  `    <lastmod>${today}</lastmod>\n` +
-  `    <priority>${r.dir === '' ? '1.0' : r.dir.includes('/') ? '0.7' : '0.8'}</priority>\n` +
-  '  </url>');
+// Incluye las dos versiones; cada página declara su par con hreflang.
+// La prioridad sale de la profundidad dentro de cada idioma: "en/services"
+// pesa como "servicios".
+const sitemapUrls = indexables('es').concat(indexables('en')).map(r => {
+  const d = r.lang === 'en' ? r.dir.replace(/^en\/?/, '') : r.dir;
+  return '  <url>\n' +
+    `    <loc>${urlOf(r.dir)}</loc>\n` +
+    `    <lastmod>${today}</lastmod>\n` +
+    `    <priority>${d === '' ? '1.0' : d.includes('/') ? '0.7' : '0.8'}</priority>\n` +
+    '  </url>';
+});
 fs.writeFileSync(dest('sitemap.xml'),
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
@@ -448,9 +588,10 @@ const addRefs = (text, re) => { let m; while ((m = re.exec(text))) refs.add(m[1]
 const reAttr = /(?:src|href|poster|data-src)="([^"]+)"/g;
 const reUrl = /url\(\s*(['"]?)([^'")]+)\1\s*\)/g;
 
-// Se recorre el shell MÁS todas las páginas: ninguna ruta las contiene a todas,
+// Se recorren los shells (español e inglés) MÁS todas las páginas: ninguna ruta las contiene a todas,
 // pero el router puede pedir cualquiera de ellas en caliente.
-addRefs(shell, reAttr);
+addRefs(SHELLS.es, reAttr);
+addRefs(SHELLS.en, reAttr);
 for (const name of Object.keys(PAGE_CACHE_ALL)) addRefs(PAGE_CACHE_ALL[name], reAttr);
 let u; while ((u = reUrl.exec(cssRaw))) refs.add(u[2]);
 // Rutas de imagen escritas como texto en el JS (p. ej. el logo de temporada

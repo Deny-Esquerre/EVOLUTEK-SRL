@@ -180,6 +180,40 @@
   box-shadow: 0 8px 24px rgba(25, 26, 85, 0.3);
 }
 
+/* ---- Selector de idioma ----
+   Bandera del otro idioma + su código (EN / ES). Lleva a la misma página en
+   el otro idioma; js/nav.js actualiza el enlace al cambiar de página. */
+.nav-lang { margin-left: 6px; }
+
+.nav-links a.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  font-family: 'Saira', 'Barlow', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.nav-links a.lang-switch:hover {
+  border-color: var(--navy);
+  background: rgba(74, 79, 212, 0.05);
+}
+
+.lang-flag {
+  display: block;
+  width: 21px;
+  height: 14px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(25, 26, 85, 0.15);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
 /* Mobile menu */
 .hamburger {
   display: none;
@@ -205,6 +239,10 @@
 
 @media (max-width: 1100px) and (min-width: 901px) {
   .nav-links a { padding: 10px 10px; }
+  /* Entre 901 y 1100px el menú va justo: el selector queda solo con la bandera. */
+  .nav-lang { margin-left: 2px; }
+  .nav-links a.lang-switch { padding: 8px; }
+  .nav-links a.lang-switch span { display: none; }
 }
 
 @media (max-width: 900px) {
@@ -236,4 +274,11 @@
     display: none;
   }
   .dropdown.open .dropdown-menu { display: block; }
+  /* En el panel móvil el selector va al final, separado del resto. */
+  .nav-lang {
+    margin: 12px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .nav-links a.lang-switch { display: inline-flex; padding: 10px 14px; }
 }

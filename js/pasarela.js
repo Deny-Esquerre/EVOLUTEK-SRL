@@ -28,7 +28,7 @@
       const puntos = fotos.map(function (_, i) {
         const b = document.createElement('button');
         b.type = 'button';
-        b.setAttribute('aria-label', 'Ver foto ' + (i + 1) + ' de ' + fotos.length);
+        b.setAttribute('aria-label', t('Ver foto ', 'Show photo ') + (i + 1) + t(' de ', ' of ') + fotos.length);
         puntosCaja.appendChild(b);
         return b;
       });

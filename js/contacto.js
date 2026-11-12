@@ -15,7 +15,9 @@
   function componerCorreo(form) {
     const nombre = valor(form, 'nombre');
     const empresa = valor(form, 'empresa');
-    const asunto = 'Consulta desde la web: ' + empresa;
+    // El correo llega al equipo de Evolutek: va en español, marcando si la
+    // consulta vino desde la versión en inglés del sitio.
+    const asunto = (LANG === 'en' ? 'Consulta desde la web (inglés): ' : 'Consulta desde la web: ') + empresa;
     const cuerpo = [
       valor(form, 'mensaje'),
       '',

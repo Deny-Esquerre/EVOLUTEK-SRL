@@ -83,3 +83,62 @@ const PRODUCTS = {
     desc: 'Certifica que estamos formados y evaluados por Flow Software para implementar su plataforma de integración de datos industriales: conexión de fuentes OT e IT, modelado de información, cálculo de KPIs con plantillas reutilizables y su despliegue a escala en varias plantas. Garantiza datos consistentes y confiables para la toma de decisiones.'
   }
 };
+
+// ---- Versión en inglés: solo cambian los textos; logos e íconos son los mismos ----
+if (LANG === 'en') {
+  const TEXTOS_EN = {
+    canary: {
+      cat: 'Data Historian',
+      tip: 'Historize and analyze process data, events and KPIs.',
+      desc: 'A data historian and analytics platform for process data. Store and visualize years of operational data at high speed to spot trends, build reports and improve your plant’s performance.'
+    },
+    kepware: {
+      cat: 'Industrial Connectivity',
+      tip: 'Industrial connectivity: 150+ protocols and access to plant data.',
+      desc: 'An industrial communications server supporting OPC UA/DA, Modbus and more than 150 protocols. Connect PLCs, controllers and devices from multiple vendors into a single, reliable data layer.'
+    },
+    ignition: {
+      cat: 'SCADA & HMI',
+      tip: 'SCADA/HMI to monitor, control and visualize processes.',
+      desc: 'A SCADA, HMI and MES platform with no per-tag licensing. Ideal for real-time process monitoring, control and visualization from any browser, in a scalable and secure way.'
+    },
+    n3uron: {
+      cat: 'Edge & MQTT',
+      tip: 'Edge/IIoT platform that collects data and sends it to the cloud.',
+      desc: 'An edge and IIoT platform with native MQTT, OPC UA and REST support. Collect, normalize and send field data securely to the cloud, powering Industry 4.0 architectures.'
+    },
+    tatsoft: {
+      cat: 'Visualization & OEE',
+      tip: 'SCADA/HMI with visualization, control and OEE monitoring.',
+      desc: 'A SCADA/HMI platform for process visualization and control, with efficiency (OEE) and production management modules to monitor operational performance in real time.'
+    },
+    flow: {
+      cat: 'Data Integration',
+      tip: 'Integrate and centralize data for KPIs and decision-making.',
+      desc: 'An industrial data integration and movement solution. Connect systems, databases and platforms to keep a continuous, reliable, real-time flow of information.'
+    },
+    ketsol: {
+      cat: 'Manufacturing Platform',
+      tip: 'Connect, historize and analyze your plant with dashboards, alerts and AI.',
+      desc: 'An industrial platform that connects PLCs, DCS and SCADA through more than 50 native protocols, stores time-series history and turns it into dashboards, reports, anomaly alerts and natural-language answers powered by AI.'
+    },
+    'cert-n3uron': {
+      cat: 'Certification',
+      tip: 'Certified by N3uron for IIoT and edge projects.',
+      desc: 'Certifies that our team completed N3uron’s official training and assessment to design, deploy and support IIoT architectures on its platform: connectivity with PLCs and field equipment, edge computing, MQTT and data delivery to the cloud or to historians. For clients, it means implementations built on the vendor’s best practices, with recognized technical backing.'
+    },
+    'cert-ignition': {
+      cat: 'Certification',
+      tip: 'Integrators credentialed by Inductive Automation on Ignition.',
+      desc: 'Inductive Automation’s recognition for integrators with Ignition-certified staff and a proven project track record. It backs our ability to design and implement SCADA, HMI, MES and IIoT systems on Ignition to the vendor’s standards, with access to its technical support.'
+    },
+    'cert-flow': {
+      cat: 'Certification',
+      tip: 'Certified by Flow Software in data integration and KPIs.',
+      desc: 'Certifies that we are trained and assessed by Flow Software to implement its industrial data integration platform: connecting OT and IT sources, information modeling, KPI calculation with reusable templates, and multi-site deployment at scale. It ensures consistent, reliable data for decision-making.'
+    }
+  };
+  Object.keys(TEXTOS_EN).forEach(function (k) {
+    if (PRODUCTS[k]) Object.assign(PRODUCTS[k], TEXTOS_EN[k]);
+  });
+}

@@ -1,3 +1,10 @@
+// ===== IDIOMA =====
+// El sitio tiene dos versiones: español (raíz) e inglés (/en). Lo decide el
+// atributo lang del <html>, que build.js escribe en cada ruta (y js/includes.js
+// en desarrollo). t('texto', 'text') devuelve el que corresponde.
+var LANG = /^en/i.test(document.documentElement.lang || '') ? 'en' : 'es';
+function t(es, en) { return LANG === 'en' ? en : es; }
+
 // Ejecuta fn cuando el DOM está listo; si ya lo está (scripts cargados tras la
 // inyección de parciales), la ejecuta de inmediato.
 function onReady(fn) {

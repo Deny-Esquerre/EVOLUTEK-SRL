@@ -5,6 +5,12 @@
 (function () {
   window.EVOLUTEK_DEV = true;
 
+  // Versión en inglés: todo lo que cuelga de /en usa partials/en/. El lang del
+  // <html> lo leen los scripts (js/ready.js) para elegir rutas y textos.
+  var EN = /^\/en(\/|$)/.test(location.pathname);
+  var DIR = EN ? 'partials/en/' : 'partials/';
+  document.documentElement.lang = EN ? 'en' : 'es';
+
   var SHARED = ['navbar', 'footer', 'tooltip', 'modal', 'privacy-modal'];
 
   var SCRIPTS = [
@@ -48,9 +54,9 @@
     return Promise.all(SHARED.map(function (name) {
       var el = document.querySelector('[data-include="partials/' + name + '.html"]');
       if (!el) return Promise.resolve();
-      return fetch('partials/' + name + '.html', { cache: 'no-cache' })
+      return fetch(DIR + name + '.html', { cache: 'no-cache' })
         .then(function (res) {
-          if (!res.ok) throw new Error('No se pudo cargar partials/' + name + '.html (' + res.status + ')');
+          if (!res.ok) throw new Error('No se pudo cargar ' + DIR + name + '.html (' + res.status + ')');
           return res.text();
         })
         .then(function (html) { el.outerHTML = html; });

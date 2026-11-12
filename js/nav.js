@@ -1,7 +1,8 @@
 // ===== RUTAS (id de página -> URL) =====
 // Cada entrada se corresponde con una carpeta real generada por build.js, de
-// modo que la URL funciona igual con o sin JavaScript.
-const PAGE_ROUTES = {
+// modo que la URL funciona igual con o sin JavaScript. Hay un juego por idioma;
+// el id de página es el mismo en los dos.
+const PAGE_ROUTES_ES = {
   inicio: '/',
   nosotros: '/nosotros',
   productos: '/proyectos',
@@ -20,7 +21,30 @@ const PAGE_ROUTES = {
   contacto: '/contacto'
 };
 
-const PAGE_TITLES = {
+const PAGE_ROUTES_EN = {
+  inicio: '/en',
+  nosotros: '/en/about',
+  productos: '/en/products',
+  canary: '/en/products/canary',
+  kepware: '/en/products/kepware',
+  ignition: '/en/products/ignition',
+  n3uron: '/en/products/n3uron',
+  tatsoft: '/en/products/tatsoft',
+  flow: '/en/products/flow',
+  ketsol: '/en/products/ketsol',
+  servicios: '/en/services',
+  fiscalizacion: '/en/services/hydrocarbon-fiscal-metering',
+  ia: '/en/services/ai-solutions',
+  transformacion: '/en/services/digital-transformation',
+  novedades: '/en/news',
+  contacto: '/en/contact'
+};
+
+const PAGE_ROUTES = LANG === 'en' ? PAGE_ROUTES_EN : PAGE_ROUTES_ES;
+// Rutas del otro idioma: a dónde lleva el selector de idioma.
+const OTHER_ROUTES = LANG === 'en' ? PAGE_ROUTES_ES : PAGE_ROUTES_EN;
+
+const PAGE_TITLES_ES = {
   inicio: 'EVOLUTEK — Automatización industrial e Industria 4.0 en Perú',
   nosotros: 'Nosotros — Integradores de Industria 4.0 en Perú | EVOLUTEK',
   productos: 'Productos — Software industrial SCADA e IIoT | EVOLUTEK',
@@ -39,11 +63,38 @@ const PAGE_TITLES = {
   contacto: 'Contacto — Cotiza tu proyecto de Industria 4.0 | EVOLUTEK'
 };
 
+// Deben coincidir con los títulos de ROUTES_EN en build.js.
+const PAGE_TITLES_EN = {
+  inicio: 'EVOLUTEK — Industrial Automation & Industry 4.0 in Peru',
+  nosotros: 'About Us — Industry 4.0 System Integrators in Peru | EVOLUTEK',
+  productos: 'Products — Industrial SCADA & IIoT Software | EVOLUTEK',
+  canary: 'Canary Labs — Data Historian | EVOLUTEK',
+  kepware: 'Kepware — Industrial Connectivity | EVOLUTEK',
+  ignition: 'Ignition — SCADA, HMI & MES | EVOLUTEK',
+  n3uron: 'N3uron — Edge & MQTT | EVOLUTEK',
+  tatsoft: 'Tatsoft (FactoryStudio) — SCADA, HMI & OEE | EVOLUTEK',
+  flow: 'Flow Software — Data Integration | EVOLUTEK',
+  ketsol: 'Ketsol KMS — Manufacturing Platform | EVOLUTEK',
+  servicios: 'Industrial Automation & Industry 4.0 Services | EVOLUTEK',
+  fiscalizacion: 'Hydrocarbon Fiscal Metering — Services | EVOLUTEK',
+  ia: 'Custom AI Solutions — Services | EVOLUTEK',
+  transformacion: 'Digital Transformation — Services | EVOLUTEK',
+  novedades: 'News — Industry 4.0 Projects & Events | EVOLUTEK',
+  contacto: 'Contact — Get a Quote for Your Industry 4.0 Project | EVOLUTEK'
+};
+
+const PAGE_TITLES = LANG === 'en' ? PAGE_TITLES_EN : PAGE_TITLES_ES;
+
 // ruta -> id de página
 const ROUTES = {};
 Object.keys(PAGE_ROUTES).forEach(function (id) { ROUTES[PAGE_ROUTES[id]] = id; });
-ROUTES['/inicio'] = 'inicio';
-ROUTES['/index.html'] = 'inicio';
+if (LANG === 'en') {
+  ROUTES['/en/home'] = 'inicio';
+  ROUTES['/en/index.html'] = 'inicio';
+} else {
+  ROUTES['/inicio'] = 'inicio';
+  ROUTES['/index.html'] = 'inicio';
+}
 
 function normalizePath(p) {
   p = (p || '/').replace(/index\.html$/i, '');
@@ -70,7 +121,9 @@ function fetchPage(pageId) {
   // En desarrollo (js/includes.js) las páginas son parciales sueltos; en
   // producción cada ruta es un HTML completo que contiene solo su página.
   const dev = window.EVOLUTEK_DEV === true;
-  const url = dev ? 'partials/page-' + pageId + '.html' : PAGE_ROUTES[pageId];
+  const url = dev
+    ? 'partials/' + (LANG === 'en' ? 'en/' : '') + 'page-' + pageId + '.html'
+    : PAGE_ROUTES[pageId];
   if (!url) return Promise.reject(new Error('Ruta desconocida: ' + pageId));
 
   pageCache[pageId] = fetch(url, { credentials: 'same-origin' })
@@ -135,6 +188,13 @@ function markActiveLinks(pageId) {
     if (on) { a.setAttribute('aria-current', 'page'); }
     else { a.removeAttribute('aria-current'); }
   });
+  // El selector de idioma lleva a esta misma página en el otro idioma.
+  const otra = OTHER_ROUTES[pageId];
+  if (otra) {
+    document.querySelectorAll('[data-lang-switch]').forEach(function (a) {
+      a.setAttribute('href', otra);
+    });
+  }
 }
 
 // Muestra una página. Devuelve una promesa que falla si no se pudo traer.

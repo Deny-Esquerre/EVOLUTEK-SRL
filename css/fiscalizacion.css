@@ -106,17 +106,92 @@
   gap: 18px;
 }
 
-.fz-equipos__texto p { font-size: 1.12rem; line-height: 1.6; color: #5E5F69; }
+/* ---- Pasarela de fotos de campo ----
+   Sin JS es una tira con desplazamiento horizontal y ajuste por foto; el JS
+   (js/pasarela.js) añade puntos, flechas y avance automático. */
+.fz-pasarela {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--gray-bg);
+}
 
-.fz-equipos__texto img {
-  margin-top: 10px;
+.fz-pasarela__pista {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.fz-pasarela__pista::-webkit-scrollbar { display: none; }
+
+.fz-pasarela__foto {
+  flex: 0 0 100%;
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.fz-pasarela__foto img {
+  display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  display: block;
-  border-radius: 14px;
 }
+
+.fz-pasarela__flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--navy);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4px;
+  box-shadow: 0 6px 18px -8px rgba(15, 16, 56, 0.5);
+  transition: background var(--transition);
+}
+
+.fz-pasarela__flecha:hover { background: #fff; }
+.fz-pasarela__flecha--prev { left: 12px; }
+.fz-pasarela__flecha--next { right: 12px; }
+
+.fz-pasarela__puntos {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.fz-pasarela__puntos button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.fz-pasarela__puntos button[aria-current="true"] {
+  background: #fff;
+  transform: scale(1.25);
+}
+
+.fz-pasarela.is-js .fz-pasarela__flecha { display: flex; }
 
 .fz-equipos__lista {
   list-style: none;

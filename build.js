@@ -33,8 +33,16 @@ const CSS_ORDER = [
 // includes.js NO va al bundle de producción.
 const JS_ORDER = [
   'ready.js', 'nav.js', 'reveal.js', 'strategy-rail.js', 'hero.js',
-  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'frentes.js', 'novedades.js', 'contacto.js', 'boot.js'
+  'steps-sequence.js', 'products-data.js', 'modal.js', 'tooltip.js', 'frentes.js', 'pasarela.js', 'novedades.js', 'contacto.js', 'boot.js'
 ];
+
+// Dominio público. canonical, Open Graph y sitemap.xml necesitan URLs
+// absolutas; si el sitio pasa a servirse con www, se cambia solo aquí.
+const SITE_URL = 'https://evolutek.pe';
+// Código de la etiqueta HTML de Google Search Console.
+const GOOGLE_VERIFICATION = 'FBTC5JrkG-g0myvDrDMQs4LpP3re6fYyiWJgM7uANVU';
+// Imagen que se ve al compartir un enlace en WhatsApp, LinkedIn, etc.
+const OG_IMAGE = 'EVOLUTEK/png/evolutek-logo-color-fondo-4096.png';
 
 // Presentes en todas las rutas. Las páginas (partials/page-*.html) NO van en el
 // shell: cada ruta recibe únicamente la suya.
@@ -45,23 +53,24 @@ const SHARED_PARTIALS = ['navbar', 'footer', 'tooltip', 'modal', 'privacy-modal'
 const ROUTES = [
   {
     dir: '', page: 'inicio',
-    title: 'EVOLUTEK — Tecnología e Industria 4.0',
-    description: 'Evolutek impulsa la transformación digital industrial: Industria 4.0, automatización, IoT y analítica avanzada. Integramos tecnología y tradición para modernizar la industria.'
+    title: 'EVOLUTEK — Automatización industrial e Industria 4.0 en Perú',
+    description: 'Evolutek impulsa la transformación digital de la industria en Perú: automatización, IIoT, SCADA, historización de datos e IA para modernizar tu planta.'
   },
   {
-    dir: 'inicio', page: 'inicio',
-    title: 'EVOLUTEK — Tecnología e Industria 4.0',
-    description: 'Evolutek impulsa la transformación digital industrial: Industria 4.0, automatización, IoT y analítica avanzada. Integramos tecnología y tradición para modernizar la industria.'
+    // Duplicado de "/": apunta su canonical a la portada y no entra al sitemap.
+    dir: 'inicio', page: 'inicio', canonical: '',
+    title: 'EVOLUTEK — Automatización industrial e Industria 4.0 en Perú',
+    description: 'Evolutek impulsa la transformación digital de la industria en Perú: automatización, IIoT, SCADA, historización de datos e IA para modernizar tu planta.'
   },
   {
     dir: 'nosotros', page: 'nosotros',
-    title: 'Nosotros — EVOLUTEK',
+    title: 'Nosotros — Integradores de Industria 4.0 en Perú | EVOLUTEK',
     description: 'Conoce a Evolutek: ingeniería y tecnología para la Industria 4.0. Experiencia integrando automatización, IoT y analítica para modernizar la industria.'
   },
   {
     dir: 'proyectos', page: 'productos',
-    title: 'Productos — EVOLUTEK',
-    description: 'Portafolio de productos Evolutek: Canary Labs, Kepware, Ignition, N3uron, Tatsoft, Flow Software y Ketsol para la Industria 4.0.'
+    title: 'Productos — Software industrial SCADA e IIoT | EVOLUTEK',
+    description: 'Software industrial que integramos: Canary Labs, Kepware, Ignition, N3uron, Tatsoft, Flow Software y Ketsol para conectar, historizar y analizar tus datos.'
   },
   {
     dir: 'proyectos/canary', page: 'canary',
@@ -71,12 +80,12 @@ const ROUTES = [
   {
     dir: 'proyectos/kepware', page: 'kepware',
     title: 'Kepware — Conectividad Industrial | EVOLUTEK',
-    description: 'Kepware: servidor de comunicaciones industriales con OPC UA/DA, Modbus y más de 150 protocolos para conectar PLCs y dispositivos.'
+    description: 'Kepware: servidor de comunicaciones industriales con OPC UA/DA, Modbus y más de 150 protocolos para conectar PLCs y dispositivos con tus sistemas SCADA.'
   },
   {
     dir: 'proyectos/ignition', page: 'ignition',
     title: 'Ignition — SCADA, HMI y MES | EVOLUTEK',
-    description: 'Ignition: plataforma SCADA, HMI y MES sin costo por tags. Supervisión, control y visualización en tiempo real desde el navegador.'
+    description: 'Ignition: plataforma SCADA, HMI y MES sin costo por tags. Supervisión, control y visualización en tiempo real desde cualquier navegador o móvil.'
   },
   {
     dir: 'proyectos/n3uron', page: 'n3uron',
@@ -91,7 +100,7 @@ const ROUTES = [
   {
     dir: 'proyectos/flow', page: 'flow',
     title: 'Flow Software — Integración de datos | EVOLUTEK',
-    description: 'Flow Software: integración y movimiento de datos industriales. Conecta sistemas, bases de datos y plataformas en tiempo real.'
+    description: 'Flow Software: integración y movimiento de datos industriales. Conecta sistemas, bases de datos y plataformas en tiempo real y convierte datos en KPIs.'
   },
   {
     dir: 'proyectos/ketsol', page: 'ketsol',
@@ -99,19 +108,19 @@ const ROUTES = [
     description: 'Ketsol KMS: conecta PLCs, DCS y SCADA con más de 50 protocolos, historiza los datos y los convierte en dashboards, reportes, alertas e IA para la planta.'
   },
   {
-    dir: 'servicios', page: 'servicios',
-    title: 'Servicios — EVOLUTEK',
-    description: 'Servicios de Evolutek: consultoría, integración de sistemas, automatización, IoT y analítica avanzada para la Industria 4.0.'
+    dir: 'servicios', page: 'servicios', crumb: 'Servicios',
+    title: 'Servicios de automatización e Industria 4.0 | EVOLUTEK',
+    description: 'Servicios de Evolutek: consultoría, integración de sistemas, automatización, IIoT, fiscalización de hidrocarburos y soluciones con IA para la industria.'
   },
   {
     dir: 'servicios/fiscalizacion-hidrocarburos', page: 'fiscalizacion',
     title: 'Fiscalización de Hidrocarburos — Servicios | EVOLUTEK',
-    description: 'Fiscalización de hidrocarburos con Evolutek: diseño, mantenimiento preventivo y correctivo de puntos de medición de gas y Unidades LACT, bajo estándares AGA y API.'
+    description: 'Fiscalización de hidrocarburos: diseño y mantenimiento preventivo y correctivo de puntos de medición de gas y Unidades LACT, bajo estándares AGA y API.'
   },
   {
     dir: 'servicios/soluciones-ia', page: 'ia',
     title: 'Soluciones Personalizadas con IA — Servicios | EVOLUTEK',
-    description: 'Soluciones de inteligencia artificial a medida para la industria: detección de anomalías, predicción de fallas y recomendaciones en lenguaje natural con Claude, Gemini y modelos locales.'
+    description: 'IA a medida para la industria: detección de anomalías, predicción de fallas y recomendaciones en lenguaje natural con Claude, Gemini y modelos locales.'
   },
   {
     dir: 'servicios/transformacion-digital', page: 'transformacion',
@@ -120,13 +129,13 @@ const ROUTES = [
   },
   {
     dir: 'novedades', page: 'novedades',
-    title: 'Novedades — EVOLUTEK',
-    description: 'Novedades de Evolutek: proyectos, eventos y anuncios publicados en LinkedIn sobre automatización industrial, IIoT e Industria 4.0.'
+    title: 'Novedades — Proyectos y eventos de Industria 4.0 | EVOLUTEK',
+    description: 'Novedades de Evolutek: proyectos, eventos y anuncios sobre automatización industrial, IIoT e Industria 4.0 en Perú y la región, publicados en LinkedIn.'
   },
   {
     dir: 'contacto', page: 'contacto',
-    title: 'Contacto — EVOLUTEK',
-    description: 'Contáctanos: hablemos de tu proyecto de transformación digital industrial, automatización, IoT y analítica avanzada.'
+    title: 'Contacto — Cotiza tu proyecto de Industria 4.0 | EVOLUTEK',
+    description: 'Contáctanos y hablemos de tu proyecto de transformación digital industrial: automatización, IIoT, SCADA, analítica avanzada e inteligencia artificial.'
   }
 ];
 
@@ -278,11 +287,90 @@ fs.writeFileSync(dest('js/app.min.js'), jsMin, 'utf8');
 
 // Páginas de ruta: una carpeta con index.html por cada entrada de ROUTES, con
 // el shell compartido + SOLO la página de esa ruta.
+const escHtml = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// "" -> https://evolutek.pe/ ; "servicios/soluciones-ia" -> .../servicios/soluciones-ia
+const urlOf = dir => SITE_URL + '/' + dir;
+
+// Datos de la empresa para Google (se incrustan solo en la portada).
+const ORG_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'EVOLUTEK',
+  url: SITE_URL + '/',
+  logo: urlOf(OG_IMAGE),
+  email: 'Administracion@evolutek.pe',
+  description: ROUTES[0].description,
+  areaServed: 'PE',
+  sameAs: ['https://www.linkedin.com/company/evolutek-srl/']
+};
+
+// Etiquetas SEO de una ruta. Sin "dir" (la página 404) solo se pide no indexar.
+function seoHead(route) {
+  const t = [`<meta name="google-site-verification" content="${GOOGLE_VERIFICATION}">`];
+  if (route.dir === undefined) {
+    t.push('<meta name="robots" content="noindex, follow">');
+    return t;
+  }
+  const url = urlOf(route.canonical !== undefined ? route.canonical : route.dir);
+  t.push(
+    `<link rel="canonical" href="${url}">`,
+    '<meta name="robots" content="index, follow, max-image-preview:large">',
+    '<meta property="og:type" content="website">',
+    '<meta property="og:locale" content="es_PE">',
+    '<meta property="og:site_name" content="EVOLUTEK">',
+    `<meta property="og:title" content="${escHtml(route.title)}">`,
+    `<meta property="og:description" content="${escHtml(route.description)}">`,
+    `<meta property="og:url" content="${url}">`,
+    `<meta property="og:image" content="${urlOf(OG_IMAGE)}">`,
+    '<meta name="twitter:card" content="summary_large_image">'
+  );
+  if (route.dir === '') {
+    t.push('<script type="application/ld+json">' + JSON.stringify(ORG_JSONLD) + '</script>');
+  } else if (route.canonical === undefined) {
+    t.push('<script type="application/ld+json">' + JSON.stringify(breadcrumbs(route)) + '</script>');
+  }
+  return t;
+}
+
+// Nombre corto de una ruta para las migas: "crumb" si lo tiene, o lo que va
+// antes de " — " o " | " en el título.
+const shortName = dir => {
+  const r = ROUTES.find(x => x.dir === dir);
+  return r.crumb || r.title.split(/ — | \| /)[0];
+};
+
+// Inicio > Servicios > Soluciones con IA, en el formato que Google entiende.
+function breadcrumbs(route) {
+  const parts = route.dir.split('/');
+  const items = [{ name: 'Inicio', dir: '' }];
+  for (let i = 1; i <= parts.length; i++) {
+    const dir = parts.slice(0, i).join('/');
+    items.push({ name: shortName(dir), dir });
+  }
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem', position: i + 1, name: it.name, item: urlOf(it.dir)
+    }))
+  };
+}
+
+// El poster del video de cabecera es lo más grande que se pinta al entrar
+// (el "LCP" de PageSpeed). Se pide con prioridad alta desde el <head> para no
+// esperar a que el navegador lo descubra al leer el <body>.
+function lcpPreload(pageHtml) {
+  const m = /<video[^>]*\sposter="([^"]+)"/.exec(pageHtml);
+  return m ? [`<link rel="preload" as="image" href="${m[1]}" fetchpriority="high">`] : [];
+}
+
 function routeHtml(route, pageHtml) {
+  const head = lcpPreload(pageHtml).concat(seoHead(route));
   return shell
     .replace(PAGE_SLOT, function () { return pageHtml; })
-    .replace(/<title>[\s\S]*?<\/title>/, function () { return '<title>' + route.title + '</title>'; })
-    .replace(/(<meta name="description" content=")[^"]*(")/, function (m, a, b) { return a + route.description + b; });
+    .replace(/<title>[\s\S]*?<\/title>/, function () { return '<title>' + escHtml(route.title) + '</title>'; })
+    .replace(/(<meta name="description" content=")[^"]*(")/, function (m, a, b) { return a + escHtml(route.description) + b; })
+    .replace('</head>', function () { return '  ' + head.join('\n  ') + '\n</head>'; });
 }
 
 // Las páginas se leen una sola vez aunque varias rutas apunten a la misma
@@ -308,6 +396,50 @@ const NOT_FOUND = {
   description: 'La página que buscas no existe o ha cambiado de dirección.'
 };
 fs.writeFileSync(dest('404.html'), routeHtml(NOT_FOUND, pageOf('404')), 'utf8');
+
+// sitemap.xml: una entrada por ruta, salvo los duplicados con canonical propio.
+const today = new Date().toISOString().slice(0, 10);
+const sitemapUrls = ROUTES.filter(r => r.canonical === undefined).map(r =>
+  '  <url>\n' +
+  `    <loc>${urlOf(r.dir)}</loc>\n` +
+  `    <lastmod>${today}</lastmod>\n` +
+  `    <priority>${r.dir === '' ? '1.0' : r.dir.includes('/') ? '0.7' : '0.8'}</priority>\n` +
+  '  </url>');
+fs.writeFileSync(dest('sitemap.xml'),
+  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  sitemapUrls.join('\n') + '\n</urlset>\n', 'utf8');
+
+fs.writeFileSync(dest('robots.txt'),
+  'User-agent: *\nAllow: /\n\nSitemap: ' + SITE_URL + '/sitemap.xml\n', 'utf8');
+
+// .htaccess para cPanel (Apache). Las rutas son carpetas con index.html, pero
+// el sitio enlaza sin barra final (/nosotros); se sirven así directamente, sin
+// la redirección a /nosotros/ que Apache haría por defecto, de modo que la URL
+// que ve Google es la misma del canonical y del sitemap.
+fs.writeFileSync(dest('.htaccess'), [
+  'ErrorDocument 404 /404.html',
+  'DirectoryIndex index.html',
+  '',
+  '<IfModule mod_rewrite.c>',
+  '  DirectorySlash Off',
+  '  RewriteEngine On',
+  '',
+  '  # Forzar HTTPS. Activar (quitar los #) cuando el certificado SSL ya funcione.',
+  '  # RewriteCond %{HTTPS} off',
+  '  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]',
+  '',
+  '  # /nosotros/ -> /nosotros',
+  '  RewriteCond %{REQUEST_FILENAME} -d',
+  '  RewriteRule ^(.+)/$ /$1 [L,R=301]',
+  '',
+  '  # /nosotros -> sirve nosotros/index.html',
+  '  RewriteCond %{REQUEST_FILENAME} -d',
+  '  RewriteCond %{REQUEST_FILENAME}/index.html -f',
+  '  RewriteRule ^(.+)$ /$1/index.html [L]',
+  '</IfModule>',
+  ''
+].join('\n'), 'utf8');
 
 /* ---------- 5. copiar assets referenciados ---------- */
 

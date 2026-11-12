@@ -1,12 +1,12 @@
-/* TT Supermolot Neue — fuente comercial (usa la instalada o el archivo en /fonts) */
+/* TT Supermolot Neue — fuente comercial. Solo se usa si está instalada en el
+   equipo; si no, cae en Saira. Los url('../fonts/…') se quitaron porque la
+   carpeta fonts/ está vacía y cada visita pedía cuatro archivos que daban 404
+   antes de pintar el texto. Si algún día se compra el .woff2, se agrega aquí
+   y se copia a fonts/. */
 @font-face {
   font-family: 'TT Supermolot Neue Demi Bold';
   src: local('TT Supermolot Neue Demi Bold'),
-       local('TTSupermolotNeue-DemiBold'),
-       url('../fonts/TTSupermolotNeue-DemiBold.woff2') format('woff2'),
-       url('../fonts/TTSupermolotNeue-DemiBold.woff') format('woff'),
-       url('../fonts/TTSupermolotNeue-DemiBold.ttf') format('truetype'),
-       url('../fonts/TTSupermolotNeue-DemiBold.otf') format('opentype');
+       local('TTSupermolotNeue-DemiBold');
   font-weight: 600;
   font-style: normal;
   font-display: swap;

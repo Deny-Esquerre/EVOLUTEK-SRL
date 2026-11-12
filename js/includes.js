@@ -18,6 +18,7 @@
     'js/modal.js',
     'js/tooltip.js',
     'js/frentes.js',
+    'js/pasarela.js',
     'js/novedades.js',
     'js/contacto.js',
     'js/boot.js'

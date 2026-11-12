@@ -78,13 +78,43 @@
     if (marco) marco.classList.add('is-ready');
   }
 
+  function vigilarIframe(iframe) {
+    var marco = iframe.parentNode;
+    if (!marco || !marco.classList || marco.classList.contains('is-ready')) return;
+    iframe.addEventListener('load', function () { marcarCargado(marco); });
+    setTimeout(function () { marcarCargado(marco); }, 9000);
+  }
+
+  // Cada publicación trae varios cientos de KB de JavaScript de LinkedIn. Por
+  // eso el iframe lleva la URL en data-src y solo se le pone el src cuando el
+  // visitante se acerca a él; así no frena la carga inicial de la página.
+  function cargarIframe(iframe) {
+    iframe.src = iframe.getAttribute('data-src');
+    iframe.removeAttribute('data-src');
+    vigilarIframe(iframe);
+  }
+
   function vigilarCarga(page) {
+    var diferidos = [];
     page.querySelectorAll('iframe[data-h504]').forEach(function (iframe) {
-      var marco = iframe.parentNode;
-      if (!marco || !marco.classList || marco.classList.contains('is-ready')) return;
-      iframe.addEventListener('load', function () { marcarCargado(marco); });
-      setTimeout(function () { marcarCargado(marco); }, 9000);
+      if (iframe.hasAttribute('data-src')) diferidos.push(iframe);
+      else vigilarIframe(iframe);
     });
+    if (!diferidos.length) return null;
+
+    if (!('IntersectionObserver' in window)) {
+      diferidos.forEach(cargarIframe);
+      return null;
+    }
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        cargarIframe(e.target);
+      });
+    }, { rootMargin: '400px 0px' });
+    diferidos.forEach(function (iframe) { io.observe(iframe); });
+    return io;
   }
 
   // ---------- 2. Filtro ----------
@@ -147,7 +177,7 @@
 
     initFiltro(page);          // devuelve sin hacer nada si no hay pestañas
     ajustarTodos(page);
-    vigilarCarga(page);
+    var observador = vigilarCarga(page);
 
     var pendiente = null;
     function alRedimensionar() {
@@ -170,6 +200,7 @@
       destruir: function () {
         window.removeEventListener('resize', alRedimensionar);
         if (pendiente) clearTimeout(pendiente);
+        if (observador) observador.disconnect();
       }
     });
   }

@@ -21,9 +21,9 @@ const PAGE_ROUTES = {
 };
 
 const PAGE_TITLES = {
-  inicio: 'EVOLUTEK — Tecnología e Industria 4.0',
-  nosotros: 'Nosotros — EVOLUTEK',
-  productos: 'Productos — EVOLUTEK',
+  inicio: 'EVOLUTEK — Automatización industrial e Industria 4.0 en Perú',
+  nosotros: 'Nosotros — Integradores de Industria 4.0 en Perú | EVOLUTEK',
+  productos: 'Productos — Software industrial SCADA e IIoT | EVOLUTEK',
   canary: 'Canary Labs — Historización de datos | EVOLUTEK',
   kepware: 'Kepware — Conectividad Industrial | EVOLUTEK',
   ignition: 'Ignition — SCADA, HMI y MES | EVOLUTEK',
@@ -31,12 +31,12 @@ const PAGE_TITLES = {
   tatsoft: 'Tatsoft (FactoryStudio) — SCADA, HMI y OEE | EVOLUTEK',
   flow: 'Flow Software — Integración de datos | EVOLUTEK',
   ketsol: 'Ketsol KMS — Plataforma de manufactura | EVOLUTEK',
-  servicios: 'Servicios — EVOLUTEK',
+  servicios: 'Servicios de automatización e Industria 4.0 | EVOLUTEK',
   fiscalizacion: 'Fiscalización de Hidrocarburos — Servicios | EVOLUTEK',
   ia: 'Soluciones Personalizadas con IA — Servicios | EVOLUTEK',
   transformacion: 'Transformación Digital — Servicios | EVOLUTEK',
-  novedades: 'Novedades — EVOLUTEK',
-  contacto: 'Contacto — EVOLUTEK'
+  novedades: 'Novedades — Proyectos y eventos de Industria 4.0 | EVOLUTEK',
+  contacto: 'Contacto — Cotiza tu proyecto de Industria 4.0 | EVOLUTEK'
 };
 
 // ruta -> id de página

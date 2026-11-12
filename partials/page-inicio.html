@@ -5,12 +5,12 @@
 
     <!-- HERO -->
     <section class="hero">
-      <video class="hero-video active" autoplay muted loop playsinline poster="https://assets.mixkit.co/videos/14631/14631-thumb-720-0.jpg" data-src="https://assets.mixkit.co/videos/14631/14631-720.mp4">
-        <source src="https://assets.mixkit.co/videos/14631/14631-720.mp4" type="video/mp4">
-      </video>
-      <video class="hero-video" muted loop playsinline preload="none" data-src="https://assets.mixkit.co/videos/47257/47257-720.mp4"></video>
-      <video class="hero-video" muted loop playsinline preload="none" data-src="https://assets.mixkit.co/videos/23378/23378-720.mp4"></video>
-      <video class="hero-video" muted loop playsinline preload="none" data-src="https://assets.mixkit.co/videos/48353/48353-720.mp4"></video>
+      <!-- El primero muestra su fotograma fijo (poster) desde el inicio; el video
+           lo arranca js/hero.js cuando la página ya terminó de cargar. -->
+      <video class="hero-video active" muted loop playsinline preload="none" poster="img/hero/hero-14631.webp" data-src="img/hero/hero-14631.mp4"></video>
+      <video class="hero-video" muted loop playsinline preload="none" data-src="img/hero/hero-47257.mp4"></video>
+      <video class="hero-video" muted loop playsinline preload="none" data-src="img/hero/hero-23378.mp4"></video>
+      <video class="hero-video" muted loop playsinline preload="none" data-src="img/hero/hero-48353.mp4"></video>
       <div class="hero-overlay"></div>
       <div class="hero-grid"></div>
       <h1 class="sr-only">Evolutek — Automatización industrial, IIoT e Industria 4.0 en Perú</h1>
@@ -67,8 +67,8 @@
           </div>
           <div class="about-visual about-visual--fill reveal-right">
             <figure class="content-figure">
-              <img src="EVOLUTEK/img/ofrecemos.jpg" width="1400" height="933" loading="lazy"
-                   alt="Tendido de tubería de proceso con válvulas actuadas e instrumentación de campo">
+              <img src="EVOLUTEK/img/ofrecemos-campo.jpg" width="720" height="540" loading="lazy"
+                   alt="Técnico de EVOLUTEK calibrando un transmisor en un punto de fiscalización de gas">
             </figure>
           </div>
         </div>
@@ -110,13 +110,13 @@
         <h2 class="novedades-h2">Reconocimientos</h2>
         <div class="novedades-destacados">
           <article class="embed-card" style="height: 593px">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7452022277589581825?collapsed=1"
+            <iframe data-src="https://www.linkedin.com/embed/feed/update/urn:li:share:7452022277589581825?collapsed=1"
                     title="Publicación de LinkedIn: tercer puesto en el DEMO Contest LATAM 2026 de Vertix"
                     width="100%" height="805" data-h504="593"
                     loading="lazy" allowfullscreen></iframe>
           </article>
           <article class="embed-card" style="height: 541px">
-            <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7389023482623418368?collapsed=1"
+            <iframe data-src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7389023482623418368?collapsed=1"
                     title="Publicación de LinkedIn: certificación de Flow Software"
                     width="100%" height="753" data-h504="541"
                     loading="lazy" allowfullscreen></iframe>

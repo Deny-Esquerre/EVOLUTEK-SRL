@@ -3,11 +3,9 @@
        ======================================== -->
   <div class="page" id="page-fiscalizacion">
 
-    <!-- Banner con video -->
+    <!-- Banner con foto de planta -->
     <div class="page-hero page-hero--video">
-      <video class="page-hero__video" data-velocidad="0.5" autoplay muted loop playsinline preload="metadata" poster="https://assets.mixkit.co/videos/48884/48884-thumb-720-0.jpg">
-        <source src="https://assets.mixkit.co/videos/48884/48884-720.mp4" type="video/mp4">
-      </video>
+      <img class="page-hero__video" src="img/hero/fiscalizacion-planta.webp" width="1920" height="720" alt="Skid de medición de hidrocarburos con tuberías, válvulas e instrumentación">
       <div class="page-hero__overlay"></div>
       <div class="page-hero__content">
         <div class="container">
@@ -32,7 +30,7 @@
         <ol class="fz-etapas__lista stagger">
           <li class="fz-etapa">
             <div class="fz-etapa__foto">
-              <img src="img/services/fz-etapa-1.jpg" loading="lazy" alt="Tuberías de proceso con válvulas en una línea de gas">
+              <img src="img/services/fz-etapa-1-campo.jpg" loading="lazy" alt="Técnico de EVOLUTEK revisando un transmisor en una línea de medición de gas">
             </div>
             <div class="fz-etapa__texto">
               <span class="fz-etapa__num">Etapa 01</span>
@@ -42,7 +40,7 @@
           </li>
           <li class="fz-etapa">
             <div class="fz-etapa__foto">
-              <img src="img/services/fz-etapa-2.jpg" loading="lazy" alt="Técnico con casco y overol preparando sus herramientas de mantenimiento">
+              <img src="img/services/fz-etapa-2-equipo.jpg" loading="lazy" alt="Equipo de EVOLUTEK coordinando trabajos de mantenimiento en un lote petrolero">
             </div>
             <div class="fz-etapa__texto">
               <span class="fz-etapa__num">Etapa 02</span>
@@ -68,8 +66,20 @@
     <section class="fz-equipos">
       <div class="container fz-equipos__inner">
         <div class="fz-equipos__texto reveal-left">
-          <p>Calibración, diagnóstico y reparación de la instrumentación que define la medición fiscal.</p>
-          <img src="img/services/fiscalizacion-skid.jpg" width="560" height="314" loading="lazy" alt="Skid de medición con instrumentación y tuberías de proceso">
+          <!-- Pasarela de fotos de campo -->
+          <div class="fz-pasarela" data-pasarela aria-roledescription="carrusel" aria-label="Fotos de nuestros trabajos en campo">
+            <div class="fz-pasarela__pista">
+              <figure class="fz-pasarela__foto"><img src="img/services/fz-campo-1.jpg" width="720" height="540" loading="lazy" alt="Técnicos de EVOLUTEK instalando transmisores en una línea de medición"></figure>
+              <figure class="fz-pasarela__foto"><img src="img/services/fz-campo-2.jpg" width="720" height="540" loading="lazy" alt="Calibración en banco de un transmisor de presión con comunicador de campo"></figure>
+              <figure class="fz-pasarela__foto"><img src="img/services/fz-campo-3.jpg" width="720" height="540" loading="lazy" alt="Equipo de EVOLUTEK revisando la configuración de un medidor desde una laptop"></figure>
+              <figure class="fz-pasarela__foto"><img src="img/services/fz-campo-4.jpg" width="720" height="540" loading="lazy" alt="Revisión de componentes del sistema de muestreo de un cromatógrafo"></figure>
+              <figure class="fz-pasarela__foto"><img src="img/services/fz-campo-5.jpg" width="720" height="540" loading="lazy" alt="Calibrador de presión y comunicador Emerson conectados en campo"></figure>
+              <figure class="fz-pasarela__foto"><img src="img/services/fz-campo-6.jpg" width="720" height="540" loading="lazy" alt="Técnico de EVOLUTEK calibrando un transmisor en un punto de fiscalización de gas"></figure>
+            </div>
+            <button class="fz-pasarela__flecha fz-pasarela__flecha--prev" type="button" aria-label="Foto anterior">&#8249;</button>
+            <button class="fz-pasarela__flecha fz-pasarela__flecha--next" type="button" aria-label="Foto siguiente">&#8250;</button>
+            <div class="fz-pasarela__puntos"></div>
+          </div>
         </div>
         <ul class="fz-equipos__lista reveal-right">
           <li>Computadores de flujo<span>01</span></li>

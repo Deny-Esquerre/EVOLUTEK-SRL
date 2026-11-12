@@ -22,17 +22,40 @@
     }, 4200));
   }
 
+  // Los videos no se piden hasta que la página terminó de cargar: mientras
+  // tanto se ve su poster, que es lo que mide Google como elemento principal.
+  // Con ahorro de datos activado se quedan en el poster.
+  function afterLoad(root, fn) {
+    const c = navigator.connection;
+    if (c && c.saveData) return;
+    const start = function () { remember(root, setTimeout(fn, 800)); };
+    if (document.readyState === 'complete') start();
+    else window.addEventListener('load', start, { once: true });
+  }
+
+  function playVideo(v) {
+    if (!v.getAttribute('src') && v.dataset.src) v.setAttribute('src', v.dataset.src);
+    const p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  // Video de cabecera de las páginas internas (uno solo, en bucle).
+  function initPageHeroVideos(root) {
+    const vids = root.querySelectorAll('.page-hero__video[data-src]');
+    if (vids.length) afterLoad(root, function () { vids.forEach(playVideo); });
+  }
+
   function initHeroVideos(root) {
     const vids = Array.prototype.slice.call(root.querySelectorAll('.hero-video'));
     if (vids.length < 2) return;
+    afterLoad(root, function () { startCarousel(root, vids); });
+  }
 
+  function startCarousel(root, vids) {
     let current = 0;
     function activate(idx) {
       vids.forEach(function (v, j) { v.classList.toggle('active', j === idx); });
-      const v = vids[idx];
-      if (!v.getAttribute('src') && v.dataset.src) v.setAttribute('src', v.dataset.src);
-      const p = v.play();
-      if (p && p.catch) p.catch(function () {});
+      playVideo(vids[idx]);
     }
 
     activate(0);
@@ -58,6 +81,7 @@
   function initHero(root) {
     initHeroPhrases(root);
     initHeroVideos(root);
+    initPageHeroVideos(root);
     initVideoSpeed(root);
   }
 

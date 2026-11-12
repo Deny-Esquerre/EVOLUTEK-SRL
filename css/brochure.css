@@ -1,0 +1,83 @@
+/* ============================================
+   BROCHURE CORPORATIVO (docs/evolutek-brochure-2026.pdf)
+   Tarjeta de descarga que se usa en Nosotros y en Contacto, y enlace en el
+   pie. Sigue el mismo lenguaje que la tarjeta de LinkedIn de Contacto.
+   ============================================ */
+.brochure-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  color: var(--navy);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.brochure-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  color: var(--navy);
+}
+
+.brochure-card:focus-visible {
+  outline: 3px solid var(--accent-light);
+  outline-offset: 2px;
+}
+
+/* Ícono: hoja con la esquina doblada y la etiqueta PDF. */
+.brochure-card__icono {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: var(--navy);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brochure-card__texto {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: #5E5F69;
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
+.brochure-card__texto strong {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--navy);
+}
+
+.brochure-card__meta {
+  display: block;
+  margin-top: 4px;
+  font-family: 'Saira', 'Barlow', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.brochure-card__flecha {
+  flex: none;
+  color: var(--accent);
+  transition: transform var(--transition);
+}
+
+.brochure-card:hover .brochure-card__flecha { transform: translateY(2px); }
+
+/* En Nosotros va bajo el texto de "Quiénes somos". */
+.ns-quienes__texto .brochure-card { margin-top: 26px; max-width: 520px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .brochure-card:hover .brochure-card__flecha { transform: none; }
+}
